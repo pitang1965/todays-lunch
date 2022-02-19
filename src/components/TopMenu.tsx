@@ -27,7 +27,7 @@ export default function TopMenu() {
           leaveFrom='opacity-100 scale-100'
           leaveTo='opacity-0 scale-95'
         >
-          <Menu.Items className='absolute left-0 mt-2 w-56 bg-white rounded-full divide-y divide-gray-100 focus:outline-none ring-1 ring-black/5 shadow-lg origin-top-right'>
+          <Menu.Items className='absolute left-0 mt-2 w-56 bg-white rounded divide-y divide-gray-100 focus:outline-none ring-1 ring-black/5 shadow-lg origin-top-right'>
             <div className='p-1'>
               <Menu.Item>
                 {({ active }) => (
@@ -35,7 +35,7 @@ export default function TopMenu() {
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                      } group flex rounded-full items-center w-full px-2 py-2 text-sm`}
+                      } group flex rounded items-center w-full px-2 py-2 text-sm`}
                     >
                       {active ? (
                         <HomeActiveIcon
@@ -59,7 +59,7 @@ export default function TopMenu() {
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                      } group flex rounded-full items-center w-full px-2 py-2 text-sm`}
+                      } group flex rounded items-center w-full px-2 py-2 text-sm`}
                     >
                       {active ? (
                         <AboutActiveIcon
@@ -85,7 +85,7 @@ export default function TopMenu() {
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                      } group flex rounded-full items-center w-full px-2 py-2 text-sm`}
+                      } group flex rounded items-center w-full px-2 py-2 text-sm`}
                     >
                       {active ? (
                         <ContactActiveIcon
