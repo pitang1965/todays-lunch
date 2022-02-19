@@ -38,7 +38,7 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
 
   return (
     <Layout>
-      <main className='flex-col px-1'>
+      <main className='flex-col px-1 '>
         <h1 className='flex justify-center text-4xl font-bold text-gray-700/80'>
           お問い合わせ
         </h1>
@@ -50,7 +50,7 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
               {...register('name', { required: true, maxLength: 100 })}
               defaultValue={user?.nickname || user?.name}
               placeholder='名前（必須）'
-              className='grow p-1'
+              className='grow p-1 border border-slate-300'
             />
           </fieldset>
           {errors.name && (
@@ -61,7 +61,7 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
             <input
               {...register('department', { minLength: 2, maxLength: 100 })}
               placeholder='部署名（任意）'
-              className='grow p-1'
+              className='grow p-1 border border-slate-300'
             />
           </fieldset>
           <fieldset className='flex gap-2 mt-4'>
@@ -74,7 +74,7 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
               })}
               placeholder='問い合わせ内容'
               rows={10}
-              className='grow p-1 leading-5'
+              className='grow p-1 leading-5 border border-slate-300'
             />
           </fieldset>
           {errors.inquiry && (

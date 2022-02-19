@@ -28,16 +28,16 @@ export default function Navbar() {
 
   return (
     <div className='flex flex-col'>
-      <nav className='flex justify-between items-center'>
-        <div className='basis-1/3'>
+      <nav className='flex items-center'>
+        <div className='basis-1/3 shrink text-left'>
           <TopMenu />
         </div>
-        <div className='basis-1/3 text-center'>
+        <div className='basis-3/5 text-center'>
           <Link href='/' passHref>
             <p className='text-2xl font-bold text-red-600'>今日のお弁当</p>
           </Link>
         </div>
-        <div className='basis-1/3 text-right'>
+        <div className='basis-1/3 shrink text-right'>
           <Link href='/api/auth/logout'>
             <a
               onClick={() => {
