@@ -1,0 +1,34 @@
+{
+  "name": "todays-lunch",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth0/nextjs-auth0": "1.7.0",
+    "@headlessui/react": "1.5.0",
+    "@heroicons/react": "1.0.5",
+    "@sendgrid/mail": "7.6.1",
+    "@tailwindcss/typography": "0.5.2",
+    "airtable": "0.11.2",
+    "next": "12.1.0",
+    "next-pwa": "5.4.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hook-form": "7.27.0"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.18",
+    "@types/react": "17.0.39",
+    "autoprefixer": "10.4.2",
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.1.0",
+    "eslint-plugin-tailwindcss": "3.4.4",
+    "postcss": "8.4.6",
+    "tailwindcss": "3.0.23",
+    "typescript": "4.5.5"
+  }
+}

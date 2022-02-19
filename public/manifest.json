@@ -1,0 +1,13 @@
+{
+    "theme_color": "#D40000",
+    "background_color": "#FFFFFF",
+    "display": "browser",
+    "scope": "/",
+    "start_url": "/",
+    "description": "\u5e73\u7530\u306e\u304a\u5f01\u5f53\u306e\u4e8b\u524d\u6ce8\u6587\u3092\u3059\u308b\u305f\u3081\u306e\u30a2\u30d7\u30ea",
+    "short_name": "\u304a\u5f01\u5f53",
+    "name": "\u4eca\u65e5\u306e\u304a\u5f01\u5f53",
+    "icons": {
+        "name": "obento.min.svg"
+    }
+}
