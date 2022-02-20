@@ -6,12 +6,29 @@ import type { GetStaticProps, NextPage } from 'next';
 import { FieldSet } from 'airtable';
 import Head from 'next/head';
 import { MenuListBox } from '../components/MenuListBox';
+import { useUser } from '@auth0/nextjs-auth0';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
   riceData: FieldSet[] | undefined;
 }> = ({ menuData, riceData }) => {
+  // ログイン中かどうか
+  const { user, error, isLoading } = useUser();
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {
+    if (error) {
+      setIsLogin(false);
+    } else if (isLoading) {
+      setIsLogin(false);
+    } else if (user) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, [user, error, isLoading]);
+
+  // メニュー及びライスの情報と選択状況
   const [menuNameString, setMenuNameString] = useLocalStorage('menuName');
   const [riceAmountString, setRiceAmountString] = useLocalStorage('riceAmount');
   const [menuDataSelected, setMenuDataSelected] = useState<
@@ -80,6 +97,15 @@ const Home: NextPage<{
             selected={riceAmountDataSelected}
             setSelected={setRiceAmountDataSelected}
           />
+          {isLogin ? (
+            <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
+              注文メールを送信
+            </button>
+          ) : (
+            <p className='mt-4 font-bold text-red-600'>
+              注文をするためにはログインしてください。
+            </p>
+          )}
         </main>
       </Layout>
     </>
