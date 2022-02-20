@@ -26,9 +26,11 @@ export default function Navbar() {
     }
   }, [user, error, isLoading]);
 
+  const isTestMode = process.env.NEXT_PUBLIC_TEST_MODE === '1';
+
   return (
     <div className='flex flex-col'>
-      <nav className='flex items-center'>
+      <div className='flex items-center'>
         <div className='basis-1/3 shrink text-left'>
           <TopMenu />
         </div>
@@ -61,8 +63,11 @@ export default function Navbar() {
             </a>
           </Link>
         </div>
-      </nav>
-      {user && <p className='self-center mx-2 mt-2'>{message}</p>}
+      </div>
+      <div className='flex flex-row gap-10 justify-center items-center mt-2'>
+        {user && <p className='self-center'>{message}</p>}
+        {isTestMode && <p className='font-bold text-orange-600 animate-spin'>テストモード</p>}
+      </div>
     </div>
   );
 }
