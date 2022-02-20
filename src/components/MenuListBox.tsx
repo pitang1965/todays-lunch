@@ -4,16 +4,16 @@ import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import type { FieldSet } from 'airtable';
 
-type StationListBoxProps = {
+type MenuListBoxProps = {
   label: string;
-  stations: FieldSet[] | undefined;
+  menus: FieldSet[] | undefined;
   selected: FieldSet | undefined;
   setSelected: React.Dispatch<React.SetStateAction<FieldSet | undefined>>;
 };
 
-export const StationListBox: VFC<StationListBoxProps> = ({
+export const MenuListBox: VFC<MenuListBoxProps> = ({
   label,
-  stations,
+  menus,
   selected,
   setSelected,
 }) => {
@@ -39,15 +39,15 @@ export const StationListBox: VFC<StationListBoxProps> = ({
           leaveTo='opacity-0'
         >
           <Listbox.Options className='overflow-auto absolute z-10 py-1 mt-1 w-full max-h-80 text-base bg-white rounded focus:outline-none ring-1 ring-black/5 shadow-lg sm:text-sm'>
-            {stations &&
-              stations.map((station) => (
+            {menus &&
+              menus.map((menu) => (
                 <Listbox.Option
-                  key={station.id as Key}
+                  key={menu.id as Key}
                   className={({ active }) => `${
                     active ? 'text-amber-900 bg-amber-100' : 'text-gray-900'
                   }
                 cursor-default select-none relative py-2 pl-10 pr-4`}
-                  value={station}
+                  value={menu}
                 >
                   {({ selected, active }) => (
                     <>
@@ -56,7 +56,7 @@ export const StationListBox: VFC<StationListBoxProps> = ({
                           selected ? 'font-medium' : 'font-normal'
                         } block truncate`}
                       >
-                        {(station?.fields as any).Name}
+                        {(menu?.fields as any).Name}
                       </span>
                       {selected ? (
                         <span

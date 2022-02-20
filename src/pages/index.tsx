@@ -2,60 +2,59 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
-import Script from 'next/script';
 import type { GetStaticProps, NextPage } from 'next';
 import { FieldSet } from 'airtable';
 import Head from 'next/head';
-import { StationListBox } from '../components/StationListBox';
-import { SwitchHorizontalIcon } from '@heroicons/react/solid';
+import { MenuListBox } from '../components/MenuListBox';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 
 const Home: NextPage<{
-  stationData: FieldSet[] | undefined;
-  busData: FieldSet[] | undefined;
-}> = ({ stationData, busData }) => {
-  const [stationNameFrom, setStationNameFrom] =
-    useLocalStorage('stationNameFrom');
-  const [stationNameTo, setStationNameTo] = useLocalStorage('stationNameTo');
-  const [stationDataFrom, setStationDataFrom] = useState<
+  menuData: FieldSet[] | undefined;
+  riceData: FieldSet[] | undefined;
+}> = ({ menuData, riceData }) => {
+  const [menuNameString, setMenuNameString] = useLocalStorage('menuName');
+  const [riceAmountString, setRiceAmountString] = useLocalStorage('riceAmount');
+  const [menuDataSelected, setMenuDataSelected] = useState<
     FieldSet | undefined
   >();
-  const [stationDataTo, setStationDataTo] = useState<FieldSet | undefined>();
+  const [riceAmountDataSelected, setRiceAmountDataSelected] = useState<
+    FieldSet | undefined
+  >();
 
   // localStorageからデータを呼んでメニューとライスを設定
   useEffect(() => {
-    if (stationNameFrom === '') {
-      setStationDataFrom(stationData && stationData[0]);
+    if (menuNameString === '') {
+      setMenuDataSelected(menuData && menuData[0]);
     } else {
-      setStationDataFrom(
-        stationData &&
-          stationData.find(function (record) {
-            return (record.fields as any).Name === stationNameFrom;
+      setMenuDataSelected(
+        menuData &&
+          menuData.find(function (record) {
+            return (record.fields as any).Name === menuNameString;
           })
       );
     }
 
-    if (stationNameTo === '') {
-      setStationDataTo(stationData && stationData[1]);
+    if (riceAmountString === '') {
+      setRiceAmountDataSelected(riceData && riceData[0]);
     } else {
-      setStationDataTo(
-        stationData &&
-          stationData.find(function (record) {
-            return (record.fields as any).Name === stationNameTo;
+      setRiceAmountDataSelected(
+        riceData &&
+          riceData.find(function (record) {
+            return (record.fields as any).Name === riceAmountString;
           })
       );
     }
   }, []);
 
+  // メニューとライスをローカルストレージに保存
   useEffect(() => {
-    // メニューとライスをローカルストレージに保存
-    if (stationDataFrom) {
-      setStationNameFrom((stationDataFrom?.fields as any).Name);
+    if (menuDataSelected) {
+      setMenuNameString((menuDataSelected?.fields as any).Name);
     }
-    if (stationDataTo) {
-      setStationNameTo((stationDataTo?.fields as any).Name);
+    if (riceAmountDataSelected) {
+      setRiceAmountString((riceAmountDataSelected?.fields as any).Name);
     }
-  }, [stationDataFrom, stationDataTo]);
+  }, [menuDataSelected, riceAmountDataSelected]);
 
   return (
     <>
@@ -69,17 +68,17 @@ const Home: NextPage<{
           <h1 className='flex justify-center mb-4 text-4xl font-bold text-gray-600/80'>
             メニュー
           </h1>
-          <StationListBox
+          <MenuListBox
             label='メニュー：'
-            stations={stationData}
-            selected={stationDataFrom}
-            setSelected={setStationDataFrom}
+            menus={menuData}
+            selected={menuDataSelected}
+            setSelected={setMenuDataSelected}
           />
-          <StationListBox
+          <MenuListBox
             label='ライス：'
-            stations={stationData}
-            selected={stationDataTo}
-            setSelected={setStationDataTo}
+            menus={riceData}
+            selected={riceAmountDataSelected}
+            setSelected={setRiceAmountDataSelected}
           />
         </main>
       </Layout>
@@ -90,10 +89,12 @@ const Home: NextPage<{
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const origin = process.env.AUTH0_BASE_URL ?? 'http://localhost:3000';
-    const res_station = await fetch(`${origin}/api/getStation`);
+    const res_menu = await fetch(`${origin}/api/getMenu`);
+    const res_rice = await fetch(`${origin}/api/getRice`);
     return {
       props: {
-        stationData: await res_station.json(),
+        menuData: await res_menu.json(),
+        riceData: await res_rice.json(),
       },
     };
   } catch (err) {

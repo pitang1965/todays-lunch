@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { stationTable as table, minifyRecords } from './utils/Airtable';
+import { riceTable as table, minifyRecords } from './utils/Airtable';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   try {
@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return (res);
   } catch (err) {
     res.statusCode = 500;
-    res.json({ msg: 'バス停情報の取得で問題発生' });
+    res.json({ msg: 'ライス情報の取得で問題発生' });
     return (res);
   }
 }
