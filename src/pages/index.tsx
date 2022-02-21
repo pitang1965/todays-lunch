@@ -8,6 +8,7 @@ import Head from 'next/head';
 import { MenuListBox } from '../components/MenuListBox';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
+import Disclosure from '../components/Disclosure';
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
@@ -106,6 +107,7 @@ const Home: NextPage<{
               注文をするためにはログインしてください。
             </p>
           )}
+          <Disclosure />
         </main>
       </Layout>
     </>
