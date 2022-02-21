@@ -24,7 +24,7 @@ const about = () => {
             <strong>[ホーム画面に追加]</strong>より）。
           </p>
           <p>
-            データの問題など不具合があったら
+            不具合や改善要望などありましたら
             <Link href='/contact' passHref>
               <a>お問い合わせ</a>
             </Link>
