@@ -2,9 +2,10 @@
 import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/solid';
 
-export default function Example() {
+export function Instructions() {
   return (
-    <div className='pt-16 w-full'>
+    <div className='pt-8 w-full'>
+      <p className= "font-bold">使用上の注意：</p>
       <div className='mx-auto w-full bg-white'>
         <Disclosure>
           {({ open }) => (
