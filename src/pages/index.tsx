@@ -9,6 +9,7 @@ import { MenuListBox } from '../components/MenuListBox';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 import { Instructions } from '../components/Instructions';
+import { StaggeredShift } from '../components/StaggeredShift';
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
@@ -98,6 +99,7 @@ const Home: NextPage<{
             selected={riceAmountDataSelected}
             setSelected={setRiceAmountDataSelected}
           />
+          <StaggeredShift />
           {isLogin ? (
             <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
               注文メールを送信
@@ -107,7 +109,7 @@ const Home: NextPage<{
               注文をするためにはログインしてください。
             </p>
           )}
-          <Instructions  />
+          <Instructions />
         </main>
       </Layout>
     </>
