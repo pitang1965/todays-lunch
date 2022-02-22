@@ -30,17 +30,25 @@ const Home: NextPage<{
     }
   }, [user, error, isLoading]);
 
-  // メニュー及びライスの情報と選択状況
+  // メニュー（食事）
   const [menuNameString, setMenuNameString] = useLocalStorage('menuName');
-  const [riceAmountString, setRiceAmountString] = useLocalStorage('riceAmount');
   const [menuDataSelected, setMenuDataSelected] = useState<
     FieldSet | undefined
   >();
+
+  // ライスの量
+  const [riceAmountString, setRiceAmountString] = useLocalStorage('riceAmount');
   const [riceAmountDataSelected, setRiceAmountDataSelected] = useState<
     FieldSet | undefined
   >();
 
-  // localStorageからデータを呼んでメニューとライスを設定
+  // 遅番かどうか
+  const [isLateShiftString, setIsLateShiftString] =
+    useLocalStorage('lateShift');
+  const [isLateShift, setIsLateShift] = useState(true);
+  const updateShift = (): void => setIsLateShift((prev: boolean) => !prev);
+
+  // localStorageからデータを取得
   useEffect(() => {
     if (menuNameString === '') {
       setMenuDataSelected(menuData && menuData[0]);
@@ -63,9 +71,15 @@ const Home: NextPage<{
           })
       );
     }
+
+    if (isLateShiftString === '') {
+      setIsLateShift(true);
+    } else {
+      setIsLateShift(isLateShiftString === 'true');
+    }
   }, []);
 
-  // メニューとライスをローカルストレージに保存
+  // ローカルストレージにデータを保存
   useEffect(() => {
     if (menuDataSelected) {
       setMenuNameString((menuDataSelected?.fields as any).Name);
@@ -73,7 +87,8 @@ const Home: NextPage<{
     if (riceAmountDataSelected) {
       setRiceAmountString((riceAmountDataSelected?.fields as any).Name);
     }
-  }, [menuDataSelected, riceAmountDataSelected]);
+    setIsLateShiftString(isLateShift ? 'true' : 'false');
+  }, [menuDataSelected, riceAmountDataSelected, isLateShift]);
 
   return (
     <>
@@ -99,7 +114,7 @@ const Home: NextPage<{
             selected={riceAmountDataSelected}
             setSelected={setRiceAmountDataSelected}
           />
-          <StaggeredShift />
+          <StaggeredShift isLateShift={isLateShift} updateShift={updateShift} />
           {isLogin ? (
             <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
               注文メールを送信

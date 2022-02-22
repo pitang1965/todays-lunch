@@ -5,7 +5,7 @@ import { ChevronUpIcon } from '@heroicons/react/solid';
 export function Instructions() {
   return (
     <div className='pt-8 w-full'>
-      <p className= "font-bold">使用上の注意：</p>
+      <p className='font-bold'>使用上の注意：</p>
       <div className='mx-auto w-full bg-white'>
         <Disclosure>
           {({ open }) => (
@@ -57,7 +57,7 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                平田食堂にメールするなりして対応してください。注文時の自分にCcされたメールを変身するなどしてください。
+                平田食堂にメールするなりして対応してください。注文時の自分にCcされたメールに返信するなどしてください。
               </Disclosure.Panel>
             </>
           )}
