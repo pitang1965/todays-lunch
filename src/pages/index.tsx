@@ -136,7 +136,7 @@ const Home: NextPage<{
             setSelected={setMenuDataSelected}
           />
           <MenuListBox
-            label='ライス：'
+            label='ライス（ライス付きメニューの場合のみ有効）：'
             menus={riceData}
             selected={riceAmountDataSelected}
             setSelected={setRiceAmountDataSelected}

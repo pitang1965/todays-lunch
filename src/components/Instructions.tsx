@@ -19,7 +19,7 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                会社のメールアドレスへのCcメールを確認願います。
+                自分にCcされてきたメールを確認願います。
               </Disclosure.Panel>
             </>
           )}
