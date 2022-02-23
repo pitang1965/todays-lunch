@@ -19,7 +19,7 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      const res = fetch('/api/sendMail', {
+      const res = fetch('/api/sendContactMail', {
         method: 'POST',
         headers: {
           Accept: 'application/json, text/plain, */*',
@@ -80,10 +80,9 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
           {errors.inquiry && (
             <p className='ml-20 text-[#ff0000]'>問い合わせ内容は必須です。</p>
           )}
-          <input
-            type='submit'
-            className='block py-2 px-4 mx-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
-          />
+          <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
+            注文以外の問い合わせを送信
+          </button>
         </form>
       </main>
     </Layout>
