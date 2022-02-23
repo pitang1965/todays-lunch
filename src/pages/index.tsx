@@ -109,9 +109,24 @@ const Home: NextPage<{
     setIsLateShiftString(isLateShift ? 'true' : 'false');
   }, [menuDataSelected, riceAmountDataSelected, isLateShift]);
 
-  const order = () => {
+  const order = async (data: any) => {
     if (canOrderNow()) {
-      alert('注文！');
+      try {
+        console.table(data);
+        const res = fetch('/api/sendOrderMail', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        console.log('res: ', res);
+        alert('注文が送信されました。');
+      } catch (error) {
+        console.error('Fetch error : ', error);
+        alert(JSON.stringify(error));
+      }
     } else {
       alert('注文できない時間帯です。');
     }
@@ -148,7 +163,21 @@ const Home: NextPage<{
               <p>注文可能な時間帯は前日の15時から当日の9:59までです。</p>
               <button
                 className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
-                onClick={order}
+                onClick={() =>
+                  order({
+                    mailTo: 'hiratasangyou@wing.ocn.ne.jp',
+                    mailFrom: 'makino@jeol.co.jp',
+                    mailCc: 'makino.shoji.jeol@gmail.com',
+                    date: `${date}日(${dayText})`,
+                    timeFrom: isLateShift ? `12:20～` : `11:50～`,
+                    department: departmentString,
+                    name: fullnameString,
+                    employeeNumber: employeeNumberString,
+                    tel: telephoneNumberString,
+                    menu: menuNameString,
+                    rice: riceAmountString,
+                  })
+                }
               >
                 注文メールを送信
               </button>

@@ -1,0 +1,55 @@
+import sgMail from '@sendgrid/mail';
+import { MailDataRequired } from '@sendgrid/helpers/classes/mail';
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<any>
+) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+  const msg: MailDataRequired = {
+    to: req.body.mailTo,
+    from: req.body.mailFrom,
+    cc: req.body.mailCc,
+    subject: 'お弁当の注文(JEOL)',
+    text: `
+    平田食堂 御中 担当者
+    
+    予約日: ${req.body.date}
+    利用時間: ${req.body.timeFrom}～
+    部署名:${req.body.department}
+    名前: ${req.body.name}
+    従業員番号: ${req.body.employeeNumber}
+    電話番号: ${req.body.tel}
+
+    メニュー: ${req.body.menu}
+    ライス: ${req.body.menu} // ライス付きメニューの場合
+
+    ※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。
+    `,
+    html: `
+    <p>平田食堂 御中</p>
+    <p></p>
+    <p>予約日: ${req.body.date}</p>
+    <p>利用時間: ${req.body.timeFrom}～</p>
+    <p>部署名:${req.body.department}</p>
+    <p>名前: ${req.body.name}</p>
+    <p>従業員番号: ${req.body.employeeNumber}</p>
+    <p>電話番号: ${req.body.tel}</p>
+    <p><strong>メニュー: ${req.body.menu}</strong></p>
+    <p><strong>ライス: ${req.body.rice} </strong>  // ライス付きメニューの場合</p>
+    <p></p>
+    <p>※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。</p>
+    `,
+  };
+
+  console.log('req.body: ', req.body);
+
+  try {
+    await sgMail.send(msg);
+    res.status(200).json(msg);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+}
