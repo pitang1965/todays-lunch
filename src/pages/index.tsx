@@ -59,6 +59,14 @@ const Home: NextPage<{
   const [isLateShift, setIsLateShift] = useState(true);
   const updateShift = (): void => setIsLateShift((prev: boolean) => !prev);
 
+  // 職場、名前、社員番号、電話番号
+  const [departmentString, setDepartmentString] = useLocalStorage('department');
+  const [fullnameString, setFullnameString] = useLocalStorage('fullname');
+  const [employeeNumberString, setEmployeeNumberString] =
+    useLocalStorage('employeeNumber');
+  const [telephoneNumberString, setTelephoneNumberString] =
+    useLocalStorage('telephoneNumber');
+
   // localStorageからデータを取得
   useEffect(() => {
     if (menuNameString === '') {
@@ -133,6 +141,7 @@ const Home: NextPage<{
             selected={riceAmountDataSelected}
             setSelected={setRiceAmountDataSelected}
           />
+
           <StaggeredShift isLateShift={isLateShift} updateShift={updateShift} />
           {isLogin ? (
             <>
@@ -149,6 +158,90 @@ const Home: NextPage<{
               注文をするためにはログインしてください。
             </p>
           )}
+
+          <form className='mt-8 w-full max-w-sm'>
+            <div className='mb-6 md:flex md:items-center'>
+              <div className='md:w-1/3'>
+                <label
+                  className='block pr-4 mb-1 font-bold text-gray-500 md:mb-0 md:text-right'
+                  htmlFor='departmentText'
+                >
+                  職場名
+                </label>
+              </div>
+              <div className='md:w-2/3'>
+                <input
+                  className='py-2 px-4 w-full leading-tight text-gray-700 bg-gray-200 focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none'
+                  id='departmentText'
+                  type='text'
+                  placeholder='例：ME品証'
+                  value={departmentString}
+                  onChange={(e) => setDepartmentString(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className='mb-6 md:flex md:items-center'>
+              <div className='md:w-1/3'>
+                <label
+                  className='block pr-4 mb-1 font-bold text-gray-500 md:mb-0 md:text-right'
+                  htmlFor='fullnameText'
+                >
+                  名前
+                </label>
+              </div>
+              <div className='md:w-2/3'>
+                <input
+                  className='py-2 px-4 w-full leading-tight text-gray-700 bg-gray-200 focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none'
+                  id='fullnameText'
+                  type='text'
+                  placeholder='姓名を入れてください。'
+                  value={fullnameString}
+                  onChange={(e) => setFullnameString(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className='mb-6 md:flex md:items-center'>
+              <div className='md:w-1/3'>
+                <label
+                  className='block pr-4 mb-1 font-bold text-gray-500 md:mb-0 md:text-right'
+                  htmlFor='employeeNumber'
+                >
+                  社員番号
+                </label>
+              </div>
+              <div className='md:w-2/3'>
+                <input
+                  className='py-2 px-4 w-full leading-tight text-gray-700 bg-gray-200 focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none'
+                  id='employeeNumber'
+                  type='number'
+                  placeholder='8桁数字のみ。'
+                  value={employeeNumberString}
+                  onChange={(e) => setEmployeeNumberString(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className='mb-6 md:flex md:items-center'>
+              <div className='md:w-1/3'>
+                <label
+                  className='block pr-4 mb-1 font-bold text-gray-500 md:mb-0 md:text-right'
+                  htmlFor='telephoneNumber'
+                >
+                  電話番号
+                </label>
+              </div>
+              <div className='md:w-2/3'>
+                <input
+                  className='py-2 px-4 w-full leading-tight text-gray-700 bg-gray-200 focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none'
+                  id='telephoneNumber'
+                  type='tel'
+                  placeholder='連絡が付く電話番号。'
+                  value={telephoneNumberString}
+                  onChange={(e) => setTelephoneNumberString(e.target.value)}
+                />
+              </div>
+            </div>
+          </form>
+
           <Instructions />
         </main>
       </Layout>
