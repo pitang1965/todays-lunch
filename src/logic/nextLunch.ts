@@ -8,7 +8,7 @@ export type LunchDateData = {
 };
 
 export function currentDate() {
-  if (process.env.NEXT_PUBLIC_TEST_MODE === 'true') {
+  if (process.env.NEXT_PUBLIC_TEST_MODE === 'true' && process.env.NEXT_PUBLIC_TEST_DATE !=='') {
     return (new Date(process.env.NEXT_PUBLIC_TEST_DATE as string));
   } else {
     return new Date();
