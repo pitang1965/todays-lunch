@@ -10,7 +10,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 import { Instructions } from '../components/Instructions';
 import { StaggeredShift } from '../components/StaggeredShift';
-import { getNextLunchDate } from '../logic/nextLunch';
+import { getNextLunchDate, canOrderNow } from '../logic/nextLunch';
 import type { LunchDateData } from '../logic/nextLunch';
 
 const Home: NextPage<{
@@ -25,7 +25,7 @@ const Home: NextPage<{
     setDate(date);
     setDayText(day);
   }, []);
-  
+
   // ログイン中かどうか
   const { user, error, isLoading } = useUser();
   const [isLogin, setIsLogin] = useState(false);
@@ -101,6 +101,14 @@ const Home: NextPage<{
     setIsLateShiftString(isLateShift ? 'true' : 'false');
   }, [menuDataSelected, riceAmountDataSelected, isLateShift]);
 
+  const order = () => {
+    if (canOrderNow()) {
+      alert('注文！');
+    } else {
+      alert('注文できない時間帯です。');
+    }
+  };
+
   return (
     <>
       <Layout>
@@ -127,9 +135,15 @@ const Home: NextPage<{
           />
           <StaggeredShift isLateShift={isLateShift} updateShift={updateShift} />
           {isLogin ? (
-            <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
-              注文メールを送信
-            </button>
+            <>
+              <p>注文可能な時間帯は前日の15時から当日の9:59までです。</p>
+              <button
+                className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
+                onClick={order}
+              >
+                注文メールを送信
+              </button>
+            </>
           ) : (
             <p className='mt-4 font-bold text-red-600'>
               注文をするためにはログインしてください。

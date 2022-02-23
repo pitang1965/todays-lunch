@@ -27,7 +27,7 @@ export function getNextLunchDate(): LunchDateData {
 
   console.log(`現在時刻：${year}-${month}-${date}(${getDayText(now.getDay())}) ${hour}:${minute}`);
 
-  if (hour <= 13 || minute <= 20) {
+  if (hour <= 13 || (hour === 13 && minute <= 20)) {
     const dayOfWeek = now.getDay();
     const day = getDayText(dayOfWeek);
     return { year, month, date, day };
@@ -40,7 +40,14 @@ export function getNextLunchDate(): LunchDateData {
     const date = tommorrow.getDate();
     const dayOfWeek = tommorrow.getDay();
     const day = getDayText(dayOfWeek);
-
     return { year, month, date, day };
   }
+}
+
+// 現在、注文可能かどうか。10:00～14:59は注文できない
+export function canOrderNow() {
+  const now = currentDate();
+  const hour = now.getHours();
+  console.log('★今の時間', hour)
+  return (hour < 10 || 15 <= hour);
 }
