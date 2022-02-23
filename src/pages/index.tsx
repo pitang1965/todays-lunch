@@ -10,11 +10,22 @@ import { useUser } from '@auth0/nextjs-auth0';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 import { Instructions } from '../components/Instructions';
 import { StaggeredShift } from '../components/StaggeredShift';
+import { getNextLunchDate } from '../logic/nextLunch';
+import type { LunchDateData } from '../logic/nextLunch';
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
   riceData: FieldSet[] | undefined;
 }> = ({ menuData, riceData }) => {
+  const [date, setDate] = useState(0);
+  const [dayText, setDayText] = useState('');
+  // いつのランチ注文か
+  useEffect(() => {
+    const { date, day }: LunchDateData = getNextLunchDate();
+    setDate(date);
+    setDayText(day);
+  }, []);
+  
   // ログイン中かどうか
   const { user, error, isLoading } = useUser();
   const [isLogin, setIsLogin] = useState(false);
@@ -100,7 +111,7 @@ const Home: NextPage<{
         </Head>
         <main className='flex-col p-2 min-h-screen'>
           <h1 className='flex justify-center mb-4 text-4xl font-bold text-gray-600/80'>
-            メニュー
+            メニュー: {date}日({dayText})
           </h1>
           <MenuListBox
             label='メニュー：'

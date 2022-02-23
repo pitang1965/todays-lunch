@@ -2,7 +2,7 @@ function zeroPad(i: number) {
   return i < 10 ? '0' + i : i;
 }
 
-function getDayText(index: number) {
+export function getDayText(index: number) {
   const days = ['日', '月', '火', '水', '木', '金', '土'];
   return days[index];
 }

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import TopMenu from '../components/TopMenu';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
+import { currentDate } from '../logic/nextLunch';
+import { getStringFromDate } from '../lib/timeUtile';
 
 export default function Navbar() {
   const { user, error, isLoading } = useUser();
@@ -26,7 +28,8 @@ export default function Navbar() {
     }
   }, [user, error, isLoading]);
 
-  const isTestMode = process.env.NEXT_PUBLIC_TEST_MODE === '1';
+  const isTestMode = process.env.NEXT_PUBLIC_TEST_MODE === 'true';
+  const testDateString = getStringFromDate(currentDate());
 
   return (
     <div className='flex flex-col'>
@@ -66,7 +69,11 @@ export default function Navbar() {
       </div>
       <div className='flex flex-row gap-10 justify-center items-center mt-2'>
         {user && <p className='self-center'>{message}</p>}
-        {isTestMode && <p className='font-bold text-orange-600 animate-spin'>テストモード</p>}
+        {isTestMode && (
+          <p className='font-bold text-orange-600 animate-pulse'>
+            テスト:{testDateString}
+          </p>
+        )}
       </div>
     </div>
   );
