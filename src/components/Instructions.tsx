@@ -5,7 +5,7 @@ import { ChevronUpIcon } from '@heroicons/react/solid';
 export function Instructions() {
   return (
     <div className='pt-8 w-full'>
-      <p className='font-bold'>使用上の注意：</p>
+      <p className='font-bold'>使用上の注意等：</p>
       <div className='mx-auto w-full bg-white'>
         <Disclosure>
           {({ open }) => (
@@ -19,11 +19,7 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-                あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-                あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-                あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-                あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+                会社のメールアドレスへのCcメールを確認願います。
               </Disclosure.Panel>
             </>
           )}
@@ -32,7 +28,7 @@ export function Instructions() {
           {({ open }) => (
             <>
               <Disclosure.Button className='flex justify-between py-2 px-4 w-full text-sm font-medium text-left text-purple-900 bg-purple-100 hover:bg-purple-200 rounded-full focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
-                <span>特に注意していただきたいこと</span>
+                <span>注意その１</span>
                 <ChevronUpIcon
                   className={`${
                     open ? 'transform rotate-180' : ''
@@ -40,7 +36,24 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                本アプリで[注文メールを送信]ボタンをクリックしたら、文字通りメールを送るだけです。Ccで自分自身にもメールが送られますが、相手が確実に受け取るとは限りません。メール送信は、大手のメール配信サービスを無料枠で利用していますが、送信メールが迷惑メールとなってしまう可能性もあります。
+                現在は注文情報をサーバーで管理しておらず各端末で管理しています。複数の端末から重複して注文しないようにご注意ください。
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
+        <Disclosure as='div' className='mt-2'>
+          {({ open }) => (
+            <>
+              <Disclosure.Button className='flex justify-between py-2 px-4 w-full text-sm font-medium text-left text-purple-900 bg-purple-100 hover:bg-purple-200 rounded-full focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
+                <span>注意その２</span>
+                <ChevronUpIcon
+                  className={`${
+                    open ? 'transform rotate-180' : ''
+                  } w-5 h-5 text-purple-500`}
+                />
+              </Disclosure.Button>
+              <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
+                本アプリで[注文メールを送信]ボタンをクリックしたら、文字通りメールを送るだけです。Ccで自分自身にもメールが送られますが、相手が確実に受け取るとは限りません。平田食堂からの返信メールをご確認ください。
               </Disclosure.Panel>
             </>
           )}
@@ -57,7 +70,7 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                平田食堂にメールするなりして対応してください。注文時の自分にCcされたメールに返信するなどしてください。
+                平田食堂にメールするなりして対応してください。
               </Disclosure.Panel>
             </>
           )}
