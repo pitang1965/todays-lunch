@@ -9,8 +9,8 @@ export default async function handler(
 ) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
   const msg: MailDataRequired = {
-    to: process.env.MAIL_TO,
-    from: process.env.MAIL_FROM as EmailData,
+    to: process.env.CONTACT_FORM_MAIL_TO,
+    from: process.env.CONTACT_FORM_MAIL_FROM as EmailData,
     subject: '今日のお弁当アプリからの問い合わせ',
     text: `${req.body.name}さん（職場：${req.body.department}）からの問い合わせ: ${req.body.inquiry}`,
     html: `
