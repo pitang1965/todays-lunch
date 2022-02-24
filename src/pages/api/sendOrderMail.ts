@@ -6,11 +6,15 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  const emailTo =
+    process.env.NEXT_PUBLIC_TEST_MODE
+      ? process.env.ORDER_MAIL_TO_FOR_TEST
+      : process.env.ORDER_MAIL_TO;
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
   const msg: MailDataRequired = {
-    to: req.body.mailTo,
+    to: emailTo,
     from: req.body.mailFrom,
-    cc: req.body.mailCc,
+    cc: req.body.mailFrom,
     subject: 'お弁当の注文(JEOL)',
     text: `
     平田食堂 御中 担当者

@@ -165,9 +165,7 @@ const Home: NextPage<{
                 className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
                 onClick={() =>
                   order({
-                    mailTo: 'hiratasangyou@wing.ocn.ne.jp',
-                    mailFrom: 'makino@jeol.co.jp',
-                    mailCc: 'makino.shoji.jeol@gmail.com',
+                    mailFrom: user?.email,
                     date: `${date}日(${dayText})`,
                     timeFrom: isLateShift ? `12:20～` : `11:50～`,
                     department: departmentString,
