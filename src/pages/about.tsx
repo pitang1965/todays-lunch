@@ -31,12 +31,12 @@ const about = () => {
             問い合わせフォームよりお願いします。
           </p>
 
-          <figure>
+          <figure className='flex flex-col mb-8'>
             <Image
               src={siteUrlBarcode}
-              alt='https://j-bus-time-table.vercel.app/'
+              alt='https://todays-lunch.vercel.app/'
             />
-            <figcaption>バス時刻表のサイトURL</figcaption>
+            <figcaption className='m-auto'>本サイト「今日のお弁当」のURL</figcaption>
           </figure>
         </article>
       </main>
