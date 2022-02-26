@@ -17,10 +17,16 @@ const Home: NextPage<{
   menuData: FieldSet[] | undefined;
   riceData: FieldSet[] | undefined;
 }> = ({ menuData, riceData }) => {
-  // いつのランチ注文か。YYYY-MM-DD(曜日) と曜日を取得
+  // 最後のランチ注文
+  const [lastOrderDateString, setLastOrderDateString] =
+    useLocalStorage('lastOrderDate');
+  const [lastOerderMenuString, setLastOrderMenuString] =
+    useLocalStorage('lastOrderMenu');
+
+  // いつのランチ注文をしようしているか。YYYY-MM-DD(曜日) と曜日を取得
   const [dateString, setDateString] = useState('');
   const [dayChar, setDayChar] = useState('');
-  
+
   useEffect(() => {
     const [date, day] = getNextLunchDateString();
     setDateString(date);
@@ -68,7 +74,7 @@ const Home: NextPage<{
   const [telephoneNumberString, setTelephoneNumberString] =
     useLocalStorage('telephoneNumber');
 
-  // localStorageからデータを取得
+  // localStorageの値からデータを設定
   useEffect(() => {
     if (menuNameString === '') {
       setMenuDataSelected(menuData && menuData[0]);
@@ -99,7 +105,7 @@ const Home: NextPage<{
     }
   }, []);
 
-  // ローカルストレージにデータを保存
+  // メニュー又はライス選択結果をローカルストレージに保存
   useEffect(() => {
     if (menuDataSelected) {
       setMenuNameString((menuDataSelected?.fields as any).Name);
@@ -114,7 +120,9 @@ const Home: NextPage<{
   const isAvailableNow = (menu: string) => {
     if (!menuData) return;
 
-    const menuRecord = menuData.find((record) => (record.fields as any).Name === menu);
+    const menuRecord = menuData.find(
+      (record) => (record.fields as any).Name === menu
+    );
     const fields: any = menuRecord?.fields;
     const available = fields.Available.includes(dayChar); // 今日利用可能なメニューかどうか
     return available;
@@ -139,6 +147,11 @@ const Home: NextPage<{
           body: JSON.stringify(data),
         });
         console.log('res: ', res);
+
+        // 最後の注文を保存
+        setLastOrderDateString(dateString);
+        setLastOrderMenuString(data.menu);
+
         alert('注文が送信されました。');
       } catch (error) {
         console.error('Fetch error : ', error);
@@ -161,47 +174,60 @@ const Home: NextPage<{
           <h1 className='flex justify-center mb-4 text-4xl font-bold text-gray-600/80'>
             {dateString}の注文
           </h1>
-          <MenuListBox
-            label='メニュー：'
-            menus={menuData}
-            selected={menuDataSelected}
-            setSelected={setMenuDataSelected}
-            day={dayChar}
-          />
-          <RiceListBox
-            label='ライス（ライス付きメニューの場合のみ有効）：'
-            menus={riceData}
-            selected={riceAmountDataSelected}
-            setSelected={setRiceAmountDataSelected}
-          />
-
-          <StaggeredShift isLateShift={isLateShift} updateShift={updateShift} />
-          {isLogin ? (
+          {lastOrderDateString === dateString ? (
             <>
-              <p>注文可能な時間帯は前日の15時から当日の9:59までです。</p>
-              <button
-                className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
-                onClick={() =>
-                  orderMenu({
-                    mailFrom: user?.email,
-                    date: `${dateString}`,
-                    timeFrom: isLateShift ? `12:20～` : `11:50～`,
-                    department: departmentString,
-                    name: fullnameString,
-                    employeeNumber: employeeNumberString,
-                    tel: telephoneNumberString,
-                    menu: menuNameString,
-                    rice: riceAmountString,
-                  })
-                }
-              >
-                注文メールを送信
-              </button>
+              <p>ご注文ありがとうございました。</p>
+              <p>注文内容：{lastOerderMenuString}</p>
             </>
           ) : (
-            <p className='mt-4 font-bold text-red-600'>
-              注文をするためにはログインしてください。
-            </p>
+            <>
+              <p>いらっしゃいませ。</p>
+              <MenuListBox
+                label='メニュー：'
+                menus={menuData}
+                selected={menuDataSelected}
+                setSelected={setMenuDataSelected}
+                day={dayChar}
+              />
+              <RiceListBox
+                label='ライス（ライス付きメニューの場合のみ有効）：'
+                menus={riceData}
+                selected={riceAmountDataSelected}
+                setSelected={setRiceAmountDataSelected}
+              />
+
+              <StaggeredShift
+                isLateShift={isLateShift}
+                updateShift={updateShift}
+              />
+              {isLogin ? (
+                <>
+                  <p>注文可能な時間帯は前日の15時から当日の9:59までです。</p>
+                  <button
+                    className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
+                    onClick={() =>
+                      orderMenu({
+                        mailFrom: user?.email,
+                        date: `${dateString}`,
+                        timeFrom: isLateShift ? `12:20～` : `11:50～`,
+                        department: departmentString,
+                        name: fullnameString,
+                        employeeNumber: employeeNumberString,
+                        tel: telephoneNumberString,
+                        menu: menuNameString,
+                        rice: riceAmountString,
+                      })
+                    }
+                  >
+                    注文メールを送信
+                  </button>
+                </>
+              ) : (
+                <p className='mt-4 font-bold text-red-600'>
+                  注文をするためにはログインしてください。
+                </p>
+              )}
+            </>
           )}
 
           <form className='mt-8 w-full max-w-sm'>
