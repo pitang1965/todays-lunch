@@ -47,13 +47,17 @@ export default async function handler(
     `,
   };
 
-  console.log('req.body: ', req.body);
-
-  try {
-    await sgMail.send(msg);
-    res.status(200).json(msg);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
+  if (process.env.NEXT_PUBLIC_TEST_MODE as string === 'true') {
+    console.log('テストモード。メール送信しません。')
+    console.log('req.body: ', req.body);
+  } else {
+    console.log('本番モード');
+    try {
+      await sgMail.send(msg);
+      res.status(200).json(msg);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
   }
 }

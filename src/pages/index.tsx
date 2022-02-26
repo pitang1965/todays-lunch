@@ -6,6 +6,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import { FieldSet } from 'airtable';
 import Head from 'next/head';
 import { MenuListBox } from '../components/MenuListBox';
+import { RiceListBox } from '../components/RiceListBox';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 import { Instructions } from '../components/Instructions';
@@ -109,7 +110,23 @@ const Home: NextPage<{
     setIsLateShiftString(isLateShift ? 'true' : 'false');
   }, [menuDataSelected, riceAmountDataSelected, isLateShift]);
 
-  const order = async (data: any) => {
+  // 指定のメニューは本日利用可能か？
+  const isAvailableNow = (menu: string) => {
+    if (!menuData) return;
+
+    const menuRecord = menuData.find((record) => (record.fields as any).Name === menu);
+    const fields: any = menuRecord?.fields;
+    const available = fields.Available.includes(dayText); // 今日利用可能なメニューかどうか
+    return available;
+  };
+
+  // 注文を実行
+  const orderMenu = async (data: any) => {
+    if (!isAvailableNow(data.menu)) {
+      alert('本日、このメニューはご利用いただけません。');
+      return;
+    }
+
     if (canOrderNow()) {
       try {
         console.table(data);
@@ -149,8 +166,9 @@ const Home: NextPage<{
             menus={menuData}
             selected={menuDataSelected}
             setSelected={setMenuDataSelected}
+            day={dayText}
           />
-          <MenuListBox
+          <RiceListBox
             label='ライス（ライス付きメニューの場合のみ有効）：'
             menus={riceData}
             selected={riceAmountDataSelected}
@@ -164,7 +182,7 @@ const Home: NextPage<{
               <button
                 className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
                 onClick={() =>
-                  order({
+                  orderMenu({
                     mailFrom: user?.email,
                     date: `${date}日(${dayText})`,
                     timeFrom: isLateShift ? `12:20～` : `11:50～`,
