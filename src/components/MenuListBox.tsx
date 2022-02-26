@@ -40,7 +40,7 @@ export const MenuListBox: VFC<MenuListBoxProps> = ({
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <Listbox.Options className='overflow-auto absolute z-10 py-1 mt-1 w-full max-h-[120rem] text-base bg-white rounded focus:outline-none ring-1 ring-black/5 shadow-lg sm:text-sm'>
+          <Listbox.Options className='overflow-auto absolute z-10 py-1 mt-1 w-full max-h-[25rem] text-base bg-white rounded focus:outline-none ring-1 ring-black/5 shadow-lg sm:text-sm'>
             {menus &&
               menus.map((menu: any) => {
                 const available = menu?.fields?.Available.includes(day); // 今日利用可能なメニューかどうか
