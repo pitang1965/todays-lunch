@@ -11,20 +11,20 @@ import { useUser } from '@auth0/nextjs-auth0';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 import { Instructions } from '../components/Instructions';
 import { StaggeredShift } from '../components/StaggeredShift';
-import { getNextLunchDate, canOrderNow } from '../logic/nextLunch';
-import type { LunchDateData } from '../logic/nextLunch';
+import { getNextLunchDateString, canOrderNow } from '../logic/nextLunch';
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
   riceData: FieldSet[] | undefined;
 }> = ({ menuData, riceData }) => {
-  const [date, setDate] = useState(0);
-  const [dayText, setDayText] = useState('');
-  // いつのランチ注文か
+  // いつのランチ注文か。YYYY-MM-DD(曜日) と曜日を取得
+  const [dateString, setDateString] = useState('');
+  const [dayChar, setDayChar] = useState('');
+  
   useEffect(() => {
-    const { date, day }: LunchDateData = getNextLunchDate();
-    setDate(date);
-    setDayText(day);
+    const [date, day] = getNextLunchDateString();
+    setDateString(date);
+    setDayChar(day);
   }, []);
 
   // ログイン中かどうか
@@ -116,7 +116,7 @@ const Home: NextPage<{
 
     const menuRecord = menuData.find((record) => (record.fields as any).Name === menu);
     const fields: any = menuRecord?.fields;
-    const available = fields.Available.includes(dayText); // 今日利用可能なメニューかどうか
+    const available = fields.Available.includes(dayChar); // 今日利用可能なメニューかどうか
     return available;
   };
 
@@ -159,14 +159,14 @@ const Home: NextPage<{
         </Head>
         <main className='flex-col p-2 min-h-screen'>
           <h1 className='flex justify-center mb-4 text-4xl font-bold text-gray-600/80'>
-            メニュー: {date}日({dayText})
+            {dateString}の注文
           </h1>
           <MenuListBox
             label='メニュー：'
             menus={menuData}
             selected={menuDataSelected}
             setSelected={setMenuDataSelected}
-            day={dayText}
+            day={dayChar}
           />
           <RiceListBox
             label='ライス（ライス付きメニューの場合のみ有効）：'
@@ -184,7 +184,7 @@ const Home: NextPage<{
                 onClick={() =>
                   orderMenu({
                     mailFrom: user?.email,
-                    date: `${date}日(${dayText})`,
+                    date: `${dateString}`,
                     timeFrom: isLateShift ? `12:20～` : `11:50～`,
                     department: departmentString,
                     name: fullnameString,

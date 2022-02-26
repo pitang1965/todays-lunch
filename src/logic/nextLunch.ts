@@ -1,4 +1,4 @@
-import { getDayText } from '../lib/timeUtile';
+import { getDayText, zeroPad } from '../lib/timeUtile';
 
 export type LunchDateData = {
   year: number;
@@ -16,7 +16,7 @@ export function currentDate() {
 }
 
 // 13時20分前なら本日、それ以外は翌日を返す
-export function getNextLunchDate(): LunchDateData {
+export function getNextLunchDateString(): [string, string] {
   const now = currentDate();
 
   const year = now.getFullYear();
@@ -25,12 +25,14 @@ export function getNextLunchDate(): LunchDateData {
   const hour = now.getHours();
   const minute = now.getMinutes();
 
-  console.log(`現在時刻：${year}-${month}-${date}(${getDayText(now.getDay())}) ${hour}:${minute}`);
+  console.log(`現在時刻：${year}-${zeroPad(month)}-${zeroPad(date)}(${getDayText(now.getDay())}) ${hour}:${minute}`);
 
   if (hour <= 13 || (hour === 13 && minute <= 20)) {
     const dayOfWeek = now.getDay();
     const day = getDayText(dayOfWeek);
-    return { year, month, date, day };
+
+    const dateString = `${year}-${zeroPad(month)}-${zeroPad(date)}(${day})`;
+    return [dateString, day];
   } else {
     const addtion_time = 1000 * 60 * 60 * 24; // 1日
     const tommorrow = new Date();
@@ -40,7 +42,9 @@ export function getNextLunchDate(): LunchDateData {
     const date = tommorrow.getDate();
     const dayOfWeek = tommorrow.getDay();
     const day = getDayText(dayOfWeek);
-    return { year, month, date, day };
+
+    const dateString = `${year}-${zeroPad(month)}-${zeroPad(date)}(${day})`;
+    return [dateString, day];
   }
 }
 

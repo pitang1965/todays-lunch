@@ -1,4 +1,4 @@
-function zeroPad(i: number) {
+export function zeroPad(i: number) {
   return i < 10 ? '0' + i : i;
 }
 
