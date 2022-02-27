@@ -3,6 +3,7 @@ import type { Key, VFC } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import type { FieldSet } from 'airtable';
+import { MenuDetails } from './MenuDetails';
 
 type MenuListBoxProps = {
   label: string;
@@ -22,7 +23,10 @@ export const MenuListBox: VFC<MenuListBoxProps> = ({
   return (
     <Listbox value={selected} onChange={setSelected}>
       <div className='relative mt-4'>
-        <Listbox.Label className='font-bold'>{label}</Listbox.Label>
+        <div className='flex items-center'>
+          <Listbox.Label className='w-20 font-bold'>{label}</Listbox.Label>
+          <MenuDetails menus={menus} day={day} />
+        </div>
         <Listbox.Button className='relative z-0 py-2 pr-10 pl-3 mt-2 w-full text-left bg-white rounded-full focus-visible:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 shadow-md cursor-default sm:text-sm'>
           <span className='block truncate'>
             {(selected?.fields as any)?.Name}
