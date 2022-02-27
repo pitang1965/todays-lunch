@@ -22,7 +22,7 @@ const Home: NextPage<{
   type Inputs = {
     comment: string;
     department: string;
-    fullname: string;
+    name: string;
     employeeNumber: string;
     telephoneNumber: string;
   };
@@ -84,7 +84,7 @@ const Home: NextPage<{
 
   // 職場、名前、社員番号、電話番号
   const [departmentString, setDepartmentString] = useLocalStorage('department');
-  const [fullnameString, setFullnameString] = useLocalStorage('fullname');
+  const [nameString, setNameString] = useLocalStorage('name');
   const [employeeNumberString, setEmployeeNumberString] =
     useLocalStorage('employeeNumber');
   const [telephoneNumberString, setTelephoneNumberString] =
@@ -285,20 +285,20 @@ const Home: NextPage<{
               <p className='ml-[5.5rem] text-[#ff0000]'>職場名は必須です。</p>
             )}
             <fieldset className='flex gap-2 mt-4'>
-              <label className='p-1 w-20 font-bold' htmlFor='fullnameText'>
+              <label className='p-1 w-20 font-bold' htmlFor='nameText'>
                 名前
               </label>
               <input
-                {...register('fullname', { required: true, maxLength: 10 })}
-                defaultValue={fullnameString}
+                {...register('name', { required: true, maxLength: 10 })}
+                defaultValue={nameString}
                 className='grow p-1 border border-slate-300'
-                id='fullnameText'
+                id='nameText'
                 type='text'
                 placeholder='姓名を入れてください。'
-                onChange={(e) => setFullnameString(e.target.value)}
+                onChange={(e) => setNameString(e.target.value)}
               />
             </fieldset>
-            {errors.fullname && (
+            {errors.name && (
               <p className='ml-[5.5rem] text-[#ff0000]'>名前は必須です。</p>
             )}
             <fieldset className='flex gap-2 mt-4'>
