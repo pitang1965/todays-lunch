@@ -14,22 +14,30 @@ import { StaggeredShift } from '../components/StaggeredShift';
 import { getNextLunchDateString, canOrderNow } from '../logic/nextLunch';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-type Inputs = {
-  department: string;
-  fullname: string;
-  employeeNumber: string;
-  telephoneNumber: string;
-};
-
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
   riceData: FieldSet[] | undefined;
 }> = ({ menuData, riceData }) => {
+  // フォーム
+  type Inputs = {
+    comment: string;
+    department: string;
+    fullname: string;
+    employeeNumber: string;
+    telephoneNumber: string;
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
   // 最後のランチ注文
   const [lastOrderDateString, setLastOrderDateString] =
     useLocalStorage('lastOrderDate');
   const [lastOerderMenuString, setLastOrderMenuString] =
     useLocalStorage('lastOrderMenu');
+  const [alreadyOrdered, setAlreadyOrdered] = useState(true);
 
   // いつのランチ注文をしようしているか。YYYY-MM-DD(曜日) と曜日を取得
   const [dateString, setDateString] = useState('');
@@ -75,12 +83,6 @@ const Home: NextPage<{
   const updateShift = (): void => setIsLateShift((prev: boolean) => !prev);
 
   // 職場、名前、社員番号、電話番号
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
-  // const { data, setData } = useState();
   const [departmentString, setDepartmentString] = useLocalStorage('department');
   const [fullnameString, setFullnameString] = useLocalStorage('fullname');
   const [employeeNumberString, setEmployeeNumberString] =
@@ -117,7 +119,9 @@ const Home: NextPage<{
     } else {
       setIsLateShift(isLateShiftString === 'true');
     }
-  }, []);
+
+    setAlreadyOrdered(lastOrderDateString === dateString);
+  }, [lastOrderDateString, dateString]);
 
   // メニュー又はライス選択結果をローカルストレージに保存
   useEffect(() => {
@@ -176,17 +180,14 @@ const Home: NextPage<{
     }
   };
 
-  const onSubmit:SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     orderMenu({
       mailFrom: user?.email,
       date: `${dateString}`,
       timeFrom: isLateShift ? `12:20～` : `11:50～`,
-      department: departmentString,
-      name: fullnameString,
-      employeeNumber: employeeNumberString,
-      tel: telephoneNumberString,
       menu: menuNameString,
       rice: riceAmountString,
+      ...data,
     });
   };
 
@@ -202,7 +203,7 @@ const Home: NextPage<{
           <h1 className='flex justify-center mb-4 text-4xl font-bold text-gray-600/80'>
             {dateString}の注文
           </h1>
-          {lastOrderDateString === dateString ? (
+          {alreadyOrdered ? (
             <>
               <p>ご注文ありがとうございました。</p>
               <p className='font-bold'>
@@ -226,7 +227,6 @@ const Home: NextPage<{
                 selected={riceAmountDataSelected}
                 setSelected={setRiceAmountDataSelected}
               />
-
               <StaggeredShift
                 isLateShift={isLateShift}
                 updateShift={updateShift}
@@ -235,10 +235,27 @@ const Home: NextPage<{
           )}
 
           <form onSubmit={handleSubmit(onSubmit)} className='my-4 mx-2'>
+            {!alreadyOrdered && (
+              <fieldset className='flex gap-2 mt-4'>
+                <label className='p-1 w-20 font-bold' htmlFor='commentText'>
+                  備考欄
+                </label>
+
+                <textarea
+                  {...register('comment', { required: false, maxLength: 400 })}
+                  // defaultValue={''}
+                  className='grow p-1 border border-slate-300'
+                  id='commentText'
+                  placeholder='特別な注文があれば、都度記入してください。'
+                />
+              </fieldset>
+            )}
             {isLogin ? (
               <>
-                <p>注文可能な時間帯は前日の15時から当日の9:59まで。</p>
-                {lastOrderDateString !== dateString && (
+                <p className='mt-4'>
+                  注文可能な時間帯は前日の15時から当日の9:59まで。
+                </p>
+                {!alreadyOrdered && (
                   <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
                     注文メールを送信
                   </button>
@@ -255,7 +272,7 @@ const Home: NextPage<{
                 職場名
               </label>
               <input
-                {...register('department', { required: true, maxLength: 0 })}
+                {...register('department', { required: true, maxLength: 80 })}
                 defaultValue={departmentString}
                 className='grow p-1 border border-slate-300'
                 id='departmentText'

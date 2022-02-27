@@ -6,10 +6,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const emailTo =
-    process.env.NEXT_PUBLIC_TEST_MODE
-      ? process.env.ORDER_MAIL_TO_FOR_TEST
-      : process.env.ORDER_MAIL_TO;
+  const emailTo = process.env.NEXT_PUBLIC_TEST_MODE
+    ? process.env.ORDER_MAIL_TO_FOR_TEST
+    : process.env.ORDER_MAIL_TO;
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
   const msg: MailDataRequired = {
     to: emailTo,
@@ -41,14 +40,15 @@ export default async function handler(
     <p>従業員番号: ${req.body.employeeNumber}</p>
     <p>電話番号: ${req.body.tel}</p>
     <p><strong>メニュー: ${req.body.menu}</strong></p>
-    <p><strong>ライス: ${req.body.rice} </strong>  // ライス付きメニューの場合</p>
+    <p><strong>ライス: ${req.body.rice}</strong>  // ライス付きメニューの場合</p>
+    <p>備考: ${req.body.comment}</p>
     <p></p>
     <p>※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。</p>
     `,
   };
 
-  if (process.env.NEXT_PUBLIC_TEST_MODE as string === 'true') {
-    console.log('テストモード。メール送信しません。')
+  if ((process.env.NEXT_PUBLIC_TEST_MODE as string) === 'true') {
+    console.log('テストモード。メール送信しません。');
     console.log('req.body: ', req.body);
   } else {
     console.log('本番モード');

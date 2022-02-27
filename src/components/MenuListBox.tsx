@@ -17,7 +17,7 @@ export const MenuListBox: VFC<MenuListBoxProps> = ({
   menus,
   selected,
   setSelected,
-  day
+  day,
 }) => {
   return (
     <Listbox value={selected} onChange={setSelected}>
