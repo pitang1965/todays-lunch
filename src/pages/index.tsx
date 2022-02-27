@@ -12,6 +12,14 @@ import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 import { Instructions } from '../components/Instructions';
 import { StaggeredShift } from '../components/StaggeredShift';
 import { getNextLunchDateString, canOrderNow } from '../logic/nextLunch';
+import { useForm, SubmitHandler } from 'react-hook-form';
+
+type Inputs = {
+  department: string;
+  fullname: string;
+  employeeNumber: string;
+  telephoneNumber: string;
+};
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
@@ -67,6 +75,12 @@ const Home: NextPage<{
   const updateShift = (): void => setIsLateShift((prev: boolean) => !prev);
 
   // 職場、名前、社員番号、電話番号
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+  // const { data, setData } = useState();
   const [departmentString, setDepartmentString] = useLocalStorage('department');
   const [fullnameString, setFullnameString] = useLocalStorage('fullname');
   const [employeeNumberString, setEmployeeNumberString] =
@@ -162,6 +176,20 @@ const Home: NextPage<{
     }
   };
 
+  const onSubmit:SubmitHandler<Inputs> = async (data) => {
+    orderMenu({
+      mailFrom: user?.email,
+      date: `${dateString}`,
+      timeFrom: isLateShift ? `12:20～` : `11:50～`,
+      department: departmentString,
+      name: fullnameString,
+      employeeNumber: employeeNumberString,
+      tel: telephoneNumberString,
+      menu: menuNameString,
+      rice: riceAmountString,
+    });
+  };
+
   return (
     <>
       <Layout>
@@ -177,7 +205,10 @@ const Home: NextPage<{
           {lastOrderDateString === dateString ? (
             <>
               <p>ご注文ありがとうございました。</p>
-              <p>注文内容：{lastOerderMenuString}</p>
+              <p className='font-bold'>
+                注文内容：
+                <span className='underline'>{lastOerderMenuString}</span>
+              </p>
             </>
           ) : (
             <>
@@ -200,117 +231,105 @@ const Home: NextPage<{
                 isLateShift={isLateShift}
                 updateShift={updateShift}
               />
-              {isLogin ? (
-                <>
-                  <p>注文可能な時間帯は前日の15時から当日の9:59までです。</p>
-                  <button
-                    className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
-                    onClick={() =>
-                      orderMenu({
-                        mailFrom: user?.email,
-                        date: `${dateString}`,
-                        timeFrom: isLateShift ? `12:20～` : `11:50～`,
-                        department: departmentString,
-                        name: fullnameString,
-                        employeeNumber: employeeNumberString,
-                        tel: telephoneNumberString,
-                        menu: menuNameString,
-                        rice: riceAmountString,
-                      })
-                    }
-                  >
-                    注文メールを送信
-                  </button>
-                </>
-              ) : (
-                <p className='mt-4 font-bold text-red-600'>
-                  注文をするためにはログインしてください。
-                </p>
-              )}
             </>
           )}
 
-          <form className='mt-8 w-full max-w-sm'>
-            <div className='mb-6 md:flex md:items-center'>
-              <div className='md:w-1/3'>
-                <label
-                  className='block pr-4 mb-1 font-bold text-gray-500 md:mb-0 md:text-right'
-                  htmlFor='departmentText'
-                >
-                  職場名
-                </label>
-              </div>
-              <div className='md:w-2/3'>
-                <input
-                  className='py-2 px-4 w-full leading-tight text-gray-700 bg-gray-200 focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none'
-                  id='departmentText'
-                  type='text'
-                  placeholder='例：ME品証'
-                  value={departmentString}
-                  onChange={(e) => setDepartmentString(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className='mb-6 md:flex md:items-center'>
-              <div className='md:w-1/3'>
-                <label
-                  className='block pr-4 mb-1 font-bold text-gray-500 md:mb-0 md:text-right'
-                  htmlFor='fullnameText'
-                >
-                  名前
-                </label>
-              </div>
-              <div className='md:w-2/3'>
-                <input
-                  className='py-2 px-4 w-full leading-tight text-gray-700 bg-gray-200 focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none'
-                  id='fullnameText'
-                  type='text'
-                  placeholder='姓名を入れてください。'
-                  value={fullnameString}
-                  onChange={(e) => setFullnameString(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className='mb-6 md:flex md:items-center'>
-              <div className='md:w-1/3'>
-                <label
-                  className='block pr-4 mb-1 font-bold text-gray-500 md:mb-0 md:text-right'
-                  htmlFor='employeeNumber'
-                >
-                  社員番号
-                </label>
-              </div>
-              <div className='md:w-2/3'>
-                <input
-                  className='py-2 px-4 w-full leading-tight text-gray-700 bg-gray-200 focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none'
-                  id='employeeNumber'
-                  type='number'
-                  placeholder='8桁数字のみ。'
-                  value={employeeNumberString}
-                  onChange={(e) => setEmployeeNumberString(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className='mb-6 md:flex md:items-center'>
-              <div className='md:w-1/3'>
-                <label
-                  className='block pr-4 mb-1 font-bold text-gray-500 md:mb-0 md:text-right'
-                  htmlFor='telephoneNumber'
-                >
-                  電話番号
-                </label>
-              </div>
-              <div className='md:w-2/3'>
-                <input
-                  className='py-2 px-4 w-full leading-tight text-gray-700 bg-gray-200 focus:bg-white rounded border-2 border-gray-200 focus:border-purple-500 focus:outline-none appearance-none'
-                  id='telephoneNumber'
-                  type='tel'
-                  placeholder='連絡が付く電話番号。'
-                  value={telephoneNumberString}
-                  onChange={(e) => setTelephoneNumberString(e.target.value)}
-                />
-              </div>
-            </div>
+          <form onSubmit={handleSubmit(onSubmit)} className='my-4 mx-2'>
+            {isLogin ? (
+              <>
+                <p>注文可能な時間帯は前日の15時から当日の9:59まで。</p>
+                {lastOrderDateString !== dateString && (
+                  <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
+                    注文メールを送信
+                  </button>
+                )}
+              </>
+            ) : (
+              <p className='mt-4 font-bold text-red-600'>
+                注文をするためにはログインしてください。
+              </p>
+            )}
+
+            <fieldset className='flex gap-2 mt-4'>
+              <label className='p-1 w-20 font-bold' htmlFor='departmentText'>
+                職場名
+              </label>
+              <input
+                {...register('department', { required: true, maxLength: 0 })}
+                defaultValue={departmentString}
+                className='grow p-1 border border-slate-300'
+                id='departmentText'
+                type='text'
+                placeholder='例：ME品証'
+                onChange={(e) => setDepartmentString(e.target.value)}
+              />
+            </fieldset>
+            {errors.department && (
+              <p className='ml-[5.5rem] text-[#ff0000]'>職場名は必須です。</p>
+            )}
+            <fieldset className='flex gap-2 mt-4'>
+              <label className='p-1 w-20 font-bold' htmlFor='fullnameText'>
+                名前
+              </label>
+              <input
+                {...register('fullname', { required: true, maxLength: 10 })}
+                defaultValue={fullnameString}
+                className='grow p-1 border border-slate-300'
+                id='fullnameText'
+                type='text'
+                placeholder='姓名を入れてください。'
+                onChange={(e) => setFullnameString(e.target.value)}
+              />
+            </fieldset>
+            {errors.fullname && (
+              <p className='ml-[5.5rem] text-[#ff0000]'>名前は必須です。</p>
+            )}
+            <fieldset className='flex gap-2 mt-4'>
+              <label className='p-1 w-20 font-bold' htmlFor='employeeNumber'>
+                社員番号
+              </label>
+              <input
+                {...register('employeeNumber', {
+                  required: false,
+                  minLength: 6,
+                  maxLength: 8,
+                })}
+                defaultValue={employeeNumberString}
+                className='grow p-1 border border-slate-300'
+                id='employeeNumber'
+                type='number'
+                placeholder='8桁数字のみ。'
+                onChange={(e) => setEmployeeNumberString(e.target.value)}
+              />
+            </fieldset>
+            {errors.employeeNumber && (
+              <p className='ml-[5.5rem] text-[#ff0000]'>
+                社員番号は8桁までです
+              </p>
+            )}
+            <fieldset className='flex gap-2 mt-4'>
+              <label className='p-1 w-20 font-bold' htmlFor='telephoneNumber'>
+                電話番号
+              </label>
+              <input
+                {...register('telephoneNumber', {
+                  required: true,
+                  minLength: 10,
+                  maxLength: 11,
+                })}
+                defaultValue={telephoneNumberString}
+                className='grow p-1 border border-slate-300'
+                id='telephoneNumber'
+                type='tel'
+                placeholder='連絡が付く電話番号。'
+                onChange={(e) => setTelephoneNumberString(e.target.value)}
+              />
+            </fieldset>
+            {errors.telephoneNumber && (
+              <p className='ml-[5.5rem] text-[#ff0000]'>
+                電話番号は10桁又は11桁でお願いします。
+              </p>
+            )}
           </form>
 
           <Instructions />
