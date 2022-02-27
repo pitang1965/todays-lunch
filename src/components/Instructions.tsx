@@ -19,7 +19,9 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                現在は注文情報をサーバーで管理しておらず各端末で管理しています。複数の端末から重複して注文しないようにご注意ください。
+                現在は注文情報を各端末で管理しています。
+                <br />
+                複数の端末から重複して注文しないようにご注意ください。
               </Disclosure.Panel>
             </>
           )}
@@ -36,7 +38,12 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                本アプリで[注文メールを送信]ボタンをクリックしたら、文字通りメールを送るだけです。Ccで自分自身にもメールが送られますが、相手が確実に受け取るとは限りません。平田食堂からの返信メールをご確認ください。
+                現在は[注文メールを送信]ボタンをクリックしたら、メールを送るだけです。相手が確実に受け取るとは限りません。
+                <br />
+                特に初回の注文では、平田食堂からの返信メールをご確認ください。
+                <br />
+                <br />
+                これは改良する予定です。
               </Disclosure.Panel>
             </>
           )}
@@ -70,7 +77,30 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                自分にCcされてきたメールを確認願います。
+                自分にメールはCcされますが、次のイメージです。
+                <br />
+                <br />
+                平田食堂 御中
+                <br />
+                予約日: 2021-02-26(土)
+                <br />
+                利用時間: 12:20～
+                <br />
+                部署名:ME品証
+                <br />
+                名前:日本 太郎
+                <br />
+                従業員番号:01000000
+                <br />
+                電話番号:09099999999
+                <br />
+                メニュー: 健康定食
+                <br />
+                ライス: 小（盛り）
+                <br />
+                <br />
+                ※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。
+                <br />
               </Disclosure.Panel>
             </>
           )}

@@ -35,7 +35,7 @@ export default async function handler(
     <p>平田食堂 御中</p>
     <p></p>
     <p>予約日: ${req.body.date}</p>
-    <p>利用時間: ${req.body.timeFrom}～</p>
+    <p>利用時間: ${req.body.timeFrom}</p>
     <p>部署名:${req.body.department}</p>
     <p>名前: ${req.body.name}</p>
     <p>従業員番号: ${req.body.employeeNumber}</p>
