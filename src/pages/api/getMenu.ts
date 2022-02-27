@@ -4,7 +4,7 @@ import { menuTable as table, minifyRecords } from './utils/Airtable';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   try {
-    const records = await table.select({}).firstPage();
+    const records = await table.select({sort: [{ field: 'Order', direction: 'asc' }]}).firstPage();
     const minifiedRecords = minifyRecords(records);
     res.statusCode = 200;
     res.json(minifiedRecords);

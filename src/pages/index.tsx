@@ -206,7 +206,7 @@ const Home: NextPage<{
           {alreadyOrdered ? (
             <>
               <p>ご注文ありがとうございました。</p>
-              <p className='font-bold'>
+              <p className='mt-2 text-xl font-bold'>
                 注文内容：
                 <span className='underline'>{lastOerderMenuString}</span>
               </p>
