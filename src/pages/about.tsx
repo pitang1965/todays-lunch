@@ -24,7 +24,7 @@ const about = () => {
             <strong>[ホーム画面に追加]</strong>より）。
           </p>
           <p>
-            同僚に本アプリを進める場合は、以下のバーコードをお使いください。
+            同僚に本アプリを勧める場合は、以下のバーコードをお使いください。
           </p>
           <figure className='flex flex-col mb-8'>
             <Image
