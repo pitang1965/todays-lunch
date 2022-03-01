@@ -13,6 +13,12 @@ import { Instructions } from '../components/Instructions';
 import { StaggeredShift } from '../components/StaggeredShift';
 import { getNextLunchDateString, canOrderNow } from '../logic/nextLunch';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import {
+  NotifyContainer,
+  notifySuccess,
+  notifyWarning,
+  notifyError,
+} from '../lib/notify';
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
@@ -149,7 +155,7 @@ const Home: NextPage<{
   // 注文を実行
   const orderMenu = async (data: any) => {
     if (!isAvailableNow(data.menu)) {
-      alert('本日、このメニューはご利用いただけません。');
+      notifyWarning('本日、このメニューはご利用いただけません。');
       return;
     }
 
@@ -170,13 +176,13 @@ const Home: NextPage<{
         setLastOrderDateString(dateString);
         setLastOrderMenuString(data.menu);
 
-        alert('注文が送信されました。');
+        notifySuccess('注文が送信されました。');
       } catch (error) {
         console.error('Fetch error : ', error);
-        alert(JSON.stringify(error));
+        notifyError(JSON.stringify(error));
       }
     } else {
-      alert('注文できない時間帯です。');
+      notifyWarning('注文できない時間帯です。');
     }
   };
 
@@ -256,9 +262,11 @@ const Home: NextPage<{
                   注文可能な時間帯は前日の15時から当日の9:59まで。
                 </p>
                 {!alreadyOrdered && (
-                  <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
-                    注文メールを送信
-                  </button>
+                  <>
+                    <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
+                      注文メールを送信
+                    </button>
+                  </>
                 )}
               </>
             ) : (
@@ -266,7 +274,6 @@ const Home: NextPage<{
                 注文をするためにはログインしてください。
               </p>
             )}
-
             <fieldset className='flex gap-2 mt-4'>
               <label className='p-1 w-20 font-bold' htmlFor='departmentText'>
                 職場名
@@ -347,6 +354,7 @@ const Home: NextPage<{
                 電話番号は10桁又は11桁でお願いします。
               </p>
             )}
+            <NotifyContainer />
           </form>
 
           <Instructions />
