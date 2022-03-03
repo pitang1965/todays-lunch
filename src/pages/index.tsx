@@ -72,9 +72,7 @@ const Home: NextPage<{
 
   // メニュー（食事）
   const [menuNameString, setMenuNameString] = useLocalStorage('menuName');
-  const [menuDataSelected, setMenuDataSelected] = useState<
-    FieldSet | undefined
-  >();
+  const [menuDataSelected, setMenuDataSelected] = useState<any>();
 
   // ライスの量
   const [riceAmountString, setRiceAmountString] = useLocalStorage('riceAmount');
@@ -134,7 +132,7 @@ const Home: NextPage<{
     if (menuDataSelected) {
       setMenuNameString((menuDataSelected?.fields as any).Name);
     }
-    if (riceAmountDataSelected) {
+    if (riceAmountDataSelected) { 
       setRiceAmountString((riceAmountDataSelected?.fields as any).Name);
     }
     setIsLateShiftString(isLateShift ? 'true' : 'false');
@@ -192,7 +190,7 @@ const Home: NextPage<{
       date: `${dateString}`,
       timeFrom: isLateShift ? `12:20～` : `11:50～`,
       menu: menuNameString,
-      rice: riceAmountString,
+      rice:(menuDataSelected && menuDataSelected?.fields?.Rice) ? riceAmountString : 'なし',
       ...data,
     });
   };
@@ -227,12 +225,14 @@ const Home: NextPage<{
                 setSelected={setMenuDataSelected}
                 day={dayChar}
               />
-              <RiceListBox
-                label='ライス（ライス付きメニューの場合のみ有効）：'
-                menus={riceData}
-                selected={riceAmountDataSelected}
-                setSelected={setRiceAmountDataSelected}
-              />
+              {menuDataSelected && menuDataSelected?.fields?.Rice && (
+                <RiceListBox
+                  label='ライス：'
+                  menus={riceData}
+                  selected={riceAmountDataSelected}
+                  setSelected={setRiceAmountDataSelected}
+                />
+              )}
               <StaggeredShift
                 isLateShift={isLateShift}
                 updateShift={updateShift}

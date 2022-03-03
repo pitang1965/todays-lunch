@@ -25,7 +25,7 @@ export default async function handler(
     従業員番号: ${req.body.employeeNumber}
     電話番号: ${req.body.telephoneNumber}
     メニュー: ${req.body.menu}
-    ライス: ${req.body.menu} // ライス付きメニューの場合
+    ライス: ${req.body.rice}
     備考: ${req.body.comment}
 
     ※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。
@@ -40,7 +40,7 @@ export default async function handler(
     <p>従業員番号: ${req.body.employeeNumber}</p>
     <p>電話番号: ${req.body.telephoneNumber}</p>
     <p><strong>メニュー: ${req.body.menu}</strong></p>
-    <p><strong>ライス: ${req.body.rice}</strong>  // ライス付きメニューの場合</p>
+    <p><strong>ライス: ${req.body.rice}</strong>
     <p>備考: ${req.body.comment}</p>
     <p></p>
     <p>※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。</p>
