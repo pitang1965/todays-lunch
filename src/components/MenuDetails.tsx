@@ -19,7 +19,7 @@ export const MenuDetails: VFC<MenuDetailsProps> = ({ menus, day }) => {
             <Popover.Button
               className={`
                 ${open ? '' : 'text-opacity-90'}
-                text-white group bg-red-600 px-2 py-1 rounded-md inline-flex items-center hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                text-white group bg-red-600 p-2 rounded-md inline-flex items-center hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
               <span>詳細</span>
               <ChevronDownIcon

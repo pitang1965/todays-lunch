@@ -21,7 +21,7 @@ export const RiceListBox: VFC<MenuListBoxProps> = ({
     <Listbox value={selected} onChange={setSelected}>
       <div className='relative mt-4'>
         <Listbox.Label className='font-bold'>{label}</Listbox.Label>
-        <Listbox.Button className='relative z-0 py-2 pr-10 pl-3 mt-2 w-full text-left bg-white rounded-full focus-visible:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 shadow-md cursor-default sm:text-sm'>
+        <Listbox.Button className='relative z-0 py-2 pr-10 pl-3 mt-2 w-full text-left bg-gradient-to-r from-red-100  to-yellow-100 rounded-full focus-visible:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 shadow-md cursor-default sm:text-sm'>
           <span className='block truncate'>
             {(selected?.fields as any)?.Name}
           </span>
@@ -43,8 +43,9 @@ export const RiceListBox: VFC<MenuListBoxProps> = ({
               menus.map((menu) => (
                 <Listbox.Option
                   key={menu.id as Key}
-                  className={({ active }) => `${active ? 'text-amber-900 bg-amber-100' : 'text-gray-900'
-                    }
+                  className={({ active }) => `${
+                    active ? 'text-amber-900 bg-amber-100' : 'text-gray-900'
+                  }
                   cursor-default select-none relative py-2 pl-10 pr-4`}
                   value={menu}
                 >
