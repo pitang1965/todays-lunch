@@ -21,6 +21,9 @@
 * ほとんど設定することなくNext.jsのWebサイトをPWA(Progressive Web App)化する。
 ### [React Hook Form](https://react-hook-form.com/)
 * 簡単にバリデーションする機能を持つReact用フォームライブラリ。
+
+### [React-toastify](https://fkhadra.github.io/react-toastify/introduction)
+* アプリに簡単に通知を追加。
 ### [SendGrid](https://sendgrid.com/)
 * 電子メール送信サービス
 * 弁当注文のメール送信に利用。
