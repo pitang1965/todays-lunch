@@ -188,7 +188,7 @@ const Home: NextPage<{
     orderMenu({
       mailFrom: user?.email,
       date: `${dateString}`,
-      timeFrom: isLateShift ? `12:20～` : `11:50～`,
+      timeFrom: isLateShift ? `後半` : `前半`,
       menu: menuNameString,
       rice:
         menuDataSelected && menuDataSelected?.fields?.Rice
