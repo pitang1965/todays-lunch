@@ -13,7 +13,7 @@ export const notifySuccess = (message: string) =>
   });
 
 export const notifyWarning = (message: string) =>
-  toast.warn('🦄 Wow so easy!', {
+  toast.warn(message, {
     position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
@@ -24,7 +24,7 @@ export const notifyWarning = (message: string) =>
   });
 
 export const notifyError = (message: string) =>
-  toast.error('🦄 Wow so easy!', {
+  toast.error(message, {
     position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
