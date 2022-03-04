@@ -29,8 +29,8 @@ const Home: NextPage<{
     comment: string;
     department: string;
     name: string;
-    employeeNumber: string;
     telephoneNumber: string;
+    employeeNumber: string;
   };
   const {
     register,
@@ -86,13 +86,13 @@ const Home: NextPage<{
   const [isLateShift, setIsLateShift] = useState(true);
   const updateShift = (): void => setIsLateShift((prev: boolean) => !prev);
 
-  // 職場、名前、社員番号、電話番号
+  // 職場、名前、電話番号、社員番号
   const [departmentString, setDepartmentString] = useLocalStorage('department');
   const [nameString, setNameString] = useLocalStorage('name');
-  const [employeeNumberString, setEmployeeNumberString] =
-    useLocalStorage('employeeNumber');
   const [telephoneNumberString, setTelephoneNumberString] =
     useLocalStorage('telephoneNumber');
+  const [employeeNumberString, setEmployeeNumberString] =
+    useLocalStorage('employeeNumber');
 
   // localStorageの値からデータを設定
   useEffect(() => {
@@ -132,7 +132,7 @@ const Home: NextPage<{
     if (menuDataSelected) {
       setMenuNameString((menuDataSelected?.fields as any).Name);
     }
-    if (riceAmountDataSelected) { 
+    if (riceAmountDataSelected) {
       setRiceAmountString((riceAmountDataSelected?.fields as any).Name);
     }
     setIsLateShiftString(isLateShift ? 'true' : 'false');
@@ -190,7 +190,10 @@ const Home: NextPage<{
       date: `${dateString}`,
       timeFrom: isLateShift ? `12:20～` : `11:50～`,
       menu: menuNameString,
-      rice:(menuDataSelected && menuDataSelected?.fields?.Rice) ? riceAmountString : 'なし',
+      rice:
+        menuDataSelected && menuDataSelected?.fields?.Rice
+          ? riceAmountString
+          : 'なし',
       ...data,
     });
   };
@@ -308,24 +311,6 @@ const Home: NextPage<{
             {errors.name && (
               <p className='ml-[5.5rem] text-[#ff0000]'>名前は必須です。</p>
             )}
-            <fieldset className='flex gap-2 mt-4'>
-              <label className='p-1 w-20 font-bold' htmlFor='employeeNumber'>
-                社員番号
-              </label>
-              <input
-                {...register('employeeNumber', {
-                  required: false,
-                  minLength: 6,
-                  maxLength: 8,
-                })}
-                defaultValue={employeeNumberString}
-                className='grow p-1 border border-slate-300'
-                id='employeeNumber'
-                type='number'
-                placeholder='8桁数字のみ。'
-                onChange={(e) => setEmployeeNumberString(e.target.value)}
-              />
-            </fieldset>
             {errors.employeeNumber && (
               <p className='ml-[5.5rem] text-[#ff0000]'>
                 社員番号は8桁までです
@@ -354,6 +339,24 @@ const Home: NextPage<{
                 電話番号は10桁又は11桁でお願いします。
               </p>
             )}
+            <fieldset className='flex gap-2 mt-4'>
+              <label className='p-1 w-20 font-bold' htmlFor='employeeNumber'>
+                社員番号
+              </label>
+              <input
+                {...register('employeeNumber', {
+                  required: false,
+                  minLength: 6,
+                  maxLength: 8,
+                })}
+                defaultValue={employeeNumberString}
+                className='grow p-1 border border-slate-300'
+                id='employeeNumber'
+                type='number'
+                placeholder='8桁数字のみ。'
+                onChange={(e) => setEmployeeNumberString(e.target.value)}
+              />
+            </fieldset>
             <NotifyContainer />
           </form>
 

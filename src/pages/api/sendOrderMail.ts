@@ -22,8 +22,8 @@ export default async function handler(
     利用時間: ${req.body.timeFrom}
     部署名:${req.body.department}
     名前: ${req.body.name}
-    従業員番号: ${req.body.employeeNumber}
     電話番号: ${req.body.telephoneNumber}
+    社員番号: ${req.body.employeeNumber}
     メニュー: ${req.body.menu}
     ライス: ${req.body.rice}
     備考: ${req.body.comment}
@@ -37,8 +37,8 @@ export default async function handler(
     <p>利用時間: ${req.body.timeFrom}</p>
     <p>部署名:${req.body.department}</p>
     <p>名前: ${req.body.name}</p>
-    <p>従業員番号: ${req.body.employeeNumber}</p>
     <p>電話番号: ${req.body.telephoneNumber}</p>
+    <p>社員番号: ${req.body.employeeNumber}</p>
     <p><strong>メニュー: ${req.body.menu}</strong></p>
     <p><strong>ライス: ${req.body.rice}</strong>
     <p>備考: ${req.body.comment}</p>
