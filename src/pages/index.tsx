@@ -41,7 +41,7 @@ const Home: NextPage<{
   // 最後のランチ注文
   const [lastOrderDateString, setLastOrderDateString] =
     useLocalStorage('lastOrderDate');
-  const [lastOerderMenuString, setLastOrderMenuString] =
+  const [lastOrderMenuString, setLastOrderMenuString] =
     useLocalStorage('lastOrderMenu');
   const [alreadyOrdered, setAlreadyOrdered] = useState(true);
 
@@ -130,7 +130,7 @@ const Home: NextPage<{
   // メニュー又はライス選択結果をローカルストレージに保存
   useEffect(() => {
     if (menuDataSelected) {
-      setMenuNameString((menuDataSelected?.fields as any).Name);
+      setMenuNameString((menuDataSelected.fields as any).Name);
     }
     if (riceAmountDataSelected) {
       setRiceAmountString((riceAmountDataSelected?.fields as any).Name);
@@ -215,7 +215,7 @@ const Home: NextPage<{
               <p>ご注文ありがとうございました。</p>
               <p className='mt-2 text-xl font-bold'>
                 注文内容：
-                <span className='underline'>{lastOerderMenuString}</span>
+                <span className='underline'>{lastOrderMenuString}</span>
               </p>
             </>
           ) : (
