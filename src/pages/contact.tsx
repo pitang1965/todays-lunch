@@ -2,6 +2,7 @@ import React from 'react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Layout from '../components/Layout';
+import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 import {
   NotifyContainer,
   notifySuccess,
@@ -41,6 +42,9 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
     }
   };
 
+  const [departmentString, setDepartmentString] = useLocalStorage('department');
+  const [nameString, setNameString] = useLocalStorage('name');
+
   return (
     <Layout>
       <main className='flex-col px-1 '>
@@ -53,9 +57,10 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
             <label className='p-1 w-16'>名前</label>
             <input
               {...register('name', { required: true, maxLength: 100 })}
-              defaultValue={user?.nickname || user?.name}
+              defaultValue={nameString}
               placeholder='名前（必須）'
               className='grow p-1 border border-slate-300'
+              onChange={(e) => setNameString(e.target.value)}
             />
           </fieldset>
           {errors.name && (
@@ -65,8 +70,10 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
             <label className='p-1 w-16'>職場</label>
             <input
               {...register('department', { minLength: 2, maxLength: 100 })}
+              defaultValue={departmentString}
               placeholder='部署名（任意）'
               className='grow p-1 border border-slate-300'
+              onChange={(e) => setDepartmentString(e.target.value)}
             />
           </fieldset>
           <fieldset className='flex gap-2 mt-4'>
