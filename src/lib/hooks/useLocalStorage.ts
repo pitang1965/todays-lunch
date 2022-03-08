@@ -1,25 +1,37 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 
-export function useLocalStorage(key: string, initialValue: string = ''):[string, (value: string)=>void] {
+export function useLocalStorage(key: string, initialValue: string = '') {
   // localStorageの値の状態
   // 初期値の設定は一回だけおこなわれる。
-  const [storedValue, setStoredValue] = useState(initialValue);
-
-  useEffect(() => {
-    const item = window.localStorage.getItem(key);
-    setStoredValue(JSON.parse(item as string));
-  }, [initialValue, key, setStoredValue]);
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      let item = undefined;
+      if (typeof window !== 'undefined') {
+        item = window.localStorage.getItem(key);
+      } else {
+        console.log('#1: window is undefined.');
+      }
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
 
   // useStateのsetter関数を返す。
   // この関数はlocalStorageに新しい値を設定する。
-  const setValue = useCallback((value: string) => {
+  function setValue(value: string) {
     try {
-      setStoredValue(value);
-      window.localStorage.setItem(key, JSON.stringify(value));
+      if (typeof window !== 'undefined') {
+        setStoredValue(value);
+        window.localStorage.setItem(key, JSON.stringify(value));
+      } else {
+        console.log('#2: window is undefined.');
+      }
     } catch (error) {
       console.error(error);
     }
-  }, [key]);
+  }
 
   return [storedValue, setValue];
 }
