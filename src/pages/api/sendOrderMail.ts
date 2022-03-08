@@ -6,9 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const emailTo = process.env.NEXT_PUBLIC_TEST_MODE === 'true'
-    ? process.env.ORDER_MAIL_TO_FOR_TEST
-    : process.env.ORDER_MAIL_TO;
+  const emailTo = process.env.ORDER_MAIL_TO;
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
   const msg: MailDataRequired = {
     to: emailTo,
