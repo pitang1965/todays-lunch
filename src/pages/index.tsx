@@ -83,7 +83,7 @@ const Home: NextPage<{
   // 遅番かどうか
   const [isLateShiftString, setIsLateShiftString] =
     useLocalStorage('lateShift');
-  const [isLateShift, setIsLateShift] = useState(true);
+  const [isLateShift, setIsLateShift] = useState(isLateShiftString === 'true');
   const updateShift = (): void => setIsLateShift((prev: boolean) => !prev);
 
   // 職場、名前、電話番号、社員番号
