@@ -56,7 +56,7 @@ export const MenuDetails: VFC<MenuDetailsProps> = ({ menus, day }) => {
                           </div>
                           <div className='ml-4'>
                             <p className='text-sm font-medium text-gray-900'>
-                              {menu?.fields?.Name}{' (\\'}{menu?.fields?.Price})
+                              {menu?.fields?.Name} (&yen;{menu?.fields?.Price})
                             </p>
                             <p className='text-sm text-gray-500'>
                               {menu?.fields?.Notes}
