@@ -160,7 +160,7 @@ const Home: NextPage<{
     if (canOrderNow()) {
       try {
         console.table(data);
-        const res = fetch('/api/sendOrderMail', {
+        const res = await fetch('/api/sendOrderMail', {
           method: 'POST',
           headers: {
             Accept: 'application/json, text/plain, */*',

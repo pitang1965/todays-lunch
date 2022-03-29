@@ -25,7 +25,7 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      const res = fetch('/api/sendContactMail', {
+      const res = await fetch('/api/sendContactMail', {
         method: 'POST',
         headers: {
           Accept: 'application/json, text/plain, */*',
