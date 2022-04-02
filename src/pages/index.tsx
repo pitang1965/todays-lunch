@@ -220,7 +220,18 @@ const Home: NextPage<{
             </>
           ) : (
             <>
-              <p>いらっしゃいませ。</p>
+              <p>
+                いらっしゃいませ。
+                {isLogin ? (
+                  <span>
+                    注文可能な時間帯は前日の15時から当日の9:59までです。
+                  </span>
+                ) : (
+                  <span className='mt-4 font-bold text-red-600'>
+                    注文をするためにはログインしてください。
+                  </span>
+                )}
+              </p>
               <MenuListBox
                 label='メニュー：'
                 menus={menuData}
@@ -261,9 +272,6 @@ const Home: NextPage<{
             )}
             {isLogin ? (
               <>
-                <p className='mt-4'>
-                  注文可能な時間帯は前日の15時から当日の9:59まで。
-                </p>
                 {!alreadyOrdered && (
                   <>
                     <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
@@ -272,11 +280,7 @@ const Home: NextPage<{
                   </>
                 )}
               </>
-            ) : (
-              <p className='mt-4 font-bold text-red-600'>
-                注文をするためにはログインしてください。
-              </p>
-            )}
+            ) : null}
             <fieldset className='flex gap-2 mt-4'>
               <label className='p-1 w-20 font-bold' htmlFor='departmentText'>
                 職場名

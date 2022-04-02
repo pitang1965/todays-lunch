@@ -32,7 +32,7 @@ export default async function handler(
       <p><strong>ライス: ${req.body.rice}</strong>
       <p>備考: ${req.body.comment}</p>
       <p></p>
-      <p>※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。</p>
+      <p>※アプリ「今日のお弁当」(まきの作)から送信しています。</p>
     `).setText(`
       平田食堂 御中 担当者
       
