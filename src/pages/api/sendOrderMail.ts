@@ -52,6 +52,7 @@ export default async function handler(
   if ((process.env.NEXT_PUBLIC_TEST_MODE as string) === 'true') {
     console.log('テストモード。メールも送信しません。');
     console.log('req.body: ', req.body);
+    res.status(200).json('OK');
   } else {
     try {
       await mailersend.send(emailParams);
