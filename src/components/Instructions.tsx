@@ -11,7 +11,7 @@ export function Instructions() {
           {({ open }) => (
             <>
               <Disclosure.Button className='flex justify-between py-2 px-4 w-full text-sm font-medium text-left text-purple-900 bg-purple-100 hover:bg-purple-200 rounded-full focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
-                <span>注意その１</span>
+                <span>注意その１：端末間の連携無し</span>
                 <ChevronUpIcon
                   className={`${
                     open ? 'transform rotate-180' : ''
@@ -30,7 +30,7 @@ export function Instructions() {
           {({ open }) => (
             <>
               <Disclosure.Button className='flex justify-between py-2 px-4 w-full text-sm font-medium text-left text-purple-900 bg-purple-100 hover:bg-purple-200 rounded-full focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
-                <span>注意その２</span>
+                <span>注意その２：メールによる注文</span>
                 <ChevronUpIcon
                   className={`${
                     open ? 'transform rotate-180' : ''
