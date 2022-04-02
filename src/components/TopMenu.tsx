@@ -10,7 +10,7 @@ export default function TopMenu() {
         <div>
           <Menu.Button
             aria-label='ポップアップメニュー'
-            className='inline-flex justify-center p-2 w-full text-black bg-black/50 hover:bg-black/40 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'
+            className='inline-flex justify-center p-2 w-full text-black bg-black/40 hover:bg-black/50 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'
           >
             <MenuIcon
               className='w-5 h-5 text-violet-200 hover:text-violet-100'
