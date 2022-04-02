@@ -12,8 +12,13 @@ const about = () => {
         </h1>
         <article className='prose lg:prose-xl'>
           <h2>概要</h2>
-          <p>ME品証の<strong>まきの</strong>です。</p>
-          <p>これは<strong>平田食堂</strong>の次回のお弁当を簡単に注文するためのアプリです。</p>
+          <p>
+            ME品証の<strong>まきの</strong>です。
+          </p>
+          <p>
+            これは<strong>平田食堂</strong>
+            の次回のお弁当を簡単に注文するためのアプリです。
+          </p>
           <p>前日の15時から当日の10時まで注文可能です。</p>
           <h2>お願い</h2>
           <p>
@@ -50,7 +55,13 @@ const about = () => {
           >
             バス時刻表
             <span>
-              <Image src='/bus.svg' alt='バス時刻表' width={128} height={128} className='animate-bounce'/>
+              <Image
+                src='/bus.svg'
+                alt='バス時刻表'
+                width={128}
+                height={128}
+                className='animate-bounce'
+              />
             </span>
           </a>
         </article>
