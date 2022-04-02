@@ -50,17 +50,15 @@ export default async function handler(
       `);
 
   if ((process.env.NEXT_PUBLIC_TEST_MODE as string) === 'true') {
-    console.log('テストモード。メールも送信しません。');
+    console.log('テストモード。メール送信します。');
     console.log('req.body: ', req.body);
+  }
+  try {
+    await mailersend.send(emailParams);
+    console.log('メール送信済！', emailParams);
     res.status(200).json('OK');
-  } else {
-    try {
-      await mailersend.send(emailParams);
-      console.log('メール送信済！', emailParams);
-      res.status(200).json('OK');
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
-    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
   }
 }
