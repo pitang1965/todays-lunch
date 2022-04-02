@@ -99,7 +99,7 @@ export function Instructions() {
                 ライス: 小（盛り）
                 <br />
                 <br />
-                ※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。
+                ※アプリ「今日のお弁当」(まきの作)から送信しています。
                 <br />
               </Disclosure.Panel>
             </>
