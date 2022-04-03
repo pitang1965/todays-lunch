@@ -9,7 +9,7 @@ type Props = {
 export const StaggeredShift: VFC<Props> = (props) => {
   return (
     <div className='flex gap-x-4'>
-      <p className='self-center'>11:50から食事</p>
+      <p className='self-center font-bold'>食事開始時間：11:50</p>
       <div className='py-4'>
         <Switch
           checked={props.isLateShift}
@@ -25,7 +25,7 @@ export const StaggeredShift: VFC<Props> = (props) => {
           />
         </Switch>
       </div>
-      <p className='self-center'>12:20から食事</p>
+      <p className='self-center font-bold'>12:20</p>
     </div>
   );
 };

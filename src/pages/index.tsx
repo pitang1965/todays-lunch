@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/inline-script-id */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Layout from '../components/Layout';
 import type { GetStaticProps, NextPage } from 'next';
 import { FieldSet } from 'airtable';
@@ -228,7 +229,11 @@ const Home: NextPage<{
                   </span>
                 ) : (
                   <span className='mt-4 font-bold text-red-600'>
-                    注文をするためにはログインしてください。
+                    注文するには
+                    <Link href='/api/auth/login'>
+                      <a className='underline'>ログイン</a>
+                    </Link>
+                    してください。
                   </span>
                 )}
               </p>
@@ -254,7 +259,7 @@ const Home: NextPage<{
             </>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)} className='my-4 mx-2'>
+          <form onSubmit={handleSubmit(onSubmit)}>
             {!alreadyOrdered && (
               <fieldset className='flex gap-2 mt-4'>
                 <label className='p-1 w-20 font-bold' htmlFor='commentText'>
@@ -281,6 +286,9 @@ const Home: NextPage<{
                 )}
               </>
             ) : null}
+
+            <hr className='mt-4 border-2 border-dashed' />
+
             <fieldset className='flex gap-2 mt-4'>
               <label className='p-1 w-20 font-bold' htmlFor='departmentText'>
                 職場名
@@ -361,6 +369,7 @@ const Home: NextPage<{
                 onChange={(e) => setEmployeeNumberString(e.target.value)}
               />
             </fieldset>
+
             <NotifyContainer />
           </form>
 
