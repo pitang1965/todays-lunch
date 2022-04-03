@@ -17,21 +17,19 @@
 ### [Next.js](https://nextjs.org/) 
 * Reactフレームワーク
 *  [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)でプロジェクトを生成。
+### [MailerSend](https://www.mailersend.com/)
+* 電子メール送信サービス
+* 弁当注文及び問い合わせのメール送信に利用。
 ### [next-pwa](https://openbase.com/js/next-pwa)
 * ほとんど設定することなくNext.jsのWebサイトをPWA(Progressive Web App)化する。
 ### [React Hook Form](https://react-hook-form.com/)
 * 簡単にバリデーションする機能を持つReact用フォームライブラリ。
-
 ### [React-toastify](https://fkhadra.github.io/react-toastify/introduction)
 * アプリに簡単に通知を追加。
-### [SendGrid](https://sendgrid.com/)
-* 電子メール送信サービス
-* 弁当注文のメール送信に利用。
 ### [Tailwind CSS](https://tailwindcss.com/)
 * HTMLに直接スタイリングを指定できるCSSフレームワーク。
 ### [TypeScript](https://www.typescriptlang.org/)
 * 型の構文を備えたJavaScript。
-
 ### [Vercel](https://vercel.com)
 * サーバーレスデプロイをおこなうためのクラウドプラットフォーム。
 * AirtableやSendGridのAPIは[Serverless Functions](https://vercel.com/docs/concepts/functions/serverless-functions)で実行。
