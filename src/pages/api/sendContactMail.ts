@@ -19,13 +19,20 @@ export default async function handler(
     .setFrom(process.env.MAIL_FROM)
     .setFromName('アプリ「今日のお弁当」')
     .setRecipients(recipients)
-    .setSubject('今日のお弁当アプリからの問い合わせ').setHtml(`
+    .setSubject('今日のお弁当アプリからの問い合わせ')
+    .setHtml(
+      `
     <strong>${req.body.name}さんからの問い合わせ</strong>
     <p>職場：${req.body.department}</p>
     <p>${req.body.inquiry}</p>
-  `).setText(`
+  `
+    )
+    .setText(
+      `
     ${req.body.name}さん（職場：${req.body.department}）からの問い合わせ: ${req.body.inquiry}
-  `);
+  `
+    )
+    .setReplyTo(req.body.mailFrom);
 
   console.log('req.body: ', req.body);
 

@@ -31,7 +31,7 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
           Accept: 'application/json, text/plain, */*',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, mailFrom: user?.email }),
       });
       console.log('res: ', res);
       reset();

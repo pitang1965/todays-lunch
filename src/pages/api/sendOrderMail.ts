@@ -19,7 +19,9 @@ export default async function handler(
     .setFromName('アプリ「今日のお弁当」')
     .setRecipients(recipients)
     .setCc(cc)
-    .setSubject('お弁当の注文(JEOL)').setHtml(`
+    .setSubject('お弁当の注文(JEOL)')
+    .setHtml(
+      `
       <p>平田食堂 御中</p>
       <p></p>
       <p>予約日: ${req.body.date}</p>
@@ -33,7 +35,10 @@ export default async function handler(
       <p>備考: ${req.body.comment}</p>
       <p></p>
       <p>※アプリ「今日のお弁当」(まきの作)から送信しています。</p>
-    `).setText(`
+    `
+    )
+    .setText(
+      `
       平田食堂 御中 担当者
       
       予約日: ${req.body.date}
@@ -47,7 +52,9 @@ export default async function handler(
       備考: ${req.body.comment}
   
       ※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。
-      `);
+      `
+    )
+    .setReplyTo(req.body.mailFrom);
 
   if ((process.env.NEXT_PUBLIC_TEST_MODE as string) === 'true') {
     console.log('テストモード。メール送信します。');
