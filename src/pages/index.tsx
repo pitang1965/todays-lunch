@@ -211,6 +211,11 @@ const Home: NextPage<{
           <h1 className='flex justify-center mb-4 text-4xl font-bold text-gray-600/80'>
             {dateString}の注文
           </h1>
+          <div className='py-3 px-4 text-white bg-indigo-600'>
+            <p className='text-sm font-medium text-center'>
+              5/6の金曜日限定弁当(800円)はお休みです。
+            </p>
+          </div>
           {alreadyOrdered ? (
             <>
               <p>ご注文ありがとうございました。</p>
