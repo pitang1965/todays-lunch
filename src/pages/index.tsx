@@ -21,6 +21,14 @@ import {
   notifyError,
 } from '../lib/notify';
 
+const Announcement = () => (
+  <div className='py-3 px-4 mb-2 text-white bg-indigo-600'>
+    <p className='text-sm font-medium text-center'>
+      5/6の金曜日限定弁当(800円)はお休みです。詳しくは[詳細]ボタンをクリック願います。
+    </p>
+  </div>
+);
+
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
   riceData: FieldSet[] | undefined;
@@ -211,11 +219,6 @@ const Home: NextPage<{
           <h1 className='flex justify-center mb-4 text-4xl font-bold text-gray-600/80'>
             {dateString}の注文
           </h1>
-          <div className='py-3 px-4 text-white bg-indigo-600'>
-            <p className='text-sm font-medium text-center'>
-              5/6の金曜日限定弁当(800円)はお休みです。
-            </p>
-          </div>
           {alreadyOrdered ? (
             <>
               <p>ご注文ありがとうございました。</p>
@@ -226,6 +229,7 @@ const Home: NextPage<{
             </>
           ) : (
             <>
+              <Announcement />
               <p>
                 いらっしゃいませ。
                 {isLogin ? (
