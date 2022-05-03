@@ -3,14 +3,14 @@ import React, { Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import Image from 'next/image';
-import type { Key, VFC } from 'react';
+import type { Key, FC } from 'react';
 
 type MenuDetailsProps = {
   menus: any[] | undefined;
   day: string;
 };
 
-export const MenuDetails: VFC<MenuDetailsProps> = ({ menus, day }) => {
+export const MenuDetails: FC<MenuDetailsProps> = ({ menus, day }) => {
   return (
     <div className='px-4 w-full max-w-sm'>
       <Popover className='relative'>

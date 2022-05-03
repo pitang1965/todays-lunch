@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import type { Key, VFC } from 'react';
+import type { Key, FC } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import type { FieldSet } from 'airtable';
@@ -11,7 +11,7 @@ type MenuListBoxProps = {
   setSelected: React.Dispatch<React.SetStateAction<FieldSet | undefined>>;
 };
 
-export const RiceListBox: VFC<MenuListBoxProps> = ({
+export const RiceListBox: FC<MenuListBoxProps> = ({
   label,
   menus,
   selected,

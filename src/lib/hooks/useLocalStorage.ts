@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export function useLocalStorage(key: string, initialValue: string = '') {
+
+export function useLocalStorage(key: string, initialValue: string = ''): [string, (value: string) => void] {
   // localStorageの値の状態
   // 初期値の設定は一回だけおこなわれる。
   const [storedValue, setStoredValue] = useState(initialValue);

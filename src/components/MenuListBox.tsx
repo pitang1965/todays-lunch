@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import type { Key, VFC } from 'react';
+import type { Key, FC } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 import type { FieldSet } from 'airtable';
@@ -13,7 +13,7 @@ type MenuListBoxProps = {
   day: string;
 };
 
-export const MenuListBox: VFC<MenuListBoxProps> = ({
+export const MenuListBox: FC<MenuListBoxProps> = ({
   label,
   menus,
   selected,

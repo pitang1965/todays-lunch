@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { Switch } from '@headlessui/react';
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   updateShift: () => void;
 };
 
-export const StaggeredShift: VFC<Props> = (props) => {
+export const StaggeredShift: FC<Props> = (props) => {
   return (
     <div className='flex gap-x-4'>
       <p className='self-center font-bold'>食事開始時間：11:50</p>
