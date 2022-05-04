@@ -222,7 +222,7 @@ const Home: NextPage<{
 
   const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
     savePersonData(data);
-    orderMenu({
+    await orderMenu({
       mailFrom: user?.email,
       date: `${dateString}`,
       timeFrom: isLateShift ? `後半` : `前半`,
