@@ -45,6 +45,7 @@ const Home: NextPage<{
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<Inputs>();
 
   // 最後のランチ注文
@@ -102,6 +103,20 @@ const Home: NextPage<{
     useLocalStorage('telephoneNumber');
   const [employeeNumberString, setEmployeeNumberString] =
     useLocalStorage('employeeNumber');
+
+  useEffect(() => {
+    reset({
+      department: departmentString,
+      name: nameString,
+      telephoneNumber: telephoneNumberString,
+      employeeNumber: employeeNumberString,
+    });
+  }, [
+    departmentString,
+    nameString,
+    telephoneNumberString,
+    employeeNumberString,
+  ]);
 
   // localStorageの値からデータを設定
   useEffect(() => {
@@ -169,15 +184,15 @@ const Home: NextPage<{
     if (canOrderNow()) {
       try {
         console.table(data);
-        const res = await fetch('/api/sendOrderMail', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-        console.log('res: ', res);
+        // const res = await fetch('/api/sendOrderMail', {
+        //   method: 'POST',
+        //   headers: {
+        //     Accept: 'application/json, text/plain, */*',
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify(data),
+        // });
+        // console.log('res: ', res);
 
         // 最後の注文を保存
         setLastOrderDateString(dateString);
@@ -193,7 +208,20 @@ const Home: NextPage<{
     }
   };
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  // 職場名、名前、電話番号、社員番号をローカルストレージに保存
+  const savePersonData = (data: Inputs) => {
+    setDepartmentString(data.department);
+    setNameString(data.name);
+    setTelephoneNumberString(data.telephoneNumber);
+    setEmployeeNumberString(data.employeeNumber);
+  };
+
+  const onSavePersonalData: SubmitHandler<Inputs> = async (data: Inputs) => {
+    savePersonData(data);
+  };
+
+  const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
+    savePersonData(data);
     orderMenu({
       mailFrom: user?.email,
       date: `${dateString}`,
@@ -268,7 +296,7 @@ const Home: NextPage<{
             </>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form>
             {!alreadyOrdered && (
               <fieldset className='flex gap-2 mt-4'>
                 <label className='p-1 w-20 font-bold' htmlFor='commentText'>
@@ -277,7 +305,6 @@ const Home: NextPage<{
 
                 <textarea
                   {...register('comment', { required: false, maxLength: 400 })}
-                  // defaultValue={''}
                   className='grow p-1 border border-slate-300'
                   id='commentText'
                   placeholder='特別な注文があれば、都度記入してください。'
@@ -288,7 +315,10 @@ const Home: NextPage<{
               <>
                 {!alreadyOrdered && (
                   <>
-                    <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
+                    <button
+                      onClick={() => handleSubmit(onSubmit)()}
+                      className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
+                    >
                       注文メールを送信
                     </button>
                   </>
@@ -304,12 +334,10 @@ const Home: NextPage<{
               </label>
               <input
                 {...register('department', { required: true, maxLength: 80 })}
-                defaultValue={departmentString}
                 className='grow p-1 border border-slate-300'
                 id='departmentText'
                 type='text'
                 placeholder='例：ME品証'
-                onChange={(e) => setDepartmentString(e.target.value)}
               />
             </fieldset>
             {errors.department && (
@@ -321,12 +349,10 @@ const Home: NextPage<{
               </label>
               <input
                 {...register('name', { required: true, maxLength: 10 })}
-                defaultValue={nameString}
                 className='grow p-1 border border-slate-300'
                 id='nameText'
                 type='text'
                 placeholder='姓名を入れてください。'
-                onChange={(e) => setNameString(e.target.value)}
               />
             </fieldset>
             {errors.name && (
@@ -347,12 +373,10 @@ const Home: NextPage<{
                   minLength: 10,
                   maxLength: 11,
                 })}
-                defaultValue={telephoneNumberString}
                 className='grow p-1 border border-slate-300'
                 id='telephoneNumber'
                 type='tel'
                 placeholder='連絡が付く電話番号。'
-                onChange={(e) => setTelephoneNumberString(e.target.value)}
               />
             </fieldset>
             {errors.telephoneNumber && (
@@ -370,15 +394,18 @@ const Home: NextPage<{
                   minLength: 6,
                   maxLength: 8,
                 })}
-                defaultValue={employeeNumberString}
                 className='grow p-1 border border-slate-300'
                 id='employeeNumber'
                 type='number'
                 placeholder='8桁数字のみ。'
-                onChange={(e) => setEmployeeNumberString(e.target.value)}
               />
             </fieldset>
-
+            <button
+              onClick={() => handleSubmit(onSavePersonalData)()}
+              className='flex py-2 px-4 m-auto mt-4 text-white bg-blue-600 hover:bg-blue-700 rounded-full'
+            >
+              個人データの保存のみ
+            </button>
             <NotifyContainer />
           </form>
 
