@@ -197,6 +197,7 @@ const Home: NextPage<{
         // 最後の注文を保存
         setLastOrderDateString(dateString);
         setLastOrderMenuString(data.menu);
+        alert(dateString);
 
         notifySuccess('注文が送信されました。');
       } catch (error) {
