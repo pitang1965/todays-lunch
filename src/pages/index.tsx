@@ -148,6 +148,7 @@ const Home: NextPage<{
       setIsLateShift(isLateShiftString === 'true');
     }
 
+    console.log(`lastOrderDateString: ${lastOrderDateString}  dateString: ${dateString}`);
     setAlreadyOrdered(lastOrderDateString === dateString);
   }, [lastOrderDateString, dateString]);
 
@@ -184,15 +185,15 @@ const Home: NextPage<{
     if (canOrderNow()) {
       try {
         console.table(data);
-        const res = await fetch('/api/sendOrderMail', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-        console.log('res: ', res);
+        // const res = await fetch('/api/sendOrderMail', {
+        //   method: 'POST',
+        //   headers: {
+        //     Accept: 'application/json, text/plain, */*',
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify(data),
+        // });
+        // console.log('res: ', res);
 
         // 最後の注文を保存
         setLastOrderDateString(dateString);
