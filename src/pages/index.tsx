@@ -24,7 +24,7 @@ import {
 const Announcement = () => (
   <div className='py-3 px-4 mb-2 text-white bg-indigo-600'>
     <p className='text-sm font-medium text-center'>
-      5/6の金曜日限定弁当(800円)はお休みです。詳しくは[詳細]ボタンをクリック願います。
+      メニュー情報（詳細ボタン）を5/6の週のものに更新しました。
     </p>
   </div>
 );
@@ -197,7 +197,6 @@ const Home: NextPage<{
         // 最後の注文を保存
         setLastOrderDateString(dateString);
         setLastOrderMenuString(data.menu);
-        alert(dateString);
 
         notifySuccess('注文が送信されました。');
       } catch (error) {
@@ -210,7 +209,7 @@ const Home: NextPage<{
   };
 
   // 職場名、名前、電話番号、社員番号をローカルストレージに保存
-  const savePersonData = (data: Inputs) => {
+  const savePersonData = (data: Inputs): void => {
     setDepartmentString(data.department);
     setNameString(data.name);
     setTelephoneNumberString(data.telephoneNumber);
