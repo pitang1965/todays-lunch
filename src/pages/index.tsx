@@ -55,30 +55,9 @@ const Home: NextPage<{
     useLocalStorage('lastOrderMenu');
   const [alreadyOrdered, setAlreadyOrdered] = useState(true);
 
-  // いつのランチ注文をしようしているか。YYYY-MM-DD(曜日) と曜日を取得
+  // いつのランチ注文をしようしているか。YYYY-MM-DD(曜日) と曜日を格納
   const [dateString, setDateString] = useState('');
   const [dayChar, setDayChar] = useState('');
-
-  useEffect(() => {
-    const [date, day] = getNextLunchDateString();
-    setDateString(date);
-    setDayChar(day);
-  }, []);
-
-  // ログイン中かどうか
-  const { user, error, isLoading } = useUser();
-  const [isLogin, setIsLogin] = useState(false);
-  useEffect(() => {
-    if (error) {
-      setIsLogin(false);
-    } else if (isLoading) {
-      setIsLogin(false);
-    } else if (user) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-  }, [user, error, isLoading]);
 
   // メニュー（食事）
   const [menuNameString, setMenuNameString] = useLocalStorage('menuName');
@@ -104,22 +83,13 @@ const Home: NextPage<{
   const [employeeNumberString, setEmployeeNumberString] =
     useLocalStorage('employeeNumber');
 
+  // 注文対象日と注文内容を取得
   useEffect(() => {
-    reset({
-      department: departmentString,
-      name: nameString,
-      telephoneNumber: telephoneNumberString,
-      employeeNumber: employeeNumberString,
-    });
-  }, [
-    departmentString,
-    nameString,
-    telephoneNumberString,
-    employeeNumberString,
-  ]);
+    const [date, day] = getNextLunchDateString();
+    setDateString(date); // 後で使うために格納。本ブロックでは使わない。
+    setDayChar(day); // 後で使うために格納。本ブロックでは使わない。
 
-  // localStorageの値からデータを設定
-  useEffect(() => {
+    // localStorageの値からデータを設定
     if (menuNameString === '') {
       setMenuDataSelected(menuData && menuData[0]);
     } else {
@@ -148,9 +118,45 @@ const Home: NextPage<{
       setIsLateShift(isLateShiftString === 'true');
     }
 
-    console.log(`lastOrderDateString: ${lastOrderDateString}  dateString: ${dateString}`);
-    setAlreadyOrdered(lastOrderDateString === dateString);
-  }, [lastOrderDateString, dateString]);
+    return () => {
+      console.log('終わりでーーーーーす');
+    };
+  }, []);
+
+  // 注文済かどうか
+  useEffect(
+    () => setAlreadyOrdered(lastOrderDateString === dateString),
+    [lastOrderDateString, dateString]
+  );
+
+  // ログイン中かどうか
+  const { user, error, isLoading } = useUser();
+  const [isLogin, setIsLogin] = useState(false);
+  useEffect(() => {
+    if (error) {
+      setIsLogin(false);
+    } else if (isLoading) {
+      setIsLogin(false);
+    } else if (user) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  }, [user, error, isLoading]);
+
+  useEffect(() => {
+    reset({
+      department: departmentString,
+      name: nameString,
+      telephoneNumber: telephoneNumberString,
+      employeeNumber: employeeNumberString,
+    });
+  }, [
+    departmentString,
+    nameString,
+    telephoneNumberString,
+    employeeNumberString,
+  ]);
 
   // メニュー又はライス選択結果をローカルストレージに保存
   useEffect(() => {
@@ -182,35 +188,39 @@ const Home: NextPage<{
       return;
     }
 
-    if (canOrderNow()) {
-      try {
-        console.table(data);
-        // const res = await fetch('/api/sendOrderMail', {
-        //   method: 'POST',
-        //   headers: {
-        //     Accept: 'application/json, text/plain, */*',
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify(data),
-        // });
-        // console.log('res: ', res);
-
-        // 最後の注文を保存
-        setLastOrderDateString(dateString);
-        setLastOrderMenuString(data.menu);
-
-        notifySuccess('注文が送信されました。');
-      } catch (error) {
-        console.error('Fetch error : ', error);
-        notifyError(JSON.stringify(error));
-      }
-    } else {
+    if (!canOrderNow()) {
       notifyWarning('注文できない時間帯です。');
+      return;
+    }
+
+    try {
+      console.table(data);
+      const res = await fetch('/api/sendOrderMail', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      console.log('res: ', res);
+
+      setAlreadyOrdered(true);
+
+      // 最後の注文を保存
+      setLastOrderDateString(dateString);
+      setLastOrderMenuString(data.menu);
+
+      notifySuccess('注文が送信されました。');
+    } catch (error) {
+      console.error('Fetch error : ', error);
+      notifyError(JSON.stringify(error));
     }
   };
 
   // 職場名、名前、電話番号、社員番号をローカルストレージに保存
   const savePersonData = (data: Inputs): void => {
+    console.log(data);
     setDepartmentString(data.department);
     setNameString(data.name);
     setTelephoneNumberString(data.telephoneNumber);
