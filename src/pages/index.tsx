@@ -24,7 +24,7 @@ import {
 const Announcement = () => (
   <div className='py-3 px-4 mb-2 text-white bg-indigo-600'>
     <p className='text-sm font-medium text-center'>
-      メニュー情報（詳細ボタン）を5/6の週のものに更新しました。
+      清水さんがメニュー情報（詳細ボタン）を5/13まで入力済です。
     </p>
   </div>
 );
@@ -229,6 +229,7 @@ const Home: NextPage<{
 
   const onSavePersonalData: SubmitHandler<Inputs> = async (data: Inputs) => {
     savePersonData(data);
+    notifySuccess('個人データをこの端末に保存しました。');
   };
 
   const onSubmit: SubmitHandler<Inputs> = async (data: Inputs) => {
@@ -327,6 +328,7 @@ const Home: NextPage<{
                 {!alreadyOrdered && (
                   <>
                     <button
+                      type='button'
                       onClick={() => handleSubmit(onSubmit)()}
                       className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
                     >
@@ -412,16 +414,16 @@ const Home: NextPage<{
               />
             </fieldset>
             <button
+              type='button'
               onClick={() => handleSubmit(onSavePersonalData)()}
               className='flex py-2 px-4 m-auto mt-4 text-white bg-blue-600 hover:bg-blue-700 rounded-full'
             >
               個人データの保存のみ
             </button>
-            <NotifyContainer />
           </form>
-
           <Instructions />
         </main>
+        <NotifyContainer />
       </Layout>
     </>
   );
