@@ -39,7 +39,9 @@ export default function Navbar() {
         </div>
         <div className='basis-2/5 text-center'>
           <Link href='/' passHref>
-            <p className='text-2xl font-bold text-red-600'>今日のお弁当</p>
+            <p className=' text-lg font-bold text-red-600 sm:text-xl md:text-2xl'>
+              今日のお弁当
+            </p>
           </Link>
         </div>
         <div className='basis-1/3 text-right'>
@@ -49,7 +51,7 @@ export default function Navbar() {
                 setIsLoggingOut(true);
                 setMessage('ログアウト中です。お待ちください...');
               }}
-              className={`rounded-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 ${
+              className={`rounded-full bg-red-600 hover:bg-red-700 text-sm sm:text-base text-white py-2 px-4 ${
                 !user || isLoggingOut ? 'hidden' : ''
               }`}
             >
@@ -58,7 +60,7 @@ export default function Navbar() {
           </Link>
           <Link href='/api/auth/login'>
             <a
-              className={`rounded-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 ${
+              className={`rounded-full bg-red-600 hover:bg-red-700 text-sm sm:text-base text-white py-2 px-4 ${
                 user || isLoggingOut ? 'hidden' : ''
               }`}
             >

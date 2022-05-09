@@ -24,7 +24,7 @@ import {
 const Announcement = () => (
   <div className='py-3 px-4 mb-2 text-white bg-indigo-600'>
     <p className='text-sm font-medium text-center'>
-      清水さんがメニュー情報（詳細ボタン）を5/13まで入力済です。
+      同僚に勧める場合、左上メニューの[本アプリについて]のQRコードをご利用ください。
     </p>
   </div>
 );
@@ -256,7 +256,7 @@ const Home: NextPage<{
           <link rel='icon' href='/obento.svg' />
         </Head>
         <main className='flex-col p-2 min-h-screen'>
-          <h1 className='flex justify-center mb-4 text-4xl font-bold text-gray-600/80'>
+          <h1 className='flex justify-center mb-4 text-[5vw] font-bold text-gray-600/80 sm:text-4xl'>
             {dateString}の注文
           </h1>
           {alreadyOrdered ? (
