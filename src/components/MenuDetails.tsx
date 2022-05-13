@@ -44,7 +44,7 @@ export const MenuDetails: FC<MenuDetailsProps> = ({ menus, day }) => {
                       return (
                         <pre
                           key={menu.id as Key}
-                          className='flex items-center p-2 -m-3 hover:bg-gray-50 rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 transition duration-150 ease-in-out'
+                          className='flex items-center p-2  -m-3 whitespace-pre-wrap hover:bg-gray-50 rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 transition duration-150 ease-in-out'
                         >
                           <div className='flex shrink-0 justify-center items-center w-10 h-10 text-white sm:w-12 sm:h-12'>
                             <Image
