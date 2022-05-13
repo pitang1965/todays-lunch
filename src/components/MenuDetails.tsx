@@ -42,7 +42,7 @@ export const MenuDetails: FC<MenuDetailsProps> = ({ menus, day }) => {
                   <div className='grid relative gap-8 p-7 bg-white lg:grid-cols-2'>
                     {menus?.map((menu) => {
                       return (
-                        <a
+                        <pre
                           key={menu.id as Key}
                           className='flex items-center p-2 -m-3 hover:bg-gray-50 rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 transition duration-150 ease-in-out'
                         >
@@ -62,7 +62,7 @@ export const MenuDetails: FC<MenuDetailsProps> = ({ menus, day }) => {
                               {menu?.fields?.Notes}
                             </p>
                           </div>
-                        </a>
+                        </pre>
                       );
                     })}
                   </div>

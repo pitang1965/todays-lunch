@@ -24,7 +24,7 @@ import {
 const Announcement = () => (
   <div className='py-3 px-4 mb-2 text-white bg-indigo-600'>
     <p className='text-sm font-medium text-center'>
-      同僚に勧める場合、左上メニューの[本アプリについて]のQRコードをご利用ください。
+      [注文メールを送信]をタップしても注文後の画面に切り替わらない不具合が出たら教えて欲しいです。
     </p>
   </div>
 );
