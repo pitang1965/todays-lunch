@@ -22,9 +22,9 @@ import {
 } from '../lib/notify';
 
 const Announcement = () => (
-  <div className='py-3 px-4 mb-2 text-white bg-indigo-600'>
+  <div className='py-3 px-4 mb-2 text-white bg-red-600'>
     <p className='text-sm font-medium text-center'>
-      [注文メールを送信]をタップしても注文後の画面に切り替わらない不具合が出たら教えて欲しいです。
+      不具合に注意！メニュー、ライス、食事開始時間が保存されなくなっています。
     </p>
   </div>
 );
