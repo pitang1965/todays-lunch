@@ -3,7 +3,7 @@ import { Switch } from '@headlessui/react';
 
 type Props = {
   isLateShift: boolean;
-  updateShift: () => void;
+  setIsLateShift: (value: boolean) => void;
 };
 
 export const StaggeredShift: FC<Props> = (props) => {
@@ -13,7 +13,7 @@ export const StaggeredShift: FC<Props> = (props) => {
       <div className='py-4'>
         <Switch
           checked={props.isLateShift}
-          onChange={props.updateShift}
+          onChange={props.setIsLateShift}
           className={`${props.isLateShift ? 'bg-red-700' : 'bg-red-500'}
           relative inline-flex flex-shrink-0 h-[38px] w-[74px] border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
         >

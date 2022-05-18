@@ -22,9 +22,9 @@ import {
 } from '../lib/notify';
 
 const Announcement = () => (
-  <div className='py-3 px-4 mb-2 text-white bg-red-600'>
+  <div className='py-3 px-4 mb-2 text-white bg-green-600'>
     <p className='text-sm font-medium text-center'>
-      不具合に注意！メニュー、ライス、食事開始時間が保存されなくなっています。
+      メニュー、ライス、食事開始時間が保存されない不具合を修正したつもりです（汗）。
     </p>
   </div>
 );
@@ -73,7 +73,6 @@ const Home: NextPage<{
   const [isLateShiftString, setIsLateShiftString] =
     useLocalStorage('lateShift');
   const [isLateShift, setIsLateShift] = useState(isLateShiftString === 'true');
-  const updateShift = (): void => setIsLateShift((prev: boolean) => !prev);
 
   // 職場、名前、電話番号、社員番号
   const [departmentString, setDepartmentString] = useLocalStorage('department');
@@ -83,41 +82,11 @@ const Home: NextPage<{
   const [employeeNumberString, setEmployeeNumberString] =
     useLocalStorage('employeeNumber');
 
-  // 注文対象日と注文内容を取得
+  // 注文対象日を取得
   useEffect(() => {
     const [date, day] = getNextLunchDateString();
     setDateString(date); // 後で使うために格納。本ブロックでは使わない。
     setDayChar(day); // 後で使うために格納。本ブロックでは使わない。
-
-    // localStorageの値からデータを設定
-    if (menuNameString === '') {
-      setMenuDataSelected(menuData && menuData[0]);
-    } else {
-      setMenuDataSelected(
-        menuData &&
-          menuData.find(function (record) {
-            return (record.fields as any).Name === menuNameString;
-          })
-      );
-    }
-
-    if (riceAmountString === '') {
-      setRiceAmountDataSelected(riceData && riceData[0]);
-    } else {
-      setRiceAmountDataSelected(
-        riceData &&
-          riceData.find(function (record) {
-            return (record.fields as any).Name === riceAmountString;
-          })
-      );
-    }
-
-    if (isLateShiftString === '') {
-      setIsLateShift(true);
-    } else {
-      setIsLateShift(isLateShiftString === 'true');
-    }
-
     return () => {
       console.log('終わりでーーーーーす');
     };
@@ -145,6 +114,31 @@ const Home: NextPage<{
   }, [user, error, isLoading]);
 
   useEffect(() => {
+    // localStorageの値からデータを設定
+    if (menuNameString !== '') {
+      // setMenuDataSelected(menuData && menuData[0]);
+      setMenuDataSelected(
+        menuData &&
+          menuData.find(function (record) {
+            return (record.fields as any).Name === menuNameString;
+          })
+      );
+    }
+
+    if (riceAmountString !== '') {
+      // setRiceAmountDataSelected(riceData && riceData[0]);
+      setRiceAmountDataSelected(
+        riceData &&
+          riceData.find(function (record) {
+            return (record.fields as any).Name === riceAmountString;
+          })
+      );
+    }
+
+    if (isLateShiftString !== '') {
+      setIsLateShift(isLateShiftString === 'true');
+    }
+
     reset({
       department: departmentString,
       name: nameString,
@@ -152,6 +146,9 @@ const Home: NextPage<{
       employeeNumber: employeeNumberString,
     });
   }, [
+    menuNameString,
+    riceAmountString,
+    isLateShiftString,
     departmentString,
     nameString,
     telephoneNumberString,
@@ -166,7 +163,10 @@ const Home: NextPage<{
     if (riceAmountDataSelected) {
       setRiceAmountString((riceAmountDataSelected?.fields as any).Name);
     }
-    setIsLateShiftString(isLateShift ? 'true' : 'false');
+    // メニューが設定されていないときは、食事開始時間も不定
+    if (menuDataSelected) {
+      setIsLateShiftString(isLateShift ? 'true' : 'false');
+    }
   }, [menuDataSelected, riceAmountDataSelected, isLateShift]);
 
   // 指定のメニューは本日利用可能か？
@@ -183,6 +183,17 @@ const Home: NextPage<{
 
   // 注文を実行
   const orderMenu = async (data: any) => {
+    if (data.menu === '') {
+      notifyWarning('メニューを選んでください。');
+      return;
+    }
+    if (menuDataSelected && menuDataSelected?.fields?.Rice) {
+      if (riceAmountDataSelected === undefined) {
+        notifyWarning('ライスを選んでください。');
+        return;
+      }
+    }
+
     if (!isAvailableNow(data.menu)) {
       notifyWarning('本日、このメニューはご利用いただけません。');
       return;
@@ -303,7 +314,7 @@ const Home: NextPage<{
               )}
               <StaggeredShift
                 isLateShift={isLateShift}
-                updateShift={updateShift}
+                setIsLateShift={setIsLateShift}
               />
             </>
           )}
@@ -311,7 +322,7 @@ const Home: NextPage<{
           <form>
             {!alreadyOrdered && (
               <fieldset className='flex gap-2 mt-4'>
-                <label className='p-1 w-20 font-bold' htmlFor='commentText'>
+                <label className='w-20 font-bold' htmlFor='commentText'>
                   備考欄
                 </label>
 
