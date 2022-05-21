@@ -8,9 +8,10 @@ import { FieldSet } from 'airtable';
 import Head from 'next/head';
 import { MenuListBox } from '../components/MenuListBox';
 import { RiceListBox } from '../components/RiceListBox';
-import { useUser } from '@auth0/nextjs-auth0';
+import { useLoginState } from '../lib/hooks/useLoginState';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
 import { Instructions } from '../components/Instructions';
+import { Announcement } from '../components/Announcement';
 import { StaggeredShift } from '../components/StaggeredShift';
 import { getNextLunchDateString, canOrderNow } from '../logic/nextLunch';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -20,14 +21,6 @@ import {
   notifyWarning,
   notifyError,
 } from '../lib/notify';
-
-const Announcement = () => (
-  <div className='py-3 px-4 mb-2 text-white bg-green-600'>
-    <p className='text-sm font-medium text-center'>
-      メニュー、ライス、食事開始時間が保存されない不具合を修正したつもりです（汗）。
-    </p>
-  </div>
-);
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;
@@ -98,20 +91,8 @@ const Home: NextPage<{
     [lastOrderDateString, dateString]
   );
 
-  // ログイン中かどうか
-  const { user, error, isLoading } = useUser();
-  const [isLogin, setIsLogin] = useState(false);
-  useEffect(() => {
-    if (error) {
-      setIsLogin(false);
-    } else if (isLoading) {
-      setIsLogin(false);
-    } else if (user) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-  }, [user, error, isLoading]);
+  // ログイン中かどうかとユーザー情報
+  const [user, isLogin] = useLoginState();
 
   useEffect(() => {
     // localStorageの値からデータを設定
