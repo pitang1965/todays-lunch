@@ -297,20 +297,14 @@ const Home: NextPage<{
                 />
               </fieldset>
             )}
-            {isLogin ? (
-              <>
-                {!alreadyOrdered && (
-                  <>
-                    <button
-                      type='button'
-                      onClick={() => handleSubmit(onSubmit)()}
-                      className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
-                    >
-                      注文メールを送信
-                    </button>
-                  </>
-                )}
-              </>
+            {isLogin && !alreadyOrdered ? (
+              <button
+                type='button'
+                onClick={() => handleSubmit(onSubmit)()}
+                className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
+              >
+                注文メールを送信
+              </button>
             ) : null}
 
             <hr className='mt-4 border-2 border-dashed' />
