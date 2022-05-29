@@ -1,18 +1,15 @@
 const Recipient = require('mailersend').Recipient;
 const EmailParams = require('mailersend').EmailParams;
 const MailerSend = require('mailersend');
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { OrderInfo } from './orderInfo';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>
-) {
+export async function sendOrderMail(orderInfo: OrderInfo): Promise<any> {
   const mailersend = new MailerSend({
     api_key: process.env.MAILERSEND_API_KEY,
   });
 
   const recipients = [new Recipient(process.env.ORDER_MAIL_TO, '注文先')];
-  const cc = [new Recipient(req.body.mailFrom, req.body.name)];
+  const cc = [new Recipient(orderInfo.mailFrom, orderInfo.name)];
 
   const emailParams = new EmailParams()
     .setFrom(process.env.MAIL_FROM)
@@ -24,48 +21,48 @@ export default async function handler(
       `
       <p>平田食堂 御中</p>
       <p></p>
-      <p>予約日: ${req.body.date}</p>
-      <p>利用時間: ${req.body.timeFrom}</p>
-      <p>部署名:${req.body.department}</p>
-      <p>名前: ${req.body.name}</p>
-      <p>電話番号: ${req.body.telephoneNumber}</p>
-      <p>社員番号: ${req.body.employeeNumber}</p>
-      <p><strong>メニュー: ${req.body.menu}</strong></p>
-      <p><strong>ライス: ${req.body.rice}</strong>
-      <p>備考: ${req.body.comment}</p>
+      <p>予約日: ${orderInfo.date}</p>
+      <p>利用時間: ${orderInfo.timeFrom}</p>
+      <p>部署名:${orderInfo.department}</p>
+      <p>名前: ${orderInfo.name}</p>
+      <p>電話番号: ${orderInfo.telephoneNumber}</p>
+      <p>社員番号: ${orderInfo.employeeNumber}</p>
+      <p><strong>メニュー: ${orderInfo.menu}</strong></p>
+      <p><strong>ライス: ${orderInfo.rice}</strong>
+      <p>備考: ${orderInfo.comment}</p>
       <p></p>
       <p>※アプリ「今日のお弁当」(まきの作)から送信しています。</p>
+      <p><a href='https://airtable.com/appKH21CjYJiML63M/tbl1IcM7cU9936xcR/viwnS2c4IYtTXZogk?blocks=hide'>平田用リンク</a></p>
     `
     )
     .setText(
       `
       平田食堂 御中 担当者
       
-      予約日: ${req.body.date}
-      利用時間: ${req.body.timeFrom}
-      部署名:${req.body.department}
-      名前: ${req.body.name}
-      電話番号: ${req.body.telephoneNumber}
-      社員番号: ${req.body.employeeNumber}
-      メニュー: ${req.body.menu}
-      ライス: ${req.body.rice}
-      備考: ${req.body.comment}
+      予約日: ${orderInfo.date}
+      利用時間: ${orderInfo.timeFrom}
+      部署名:${orderInfo.department}
+      名前: ${orderInfo.name}
+      電話番号: ${orderInfo.telephoneNumber}
+      社員番号: ${orderInfo.employeeNumber}
+      メニュー: ${orderInfo.menu}
+      ライス: ${orderInfo.rice}
+      備考: ${orderInfo.comment}
   
       ※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。
       `
     )
-    .setReplyTo(req.body.mailFrom);
+    .setReplyTo(orderInfo.mailFrom);
 
   if ((process.env.NEXT_PUBLIC_TEST_MODE as string) === 'true') {
     console.log('テストモード。メール送信します。');
-    console.log('req.body: ', req.body);
   }
   try {
     await mailersend.send(emailParams);
     console.log('メール送信済！', emailParams);
-    res.status(200).json('OK');
+    return 'OK';
   } catch (err) {
     console.error(err);
-    res.status(500).json(err);
+    return err;
   }
 }

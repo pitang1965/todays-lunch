@@ -127,7 +127,7 @@ const Home: NextPage<{
   const orderMenu = async (data: any) => {
     try {
       console.table(data);
-      const res = await fetch('/api/sendOrderMail', {
+      const res = await fetch('/api/sendOrder', {
         method: 'POST',
         headers: {
           Accept: 'application/json, text/plain, */*',
