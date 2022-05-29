@@ -19,7 +19,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-hook-form": "7.31.2",
-    "react-toastify": "9.0.1"
+    "react-toastify": "9.0.2"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
