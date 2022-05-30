@@ -24,7 +24,9 @@ export default async function handler(
   const ret1: any = await sendOrderMail(orderInfo);
 
   // Airtableに注文を記録
-  const ret2: any = await createAirtableRecord(orderInfo);
+  const ret2 = await createAirtableRecord(orderInfo);
+
+  console.log('ret2: ', ret2);
 
   // レスポンス
   if (ret1 === 'OK' && ret2 === 'OK') {
