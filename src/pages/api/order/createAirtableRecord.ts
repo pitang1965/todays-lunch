@@ -1,18 +1,17 @@
 const Airtable = require('airtable');
 import type { OrderInfo } from './orderInfo';
 
-export const createAirtableRecord = async (orderInfo: OrderInfo) =>  {
+export const createAirtableRecord = async (orderInfo: OrderInfo) => {
   console.table(orderInfo);
 
-  const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-    process.env.AIRTABLE_BASE_ID
-  );
+  Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
+  const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
 
   const tableName =
     process.env.NEXT_PUBLIC_TEST_MODE === 'true'
       ? 'OrderTableForTest'
       : 'OrderTable';
-  
+
   try {
     base(tableName).create([
       {
@@ -30,9 +29,9 @@ export const createAirtableRecord = async (orderInfo: OrderInfo) =>  {
         },
       },
     ]);
-    return ('OK');
+    return 'OK';
   } catch (error) {
     console.error(error);
-    return ('NG');
+    return 'NG';
   }
-}
+};
