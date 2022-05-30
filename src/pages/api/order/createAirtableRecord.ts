@@ -13,7 +13,7 @@ export const createAirtableRecord = async (orderInfo: OrderInfo) => {
       : 'OrderTable';
 
   try {
-    base(tableName).create([
+    await base(tableName).create([
       {
         fields: {
           mailFrom: orderInfo.mailFrom,
