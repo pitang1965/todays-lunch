@@ -30,7 +30,7 @@ export function Instructions() {
           {({ open }) => (
             <>
               <Disclosure.Button className='flex justify-between py-2 px-4 mt-4 w-full text-sm font-medium text-left text-purple-900 bg-purple-100 hover:bg-purple-200 rounded-full focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
-                <span>注意その２：メールによる注文</span>
+                <span>注意その２：メールによる確認</span>
                 <ChevronUpIcon
                   className={`${
                     open ? 'transform rotate-180' : ''
@@ -38,12 +38,11 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                現在は[注文メールを送信]ボタンをクリックしたら、メールを送るだけです。相手が確実に受け取るとは限りません。
+                [注文する]ボタンをクリックしたら、データベースに書き込むとともにメールを平田食堂に送信します。
                 <br />
-                特に初回の注文では、平田食堂からの返信メールをご確認ください。
+                このとき、Ccで注文者にメールが送られます。
                 <br />
-                <br />
-                これは改良する予定です。
+                念のためメール受信をご確認ください。
               </Disclosure.Panel>
             </>
           )}
