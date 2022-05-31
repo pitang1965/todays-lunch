@@ -97,7 +97,7 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
           onClick={() => handleSubmit(onSaveAndSubmit)()}
           className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
         >
-          注文メールを送信
+          注文する
         </button>
       ) : null}
 
