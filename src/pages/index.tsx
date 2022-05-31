@@ -136,14 +136,18 @@ const Home: NextPage<{
         body: JSON.stringify(data),
       });
       console.log('res: ', res);
+      
+      if (res.ok && res.status === 200) {
+        setAlreadyOrdered(true);
 
-      setAlreadyOrdered(true);
+        // 最後の注文を保存
+        setLastOrderDateString(dateString);
+        setLastOrderMenuString(data.menu);
 
-      // 最後の注文を保存
-      setLastOrderDateString(dateString);
-      setLastOrderMenuString(data.menu);
-
-      notifySuccess('注文が送信されました。');
+        notifySuccess('注文が送信されました。');
+      } else {
+        notifyError(`申し訳ございません。何らかの理由で注文が送れませんでした。${res.statusText}`);
+      }
     } catch (error) {
       console.error('Fetch error : ', error);
       notifyError(JSON.stringify(error));
