@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
@@ -23,6 +23,10 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
   alreadyOrdered,
   onSubmit,
 }) => {
+  // 注文処理中は[注文する]ボタンが押せないようにする
+  const [duaringOrder, setDuaringOrder] = useState(false);
+  useEffect(() => setDuaringOrder(false), [alreadyOrdered]);
+
   const {
     register,
     handleSubmit,
@@ -91,11 +95,15 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
           />
         </fieldset>
       )}
-      {isLogin && !alreadyOrdered ? (
+      {!alreadyOrdered && isLogin ? (
         <button
           type='button'
-          onClick={() => handleSubmit(onSaveAndSubmit)()}
-          className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'
+          onClick={() => {
+            setDuaringOrder(true);
+            handleSubmit(onSaveAndSubmit)();
+          }}
+          className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 disabled:bg-red-300 rounded-full'
+          disabled={duaringOrder}
         >
           注文する
         </button>
