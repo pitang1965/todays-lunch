@@ -3,6 +3,8 @@ const EmailParams = require('mailersend').EmailParams;
 const MailerSend = require('mailersend');
 import type { OrderInfo } from './orderInfo';
 
+const orderTableUrl = 'https://airtable.com/appKH21CjYJiML63M/tbl1IcM7cU9936xcR/viwnS2c4IYtTXZogk?blocks=hide';
+
 export async function sendOrderMail(orderInfo: OrderInfo): Promise<any> {
   const mailersend = new MailerSend({
     api_key: process.env.MAILERSEND_API_KEY,
@@ -32,7 +34,7 @@ export async function sendOrderMail(orderInfo: OrderInfo): Promise<any> {
       <p>備考: ${orderInfo.comment}</p>
       <p></p>
       <p>※アプリ「今日のお弁当」(まきの作)から送信しています。</p>
-      <p><a href='https://airtable.com/appKH21CjYJiML63M/tbl1IcM7cU9936xcR/viwnS2c4IYtTXZogk?blocks=hide'>平田用リンク</a></p>
+      <p><a href=${orderTableUrl}>平田用リンク</a></p>
     `
     )
     .setText(
@@ -50,6 +52,7 @@ export async function sendOrderMail(orderInfo: OrderInfo): Promise<any> {
       備考: ${orderInfo.comment}
   
       ※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。
+      平田用リンク: ${orderTableUrl}
       `
     )
     .setReplyTo(orderInfo.mailFrom);

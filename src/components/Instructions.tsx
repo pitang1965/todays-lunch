@@ -100,6 +100,7 @@ export function Instructions() {
                 <br />
                 ※アプリ「今日のお弁当」(まきの作)から送信しています。
                 <br />
+                <a href='#!'>平田用リンク</a>
               </Disclosure.Panel>
             </>
           )}
