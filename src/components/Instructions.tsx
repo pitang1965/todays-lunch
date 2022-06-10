@@ -38,11 +38,9 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                [注文する]ボタンをクリックしたら、データベースに書き込むとともにメールを平田食堂に送信します。
-                <br />
+                [注文する]ボタンをクリックしたら、平田食堂のほうで確認できる注文データベースに書き込むとともにメールを平田食堂に送信します。
                 このとき、Ccで注文者にメールが送られます。
-                <br />
-                念のためメール受信をご確認ください。
+                <br />念のためメール受信をご確認ください。
               </Disclosure.Panel>
             </>
           )}
