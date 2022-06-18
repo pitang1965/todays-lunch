@@ -19,10 +19,10 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@auth0/nextjs-auth0@1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@auth0/nextjs-auth0/-/nextjs-auth0-1.9.0.tgz#05a23df9092f9217122ebdb031d5a0dbfbb5d632"
-  integrity sha512-NYM545sXeF7GNrUIr7eZ5oZo0EVhKRCnDL27v6tw4Og/OfRt/QbzX7D//jjN/pjqg8KWZvmwit+zDa2X7dp+tQ==
+"@auth0/nextjs-auth0@1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@auth0/nextjs-auth0/-/nextjs-auth0-1.9.1.tgz#e7a0e8688b26cee490ed7599fba3b2550b7b698b"
+  integrity sha512-GvX1Ke9YzZRogIvSZhRRuZFwvw5DNuQv233VBUHrUwNi+z/XFE6ZRC0y22NgLsz4xsVdG9WicEwqoFT4rNL/Bw==
   dependencies:
     base64url "^3.0.1"
     cookie "^0.5.0"
@@ -1260,10 +1260,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.31.tgz#a5bb84ecfa27eec5e1c802c6bbf8139bdb163a5d"
   integrity sha512-AR0x5HbXGqkEx9CadRH3EBYx/VkiUgZIhP4wvPn/+5KIsgpNoyFaRlVe0Zlx9gRtg8fA06a9tskE2MSN7TcG4Q==
 
-"@types/node@17.0.43":
-  version "17.0.43"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.43.tgz#7f16898cdd791c9d64069000ad448b47b3ca8353"
-  integrity sha512-jnUpgw8fL9kP2iszfIDyBQtw5Mf4/XSqy0Loc1J9pI14ejL83XcCEvSf50Gs/4ET0I9VCCDoOfufQysj0S66xA==
+"@types/node@18.0.0":
+  version "18.0.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.0.tgz#67c7b724e1bcdd7a8821ce0d5ee184d3b4dd525a"
+  integrity sha512-cHlGmko4gWLVI27cGJntjs/Sj8th9aYwplmZFwmmgYQQvL5NUsgVJG7OddLvNfLqYS31KFN0s3qlaD9qCaxACA==
 
 "@types/node@>=8.0.0 <15":
   version "14.18.16"
@@ -1275,10 +1275,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react@18.0.12":
-  version "18.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.12.tgz#cdaa209d0a542b3fcf69cf31a03976ec4cdd8840"
-  integrity sha512-duF1OTASSBQtcigUvhuiTB1Ya3OvSy+xORCiEf20H0P0lzx+/KeVsA99U5UjLXSbyo1DRJDlLKqTeM1ngosqtg==
+"@types/react@18.0.14":
+  version "18.0.14"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.14.tgz#e016616ffff51dba01b04945610fe3671fdbe06d"
+  integrity sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -2229,10 +2229,10 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.3.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
 
-eslint@8.17.0:
-  version "8.17.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.17.0.tgz#1cfc4b6b6912f77d24b874ca1506b0fe09328c21"
-  integrity sha512-gq0m0BTJfci60Fz4nczYxNAlED+sMcihltndR8t9t1evnU/azx53x3t2UHXC/uRjcbvRw/XctpaNygSTcQD+Iw==
+eslint@8.18.0:
+  version "8.18.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.18.0.tgz#78d565d16c993d0b73968c523c0446b13da784fd"
+  integrity sha512-As1EfFMVk7Xc6/CvhssHUjsAQSkpfXvUGMFC3ce8JDe6WvqCgRrLOBQbVpsBFr1X1V+RACOadnzVvcUS5ni2bA==
   dependencies:
     "@eslint/eslintrc" "^1.3.0"
     "@humanwhocodes/config-array" "^0.9.2"
@@ -3628,10 +3628,10 @@ react-dom@18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-hook-form@7.32.1:
-  version "7.32.1"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.32.1.tgz#103de7b7ef3a7d295264433e4464bd17c8e4bdc9"
-  integrity sha512-A0bsgZZUnGdG68sXLBNMN7zRYKbYc/ESjDkjrJZ8PZ8/96EQ0IwMfYY3wpopt+yn2+Mm3APEUkw+JdjYQSRVJA==
+react-hook-form@7.32.2:
+  version "7.32.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.32.2.tgz#58ec2ab0239ce97969baa2faa03ced13fae913ac"
+  integrity sha512-F1A6n762xaRhvtQH5SkQQhMr19cCkHZYesTcKJJeNmrphiZp/cYFTIzC05FnQry0SspM54oPJ9tXFXlzya8VNQ==
 
 react-is@^16.13.1:
   version "16.13.1"
@@ -4210,10 +4210,10 @@ type-fest@^0.20.2:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.20.2.tgz#1bf207f4b28f91583666cb5fbd327887301cd5f4"
   integrity sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==
 
-typescript@4.7.3:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
-  integrity sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==
+typescript@4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
