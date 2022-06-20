@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "1.9.0",
-    "@headlessui/react": "1.6.4",
+    "@headlessui/react": "1.6.5",
     "@heroicons/react": "1.0.6",
     "@tailwindcss/typography": "0.5.2",
     "airtable": "0.11.4",
