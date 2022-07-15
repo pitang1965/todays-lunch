@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useLocalStorage } from '../lib/hooks/useLocalStorage';
@@ -23,16 +23,14 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
   alreadyOrdered,
   onSubmit,
 }) => {
-  // 注文処理中は[注文する]ボタンが押せないようにする
-  const [duaringOrder, setDuaringOrder] = useState(false);
-  useEffect(() => setDuaringOrder(false), [alreadyOrdered]);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm<PersonalDataInputs>();
+
+  const buttonRef = useRef<null | HTMLButtonElement>(null);
 
   // 職場、名前、電話番号、社員番号
   const [departmentString, setDepartmentString] = useLocalStorage('department');
@@ -95,19 +93,20 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
           />
         </fieldset>
       )}
-      {!alreadyOrdered && isLogin ? (
-        <button
-          type='button'
-          onClick={() => {
-            setDuaringOrder(true);
+      <button
+        type='button'
+        ref={buttonRef}
+        onClick={() => {
+          if (buttonRef.current) {
+            buttonRef.current.disabled = true;
             handleSubmit(onSaveAndSubmit)();
-          }}
-          className='m-auto mt-4 flex rounded-full bg-red-600 py-2 px-4 text-white hover:bg-red-700 disabled:bg-red-300'
-          disabled={duaringOrder}
-        >
-          注文する
-        </button>
-      ) : null}
+          }
+        }}
+        className='m-auto mt-4 flex rounded-full bg-red-600 py-2 px-4 text-white hover:bg-red-700 disabled:bg-red-300'
+        disabled={alreadyOrdered || !isLogin}
+      >
+        注文する
+      </button>
 
       <hr className='mt-4 border-2 border-dashed' />
 
