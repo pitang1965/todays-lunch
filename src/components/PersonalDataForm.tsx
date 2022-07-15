@@ -82,14 +82,14 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
   return (
     <form>
       {!alreadyOrdered && (
-        <fieldset className='flex gap-2 mt-4'>
+        <fieldset className='mt-4 flex gap-2'>
           <label className='w-20 font-bold' htmlFor='commentText'>
             備考欄
           </label>
 
           <textarea
             {...register('comment', { required: false, maxLength: 400 })}
-            className='grow p-1 border border-slate-300'
+            className='grow border border-slate-300 p-1'
             id='commentText'
             placeholder='特別な注文があれば、都度記入してください。'
           />
@@ -102,7 +102,7 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
             setDuaringOrder(true);
             handleSubmit(onSaveAndSubmit)();
           }}
-          className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 disabled:bg-red-300 rounded-full'
+          className='m-auto mt-4 flex rounded-full bg-red-600 py-2 px-4 text-white hover:bg-red-700 disabled:bg-red-300'
           disabled={duaringOrder}
         >
           注文する
@@ -111,13 +111,13 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
 
       <hr className='mt-4 border-2 border-dashed' />
 
-      <fieldset className='flex gap-2 mt-4'>
-        <label className='p-1 w-20 font-bold' htmlFor='departmentText'>
+      <fieldset className='mt-4 flex gap-2'>
+        <label className='w-20 p-1 font-bold' htmlFor='departmentText'>
           職場名
         </label>
         <input
           {...register('department', { required: true, maxLength: 80 })}
-          className='grow p-1 border border-slate-300'
+          className='grow border border-slate-300 p-1'
           id='departmentText'
           type='text'
           placeholder='例：ME品証'
@@ -126,13 +126,13 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
       {errors.department && (
         <p className='ml-[5.5rem] text-[#ff0000]'>職場名は必須です。</p>
       )}
-      <fieldset className='flex gap-2 mt-4'>
-        <label className='p-1 w-20 font-bold' htmlFor='nameText'>
+      <fieldset className='mt-4 flex gap-2'>
+        <label className='w-20 p-1 font-bold' htmlFor='nameText'>
           名前
         </label>
         <input
           {...register('name', { required: true, maxLength: 10 })}
-          className='grow p-1 border border-slate-300'
+          className='grow border border-slate-300 p-1'
           id='nameText'
           type='text'
           placeholder='姓名を入れてください。'
@@ -144,8 +144,8 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
       {errors.employeeNumber && (
         <p className='ml-[5.5rem] text-[#ff0000]'>社員番号は8桁までです</p>
       )}
-      <fieldset className='flex gap-2 mt-4'>
-        <label className='p-1 w-20 font-bold' htmlFor='telephoneNumber'>
+      <fieldset className='mt-4 flex gap-2'>
+        <label className='w-20 p-1 font-bold' htmlFor='telephoneNumber'>
           電話番号
         </label>
         <input
@@ -154,7 +154,7 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
             minLength: 10,
             maxLength: 11,
           })}
-          className='grow p-1 border border-slate-300'
+          className='grow border border-slate-300 p-1'
           id='telephoneNumber'
           type='tel'
           placeholder='連絡が付く電話番号。'
@@ -165,8 +165,8 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
           電話番号は10桁又は11桁でお願いします。
         </p>
       )}
-      <fieldset className='flex gap-2 mt-4'>
-        <label className='p-1 w-20 font-bold' htmlFor='employeeNumber'>
+      <fieldset className='mt-4 flex gap-2'>
+        <label className='w-20 p-1 font-bold' htmlFor='employeeNumber'>
           社員番号
         </label>
         <input
@@ -175,7 +175,7 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
             minLength: 6,
             maxLength: 8,
           })}
-          className='grow p-1 border border-slate-300'
+          className='grow border border-slate-300 p-1'
           id='employeeNumber'
           type='number'
           placeholder='8桁数字のみ。'
@@ -184,7 +184,7 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
       <button
         type='button'
         onClick={() => handleSubmit(onSavePersonalData)()}
-        className='flex py-2 px-4 m-auto mt-4 text-white bg-blue-600 hover:bg-blue-700 rounded-full'
+        className='m-auto mt-4 flex rounded-full bg-blue-600 py-2 px-4 text-white hover:bg-blue-700'
       >
         個人データの保存のみ
       </button>
