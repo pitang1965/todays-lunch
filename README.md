@@ -34,6 +34,10 @@
 ### [Vercel](https://vercel.com)
 * サーバーレスデプロイをおこなうためのクラウドプラットフォーム。
 * AirtableやSendGridのAPIは[Serverless Functions](https://vercel.com/docs/concepts/functions/serverless-functions)で実行。
+
+## スクリーンショット
+![Airtableへの注文の格納](https://user-images.githubusercontent.com/47315420/179329363-60e3bc87-9f2d-4eea-a71c-92bc63eb4c1d.png "Airtableへの注文の格納")
+
 ## Getting Started
 
 First, run the development server:
