@@ -31,7 +31,7 @@ const about = () => {
           <p>
             同僚に本アプリを勧める場合は、以下のバーコードをお使いください。
           </p>
-          <figure className='flex flex-col mb-8'>
+          <figure className='mb-8 flex flex-col'>
             <Image
               src={siteUrlBarcode}
               alt='https://todays-lunch.tomora.one/'

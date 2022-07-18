@@ -202,8 +202,8 @@ const Home: NextPage<{
           />
           <link rel='icon' href='/obento.svg' />
         </Head>
-        <main className='flex-col p-2 min-h-screen'>
-          <h1 className='flex justify-center mb-4 text-[5vw] font-bold text-gray-600/80 sm:text-4xl'>
+        <main className='min-h-screen flex-col p-2'>
+          <h1 className='mb-4 flex justify-center text-[5vw] font-bold text-gray-600/80 sm:text-4xl'>
             {dateString}の注文
           </h1>
           {alreadyOrdered ? (

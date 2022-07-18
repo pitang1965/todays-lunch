@@ -54,30 +54,30 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
         <p className='mt-8'><strong>まきの</strong>のプライペートメールアドレスに送られます。</p>
         <form onSubmit={handleSubmit(onSubmit)} className='my-4 mx-2'>
           <fieldset className='flex gap-2'>
-            <label className='p-1 w-16'>名前</label>
+            <label className='w-16 p-1'>名前</label>
             <input
               {...register('name', { required: true, maxLength: 100 })}
               defaultValue={nameString}
               placeholder='名前（必須）'
-              className='grow p-1 border border-slate-300'
+              className='grow border border-slate-300 p-1'
               onChange={(e) => setNameString(e.target.value)}
             />
           </fieldset>
           {errors.name && (
             <p className='ml-20 text-[#ff0000]'>名前は必須です。</p>
           )}
-          <fieldset className='flex gap-2 mt-4'>
-            <label className='p-1 w-16'>職場</label>
+          <fieldset className='mt-4 flex gap-2'>
+            <label className='w-16 p-1'>職場</label>
             <input
               {...register('department', { minLength: 2, maxLength: 100 })}
               defaultValue={departmentString}
               placeholder='部署名（任意）'
-              className='grow p-1 border border-slate-300'
+              className='grow border border-slate-300 p-1'
               onChange={(e) => setDepartmentString(e.target.value)}
             />
           </fieldset>
-          <fieldset className='flex gap-2 mt-4'>
-            <label className='p-1 w-16'>内容</label>
+          <fieldset className='mt-4 flex gap-2'>
+            <label className='w-16 p-1'>内容</label>
             <textarea
               {...register('inquiry', {
                 required: true,
@@ -86,13 +86,13 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
               })}
               placeholder='問い合わせ内容'
               rows={10}
-              className='grow p-1 leading-5 border border-slate-300'
+              className='grow border border-slate-300 p-1 leading-5'
             />
           </fieldset>
           {errors.inquiry && (
             <p className='ml-20 text-[#ff0000]'>問い合わせ内容は必須です。</p>
           )}
-          <button className='flex py-2 px-4 m-auto mt-4 text-white bg-red-600 hover:bg-red-700 rounded-full'>
+          <button className='m-auto mt-4 flex rounded-full bg-red-600 py-2 px-4 text-white hover:bg-red-700'>
             注文以外の問い合わせを送信
           </button>
           <NotifyContainer />
