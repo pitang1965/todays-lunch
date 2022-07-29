@@ -77,7 +77,7 @@ export const MenuDetails: FC<MenuDetailsProps> = ({ menus, day }) => {
                         </span>
                       </span>
                       <span className='block text-sm text-gray-500'>
-                        平田食堂のポスターをご覧ください。
+                        ○○食堂のポスターをご覧ください。
                       </span>
                     </a>
                   </div>

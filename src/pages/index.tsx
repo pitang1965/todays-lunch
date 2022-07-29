@@ -198,7 +198,7 @@ const Home: NextPage<{
           <title>今日のお弁当</title>
           <meta
             name='今日のお弁当'
-            content='平田食堂のお弁当を注文するアプリ'
+            content='○○食堂のお弁当を注文するアプリ'
           />
           <link rel='icon' href='/obento.svg' />
         </Head>

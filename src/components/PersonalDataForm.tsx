@@ -119,7 +119,7 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
           className='grow border border-slate-300 p-1'
           id='departmentText'
           type='text'
-          placeholder='例：ME品証'
+          placeholder='例：製造部'
         />
       </fieldset>
       {errors.department && (
