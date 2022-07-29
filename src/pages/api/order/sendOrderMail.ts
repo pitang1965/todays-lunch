@@ -18,10 +18,10 @@ export async function sendOrderMail(orderInfo: OrderInfo): Promise<any> {
     .setFromName('アプリ「今日のお弁当」')
     .setRecipients(recipients)
     .setCc(cc)
-    .setSubject('お弁当の注文(JEOL)')
+    .setSubject('【重要】お弁当の注文サービスは終了しました')
     .setHtml(
       `
-      <p>平田食堂 御中</p>
+      <p>○○食堂 御中</p>
       <p></p>
       <p>予約日: ${orderInfo.date}</p>
       <p>利用時間: ${orderInfo.timeFrom}</p>
@@ -34,12 +34,12 @@ export async function sendOrderMail(orderInfo: OrderInfo): Promise<any> {
       <p>備考: ${orderInfo.comment}</p>
       <p></p>
       <p>※アプリ「今日のお弁当」(まきの作)から送信しています。</p>
-      <p><a href=${orderTableUrl}>平田用リンク</a></p>
+      <p><a href=${orderTableUrl}>○○食堂用リンク</a></p>
     `
     )
     .setText(
       `
-      平田食堂 御中 担当者
+      ○○食堂 御中 担当者
       
       予約日: ${orderInfo.date}
       利用時間: ${orderInfo.timeFrom}
@@ -51,8 +51,8 @@ export async function sendOrderMail(orderInfo: OrderInfo): Promise<any> {
       ライス: ${orderInfo.rice}
       備考: ${orderInfo.comment}
   
-      ※アプリ「今日のお弁当」(makino@jeol.co.jp作)から送信しています。
-      平田用リンク: ${orderTableUrl}
+      ※アプリ「今日のお弁当」から送信しています。
+      ○○食堂用リンク: ${orderTableUrl}
       `
     )
     .setReplyTo(orderInfo.mailFrom);

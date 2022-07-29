@@ -13,10 +13,7 @@ const about = () => {
         <article className='prose lg:prose-xl'>
           <h2>概要</h2>
           <p>
-            ME品証の<strong>まきの</strong>です。
-          </p>
-          <p>
-            これは<strong>平田食堂</strong>
+            これは<strong>○○食堂</strong>
             の次回のお弁当を簡単に注文するためのアプリです。
           </p>
           <p>前日の15時から当日の10時まで注文可能です。</p>

@@ -38,7 +38,7 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                [注文する]ボタンをクリックしたら、平田食堂のほうで確認できる注文データベースに書き込むとともにメールを平田食堂に送信します。
+                [注文する]ボタンをクリックしたら、○○食堂のほうで確認できる注文データベースに書き込むとともにメールを○○食堂に送信します。
                 このとき、Ccで注文者にメールが送られます。
                 <br />念のためメール受信をご確認ください。
               </Disclosure.Panel>
@@ -57,7 +57,7 @@ export function Instructions() {
                 />
               </Disclosure.Button>
               <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
-                平田食堂にメールするなりして対応してください。
+                ○○食堂にメールするなりして対応してください。
               </Disclosure.Panel>
             </>
           )}
@@ -77,13 +77,13 @@ export function Instructions() {
                 自分にメールはCcされますが、次のイメージです。
                 <br />
                 <br />
-                平田食堂 御中
+                ○○食堂 御中
                 <br />
                 予約日: 2021-02-26(土)
                 <br />
                 利用時間: 後半
                 <br />
-                部署名:ME品証
+                部署名:製造部
                 <br />
                 名前:日本 太郎
                 <br />
@@ -98,7 +98,7 @@ export function Instructions() {
                 <br />
                 ※アプリ「今日のお弁当」(まきの作)から送信しています。
                 <br />
-                <a href='#!'>平田用リンク</a>
+                <a href='#!'>○○食堂用リンク</a>
               </Disclosure.Panel>
             </>
           )}
