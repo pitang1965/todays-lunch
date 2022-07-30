@@ -39,6 +39,10 @@
 ## スクリーンショット
 ![Airtableへの注文の格納](https://user-images.githubusercontent.com/47315420/179329363-60e3bc87-9f2d-4eea-a71c-92bc63eb4c1d.png "Airtableへの注文の格納")
 
+## 履歴及び利用状況
+![ログイン状況](https://user-images.githubusercontent.com/47315420/181757700-c94daa63-9470-49a0-95aa-aaf73c002cd3.png)
+- [詳細](https://github.com/pitang1965/todays-lunch/issues/)
+
 ## Getting Started
 
 First, run the development server:
