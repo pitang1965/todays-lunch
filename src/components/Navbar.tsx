@@ -51,7 +51,7 @@ export default function Navbar() {
                 setIsLoggingOut(true);
                 setMessage('ログアウト中です。お待ちください...');
               }}
-              className={`rounded-full bg-red-600 hover:bg-red-700 text-sm sm:text-base text-white py-2 px-4 ${
+              className={`rounded-full bg-red-600 py-2 px-4 text-sm text-white hover:bg-red-700 sm:text-base ${
                 !user || isLoggingOut ? 'hidden' : ''
               }`}
             >
@@ -60,7 +60,7 @@ export default function Navbar() {
           </Link>
           <Link href='/api/auth/login'>
             <a
-              className={`rounded-full bg-red-600 hover:bg-red-700 text-sm sm:text-base text-white py-2 px-4 ${
+              className={`rounded-full bg-red-600 py-2 px-4 text-sm text-white hover:bg-red-700 sm:text-base ${
                 user || isLoggingOut ? 'hidden' : ''
               }`}
             >
@@ -69,10 +69,10 @@ export default function Navbar() {
           </Link>
         </div>
       </div>
-      <div className='flex flex-row gap-10 justify-center items-center mt-2'>
+      <div className='mt-2 flex flex-row items-center justify-center gap-10'>
         {user && <p className='self-center'>{message}</p>}
         {isTestMode && (
-          <p className='font-bold text-orange-600 animate-pulse'>
+          <p className='animate-pulse font-bold text-orange-600'>
             テスト:{testDateString}
           </p>
         )}

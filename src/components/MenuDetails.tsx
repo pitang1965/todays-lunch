@@ -12,19 +12,19 @@ type MenuDetailsProps = {
 
 export const MenuDetails: FC<MenuDetailsProps> = ({ menus, day }) => {
   return (
-    <div className='px-4 w-full max-w-sm'>
+    <div className='w-full max-w-sm px-4'>
       <Popover className='relative'>
         {({ open }) => (
           <>
             <Popover.Button
               className={`
                 ${open ? '' : 'text-opacity-90'}
-                text-white group bg-red-600 p-2 rounded-md inline-flex items-center hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                group inline-flex items-center rounded-md bg-red-600 p-2 text-white hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
               <span>詳細</span>
               <ChevronDownIcon
                 className={`${open ? '' : 'text-opacity-70'}
-                  ml-2 h-5 w-5 text-red-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
+                  ml-2 h-5 w-5 text-red-300 transition duration-150 ease-in-out group-hover:text-opacity-80`}
                 aria-hidden='true'
               />
             </Popover.Button>
@@ -37,16 +37,16 @@ export const MenuDetails: FC<MenuDetailsProps> = ({ menus, day }) => {
               leaveFrom='opacity-100 translate-y-0'
               leaveTo='opacity-0 translate-y-1'
             >
-              <Popover.Panel className='absolute left-1/2 z-10 px-4 mt-3 w-screen max-w-sm -translate-x-1/2 sm:px-0 lg:max-w-3xl'>
-                <div className='overflow-hidden rounded-lg ring-1 ring-black ring-opacity-5 shadow-lg'>
-                  <div className='grid relative gap-8 p-7 bg-white lg:grid-cols-2'>
+              <Popover.Panel className='absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 px-4 sm:px-0 lg:max-w-3xl'>
+                <div className='overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
+                  <div className='relative grid gap-8 bg-white p-7 lg:grid-cols-2'>
                     {menus?.map((menu) => {
                       return (
                         <pre
                           key={menu.id as Key}
-                          className='flex items-center p-2  -m-3 whitespace-pre-wrap hover:bg-gray-50 rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 transition duration-150 ease-in-out'
+                          className='-m-3 flex items-center  whitespace-pre-wrap rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
                         >
-                          <div className='flex shrink-0 justify-center items-center w-10 h-10 text-white sm:w-12 sm:h-12'>
+                          <div className='flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12'>
                             <Image
                               src='/obento.svg'
                               alt='お弁当'
@@ -66,10 +66,10 @@ export const MenuDetails: FC<MenuDetailsProps> = ({ menus, day }) => {
                       );
                     })}
                   </div>
-                  <div className='p-4 bg-gray-100'>
+                  <div className='bg-gray-100 p-4'>
                     <a
                       href='##'
-                      className='flow-root p-2 hover:bg-gray-100 rounded-md focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 transition duration-150 ease-in-out'
+                      className='flow-root rounded-md p-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
                     >
                       <span className='flex items-center'>
                         <span className='text-sm font-medium text-gray-900'>

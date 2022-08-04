@@ -6,14 +6,14 @@ import { MenuIcon } from '@heroicons/react/solid';
 export default function TopMenu() {
   return (
     <div className='z-20'>
-      <Menu as='div' className='inline-block relative z-30'>
+      <Menu as='div' className='relative z-30 inline-block'>
         <div>
           <Menu.Button
             aria-label='ポップアップメニュー'
-            className='inline-flex justify-center p-2 w-full text-black bg-black/40 hover:bg-black/50 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'
+            className='inline-flex w-full justify-center rounded-full bg-black/40 p-2 text-black hover:bg-black/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'
           >
             <MenuIcon
-              className='w-5 h-5 text-violet-200 hover:text-violet-100'
+              className='h-5 w-5 text-violet-200 hover:text-violet-100'
               aria-hidden='true'
             />
           </Menu.Button>
@@ -27,7 +27,7 @@ export default function TopMenu() {
           leaveFrom='opacity-100 scale-100'
           leaveTo='opacity-0 scale-95'
         >
-          <Menu.Items className='absolute left-0 mt-2 w-56 bg-white rounded divide-y divide-gray-100 focus:outline-none ring-1 ring-black/5 shadow-lg origin-top-right'>
+          <Menu.Items className='absolute left-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded bg-white shadow-lg ring-1 ring-black/5 focus:outline-none'>
             <div className='p-1'>
               <Menu.Item>
                 {({ active }) => (
@@ -35,16 +35,16 @@ export default function TopMenu() {
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                      } group flex rounded items-center w-full px-2 py-2 text-sm`}
+                      } group flex w-full items-center rounded px-2 py-2 text-sm`}
                     >
                       {active ? (
                         <HomeActiveIcon
-                          className='mr-2 w-5 h-5'
+                          className='mr-2 h-5 w-5'
                           aria-hidden='true'
                         />
                       ) : (
                         <HomeInactiveIcon
-                          className='mr-2 w-5 h-5'
+                          className='mr-2 h-5 w-5'
                           aria-hidden='true'
                         />
                       )}
@@ -59,16 +59,16 @@ export default function TopMenu() {
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                      } group flex rounded items-center w-full px-2 py-2 text-sm`}
+                      } group flex w-full items-center rounded px-2 py-2 text-sm`}
                     >
                       {active ? (
                         <AboutActiveIcon
-                          className='mr-2 w-5 h-5'
+                          className='mr-2 h-5 w-5'
                           aria-hidden='true'
                         />
                       ) : (
                         <AboutInactiveIcon
-                          className='mr-2 w-5 h-5'
+                          className='mr-2 h-5 w-5'
                           aria-hidden='true'
                         />
                       )}
@@ -85,16 +85,16 @@ export default function TopMenu() {
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
-                      } group flex rounded items-center w-full px-2 py-2 text-sm`}
+                      } group flex w-full items-center rounded px-2 py-2 text-sm`}
                     >
                       {active ? (
                         <ContactActiveIcon
-                          className='mr-2 w-5 h-5'
+                          className='mr-2 h-5 w-5'
                           aria-hidden='true'
                         />
                       ) : (
                         <ContactInactiveIcon
-                          className='mr-2 w-5 h-5'
+                          className='mr-2 h-5 w-5'
                           aria-hidden='true'
                         />
                       )}
@@ -116,7 +116,7 @@ function HomeInactiveIcon(props: any) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className='w-6 h-6'
+      className='h-6 w-6'
       fill='none'
       viewBox='0 0 24 24'
       stroke='currentColor'
@@ -135,7 +135,7 @@ function HomeActiveIcon(props: any) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className='w-5 h-5'
+      className='h-5 w-5'
       viewBox='0 0 20 20'
       fill='currentColor'
     >
@@ -148,7 +148,7 @@ function AboutInactiveIcon(props: any) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className='w-5 h-5'
+      className='h-5 w-5'
       viewBox='0 0 20 20'
       fill='currentColor'
     >
@@ -165,7 +165,7 @@ function AboutActiveIcon(props: any) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className='w-5 h-5'
+      className='h-5 w-5'
       viewBox='0 0 20 20'
       fill='currentColor'
     >
@@ -179,7 +179,7 @@ function ContactInactiveIcon(props: any) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className='w-6 h-6'
+      className='h-6 w-6'
       fill='none'
       viewBox='0 0 24 24'
       stroke='currentColor'
@@ -198,7 +198,7 @@ function ContactActiveIcon(props: any) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className='w-6 h-6'
+      className='h-6 w-6'
       fill='none'
       viewBox='0 0 24 24'
       stroke='currentColor'

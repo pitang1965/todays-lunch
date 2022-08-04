@@ -21,13 +21,13 @@ export const RiceListBox: FC<MenuListBoxProps> = ({
     <Listbox value={selected} onChange={setSelected}>
       <div className='relative mt-4'>
         <Listbox.Label className='font-bold'>{label}</Listbox.Label>
-        <Listbox.Button className='relative z-0 py-2 pr-10 pl-3 mt-2 w-full text-left bg-gradient-to-r from-red-100  to-yellow-100 rounded-full focus-visible:border-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 shadow-md cursor-default sm:text-sm'>
+        <Listbox.Button className='relative z-0 mt-2 w-full cursor-default rounded-full bg-gradient-to-r from-red-100 to-yellow-100 py-2  pr-10 pl-3 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm'>
           <span className='block truncate'>
             {(selected?.fields as any)?.Name}
           </span>
-          <span className='flex absolute inset-y-0 right-0 items-center pr-2 pointer-events-none'>
+          <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
             <SelectorIcon
-              className='w-5 h-5 text-gray-400'
+              className='h-5 w-5 text-gray-400'
               aria-hidden='true'
             />
           </span>
@@ -38,7 +38,7 @@ export const RiceListBox: FC<MenuListBoxProps> = ({
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <Listbox.Options className='overflow-auto absolute z-10 py-1 mt-1 w-full max-h-[10rem] text-base bg-white rounded focus:outline-none ring-1 ring-black/5 shadow-lg sm:text-sm'>
+          <Listbox.Options className='absolute z-10 mt-1 max-h-[10rem] w-full overflow-auto rounded bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm'>
             {menus &&
               menus.map((menu) => (
                 <Listbox.Option
@@ -65,7 +65,7 @@ export const RiceListBox: FC<MenuListBoxProps> = ({
                           }
                       absolute inset-y-0 left-0 flex items-center pl-3`}
                         >
-                          <CheckIcon className='w-5 h-5' aria-hidden='true' />
+                          <CheckIcon className='h-5 w-5' aria-hidden='true' />
                         </span>
                       ) : null}
                     </>

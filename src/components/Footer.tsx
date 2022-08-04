@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className='flex justify-center leading-8 border-t border-gray-400 border-solid'>
+    <footer className='flex justify-center border-t border-solid border-gray-400 leading-8'>
       <a
         href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
         target='_blank'
