@@ -14,8 +14,9 @@ export const StaggeredShift: FC<Props> = (props) => {
         <Switch
           checked={props.isLateShift}
           onChange={props.setIsLateShift}
+          // eslint-disable-next-line tailwindcss/no-custom-classname
           className={`${props.isLateShift ? 'bg-red-700' : 'bg-red-500'}
-          relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          focus-visible:ring-opacity/75 relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none  focus-visible:ring-2 focus-visible:ring-white`}
         >
           <span className='sr-only'>Staggered shift</span>
           <span
