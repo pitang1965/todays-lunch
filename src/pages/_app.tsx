@@ -1,4 +1,4 @@
-import '../../styles/globals.css';
+import 'styles/globals.css';
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 import type { ReactElement, ReactNode } from 'react';

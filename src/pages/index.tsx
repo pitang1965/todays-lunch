@@ -1,28 +1,28 @@
 /* eslint-disable @next/next/inline-script-id */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import Layout from '../components/Layout';
+import Layout from 'src/components/Layout';
 import type { GetStaticProps, NextPage } from 'next';
 import { FieldSet } from 'airtable';
 import Head from 'next/head';
-import { Thanks } from '../components/Thanks';
-import { MenuListBox } from '../components/MenuListBox';
-import { RiceListBox } from '../components/RiceListBox';
-import { useLoginState } from '../lib/hooks/useLoginState';
-import { useLocalStorage } from '../lib/hooks/useLocalStorage';
-import { Instructions } from '../components/Instructions';
-import { StaggeredShift } from '../components/StaggeredShift';
-import { getNextLunchDateString, canOrderNow } from '../logic/nextLunch';
+import { Thanks } from 'src/components/Thanks';
+import { MenuListBox } from 'src/components/MenuListBox';
+import { RiceListBox } from 'src/components/RiceListBox';
+import { useLoginState } from 'src/lib/hooks/useLoginState';
+import { useLocalStorage } from 'src/lib/hooks/useLocalStorage';
+import { Instructions } from 'src/components/Instructions';
+import { StaggeredShift } from 'src/components/StaggeredShift';
+import { getNextLunchDateString, canOrderNow } from 'src/logic/nextLunch';
 import { SubmitHandler } from 'react-hook-form';
 import {
   NotifyContainer,
   notifySuccess,
   notifyWarning,
   notifyError,
-} from '../lib/notify';
-import { Welcome } from '../components/Welcome';
-import { PersonalDataForm } from '../components/PersonalDataForm';
-import type { PersonalDataInputs } from '../components/PersonalDataForm';
+} from 'src/lib/notify';
+import { Welcome } from 'src/components/Welcome';
+import { PersonalDataForm } from 'src/components/PersonalDataForm';
+import type { PersonalDataInputs } from 'src/components/PersonalDataForm';
 
 const Home: NextPage<{
   menuData: FieldSet[] | undefined;

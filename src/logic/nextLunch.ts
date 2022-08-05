@@ -1,4 +1,4 @@
-import { getDayText, zeroPad } from '../lib/timeUtil';
+import { getDayText, zeroPad } from 'src/lib/timeUtil';
 
 export type LunchDateData = {
   year: number;

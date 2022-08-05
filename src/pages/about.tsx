@@ -1,7 +1,7 @@
-import Layout from '../components/Layout';
+import Layout from 'src/components/Layout';
 import Link from 'next/link';
 import Image from 'next/image';
-import siteUrlBarcode from '../../public/site-url.png';
+import siteUrlBarcode from 'public/site-url.png';
 
 const about = () => {
   return (

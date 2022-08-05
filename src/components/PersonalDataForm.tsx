@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import type { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useLocalStorage } from '../lib/hooks/useLocalStorage';
-import { notifySuccess } from '../lib/notify';
+import { useLocalStorage } from 'src/lib/hooks/useLocalStorage';
+import { notifySuccess } from 'src/lib/notify';
 
 type PersonalDataProps = {
   isLogin: boolean;

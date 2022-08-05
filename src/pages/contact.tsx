@@ -1,13 +1,13 @@
 import React from 'react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import Layout from '../components/Layout';
-import { useLocalStorage } from '../lib/hooks/useLocalStorage';
+import Layout from 'src/components/Layout';
+import { useLocalStorage } from 'src/lib/hooks/useLocalStorage';
 import {
   NotifyContainer,
   notifySuccess,
   notifyError,
-} from '../lib/notify';
+} from 'src/lib/notify';
 
 type Inputs = {
   name: string;

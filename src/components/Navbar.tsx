@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import TopMenu from '../components/TopMenu';
+import TopMenu from 'src/components/TopMenu';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
-import { currentDate } from '../logic/nextLunch';
-import { getStringFromDate } from '../lib/timeUtil';
+import { currentDate } from 'src/logic/nextLunch';
+import { getStringFromDate } from 'src/lib/timeUtil';
 
 export default function Navbar() {
   const { user, error, isLoading } = useUser();
