@@ -1,12 +1,18 @@
 /** @type {import('next').NextConfig} */
+// https://github.com/shadowwalker/next-pwa/issues/367 を参考に修正
 
-const withPWA = require('next-pwa');
-
-module.exports = withPWA({
+const nextConfig = {
   reactStrictMode: true,
-  pwa: {
-    dest: 'public',
-    register: true,
-    disable: process.env.NODE_ENV === 'development',
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV !== 'development',
   },
+};
+
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  register: true,
 });
+
+module.exports = withPWA(nextConfig);
