@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { MenuIcon } from '@heroicons/react/solid';
+import { Bars3Icon } from '@heroicons/react/20/solid';
 
 export default function TopMenu() {
   return (
@@ -12,7 +12,7 @@ export default function TopMenu() {
             aria-label='ポップアップメニュー'
             className='inline-flex w-full justify-center rounded-full bg-black/40 p-2 text-black hover:bg-black/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'
           >
-            <MenuIcon
+            <Bars3Icon
               className='h-5 w-5 text-violet-200 hover:text-violet-100'
               aria-hidden='true'
             />

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import type { Key, FC } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import type { FieldSet } from 'airtable';
 
 type MenuListBoxProps = {
@@ -26,7 +26,7 @@ export const RiceListBox: FC<MenuListBoxProps> = ({
             {(selected?.fields as any)?.Name}
           </span>
           <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
-            <SelectorIcon
+            <ChevronUpDownIcon
               className='h-5 w-5 text-gray-400'
               aria-hidden='true'
             />

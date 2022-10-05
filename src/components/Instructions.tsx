@@ -1,6 +1,6 @@
 /* eslint-disable tailwindcss/migration-from-tailwind-2 */
 import { Disclosure } from '@headlessui/react';
-import { ChevronUpIcon } from '@heroicons/react/solid';
+import { ChevronUpIcon } from '@heroicons/react/20/solid';
 
 export function Instructions() {
   return (
