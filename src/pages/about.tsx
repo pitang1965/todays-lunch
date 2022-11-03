@@ -40,7 +40,7 @@ const about = () => {
           <p>
             不具合や改善要望などありましたら
             <Link href='/contact' passHref>
-              <a>お問い合わせ</a>
+              お問い合わせ
             </Link>
             よりお願いします。
           </p>

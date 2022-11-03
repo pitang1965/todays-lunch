@@ -38,14 +38,14 @@ export default function Navbar() {
           <TopMenu />
         </div>
         <div className='basis-2/5 text-center'>
-          <Link href='/' passHref>
+          <Link href='/' passHref legacyBehavior>
             <p className=' text-lg font-bold text-red-600 sm:text-xl md:text-2xl'>
               今日のお弁当
             </p>
           </Link>
         </div>
         <div className='basis-1/3 text-right'>
-          <Link href='/api/auth/logout'>
+          <Link href='/api/auth/logout'  legacyBehavior>
             <a
               onClick={() => {
                 setIsLoggingOut(true);
@@ -58,7 +58,7 @@ export default function Navbar() {
               ログアウト
             </a>
           </Link>
-          <Link href='/api/auth/login'>
+          <Link href='/api/auth/login' legacyBehavior>
             <a
               className={`rounded-full bg-red-600 py-2 px-4 text-sm text-white hover:bg-red-700 sm:text-base ${
                 user || isLoggingOut ? 'hidden' : ''

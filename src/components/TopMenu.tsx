@@ -31,7 +31,7 @@ export default function TopMenu() {
             <div className='p-1'>
               <Menu.Item>
                 {({ active }) => (
-                  <Link href='/' passHref>
+                  <Link href='/' passHref legacyBehavior>
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
@@ -55,7 +55,7 @@ export default function TopMenu() {
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <Link href='/about' passHref>
+                  <Link href='/about' passHref legacyBehavior>
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
@@ -81,7 +81,7 @@ export default function TopMenu() {
             <div className='p-1'>
               <Menu.Item>
                 {({ active }) => (
-                  <Link href='/contact' passHref>
+                  <Link href='/contact' passHref legacyBehavior>
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'

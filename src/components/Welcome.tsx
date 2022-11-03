@@ -18,8 +18,8 @@ export const Welcome: FC<Props> = ({ isLogin }) => {
         ) : (
           <span className='mt-4 font-bold text-red-600'>
             注文するには
-            <Link href='/api/auth/login'>
-              <a className='underline'>ログイン</a>
+            <Link href='/api/auth/login' legacyBehavior>
+              <p className='underline'>ログイン</p>
             </Link>
             してください。
           </span>
