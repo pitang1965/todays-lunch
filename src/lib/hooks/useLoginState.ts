@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useUser } from '@auth0/nextjs-auth0';
-import type { UserProfile } from '@auth0/nextjs-auth0';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import type { UserProfile } from '@auth0/nextjs-auth0/client';
 
 // ログイン中かどうかとユーザー情報を返す
 export function useLoginState(): [UserProfile | undefined, boolean] {

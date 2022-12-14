@@ -1,13 +1,9 @@
 import React from 'react';
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { withPageAuthRequired as withPageAuthRequiredCSR } from '@auth0/nextjs-auth0/client';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Layout from 'src/components/Layout';
 import { useLocalStorage } from 'src/lib/hooks/useLocalStorage';
-import {
-  NotifyContainer,
-  notifySuccess,
-  notifyError,
-} from 'src/lib/notify';
+import { NotifyContainer, notifySuccess, notifyError } from 'src/lib/notify';
 
 type Inputs = {
   name: string;
@@ -15,7 +11,7 @@ type Inputs = {
   inquiry: string;
 };
 
-const contact = withPageAuthRequired(({ user }: { user: any }) => {
+const contact = withPageAuthRequiredCSR(({ user }: { user: any }) => {
   const {
     register,
     handleSubmit,
@@ -51,7 +47,9 @@ const contact = withPageAuthRequired(({ user }: { user: any }) => {
         <h1 className='flex justify-center text-4xl font-bold text-gray-700/80'>
           お問い合わせ
         </h1>
-        <p className='mt-8'><strong>まきの</strong>のプライペートメールアドレスに送られます。</p>
+        <p className='mt-8'>
+          <strong>まきの</strong>のプライペートメールアドレスに送られます。
+        </p>
         <form onSubmit={handleSubmit(onSubmit)} className='my-4 mx-2'>
           <fieldset className='flex gap-2'>
             <label className='w-16 p-1'>名前</label>
