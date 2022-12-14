@@ -16,12 +16,10 @@ export const Welcome: FC<Props> = ({ isLogin }) => {
         {isLogin ? (
           <span>注文可能な時間帯は前日の15時から当日の9:59までです。</span>
         ) : (
-          <span className='mt-4 font-bold text-red-600'>
-            注文するには
+          <span className='mt-4 font-bold text-red-600 underline'>
             <Link href='/api/auth/login' legacyBehavior>
-              <p className='underline'>ログイン</p>
+              注文するにはログインしてください。
             </Link>
-            してください。
           </span>
         )}
       </p>
