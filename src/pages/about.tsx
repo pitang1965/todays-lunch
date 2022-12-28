@@ -31,7 +31,7 @@ const about = () => {
           <figure className='mb-8 flex flex-col'>
             <Image
               src={siteUrlBarcode}
-              alt='https://todays-lunch.tomora.one/'
+              alt='https://todays-lunch.vercel.app/'
             />
             <figcaption className='m-auto'>
               本サイト「今日のお弁当」のURL
