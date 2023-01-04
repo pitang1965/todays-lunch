@@ -3098,10 +3098,10 @@ magic-string@^0.25.0, magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.8"
 
-mailersend@1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/mailersend/-/mailersend-1.4.5.tgz#4202898ba7730e0f4144d1e36c74ca080b99a91f"
-  integrity sha512-3+79NyFqGKDe1kTRF4WcJJR3Guk9AVLLrKC3gHdPzskGVga69eSJJ/FcevVvje78G7iHxz4yApLL2pJhNOwpQQ==
+mailersend@1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/mailersend/-/mailersend-1.4.6.tgz#a9193f6bcf2cc2dbd3bab2515c0d1c7efa4c391a"
+  integrity sha512-H01TEAQIS2xciqow401yNjvFeooCH0BHF6DuSl7H9wsiP2GEvjeuiMaeSdUOGNd2N45t+qyKCuBeyxu7J0xWEg==
   dependencies:
     isomorphic-unfetch "^3.1.0"
 
