@@ -11,7 +11,7 @@
     "@auth0/nextjs-auth0": "2.0.1",
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "2.0.13",
-    "@tailwindcss/typography": "0.5.8",
+    "@tailwindcss/typography": "0.5.9",
     "airtable": "0.11.6",
     "mailersend": "1.4.5",
     "next": "^13.1.1",
