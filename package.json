@@ -8,28 +8,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "2.0.1",
+    "@auth0/nextjs-auth0": "2.1.0",
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "2.0.13",
-    "@tailwindcss/typography": "0.5.8",
+    "@tailwindcss/typography": "0.5.9",
     "airtable": "0.11.6",
-    "mailersend": "1.4.5",
-    "next": "^13.1.1",
+    "mailersend": "2.0.1",
+    "next": "^13.1.2",
     "next-pwa": "5.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "7.41.3",
+    "react-hook-form": "7.42.0",
     "react-toastify": "9.1.1"
   },
   "devDependencies": {
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "autoprefixer": "10.4.13",
-    "eslint": "8.30.0",
-    "eslint-config-next": "^13.1.1",
-    "eslint-config-prettier": "^8.5.0",
+    "eslint": "8.31.0",
+    "eslint-config-next": "^13.1.2",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-tailwindcss": "3.8.0",
-    "postcss": "8.4.20",
+    "postcss": "8.4.21",
     "tailwindcss": "3.2.4",
     "typescript": "4.9.4"
   }
