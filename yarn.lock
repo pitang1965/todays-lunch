@@ -3128,10 +3128,10 @@ magic-string@^0.25.0, magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.8"
 
-mailersend@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/mailersend/-/mailersend-2.0.1.tgz#a0e82a55aa611dc6240a89845fa96e86d3d9bc5d"
-  integrity sha512-rRWD2n9ND1mxZX5wDlXnh3XsCgYKtYfV0Tg9D2Grgw9d4ZhP1bEOqzH73YHIBm62YPirk5Yq/sLTA7UfTXDRcA==
+mailersend@2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/mailersend/-/mailersend-2.0.5.tgz#4deeaf9b54206a00621b64cea428dcfcb5acc446"
+  integrity sha512-oQ80hbiOn4KMaFEX2XIc0espdVZxq2tX8fGRhJHt5DasbXubQyPceV2Cn+Jh4Ofi8QNaaKejqwU5Ob4LYrBnEQ==
   dependencies:
     gaxios "^5.0.1"
     isomorphic-unfetch "^3.1.0"

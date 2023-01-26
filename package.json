@@ -13,7 +13,7 @@
     "@heroicons/react": "2.0.13",
     "@tailwindcss/typography": "0.5.9",
     "airtable": "0.11.6",
-    "mailersend": "2.0.1",
+    "mailersend": "2.0.5",
     "next": "^13.1.2",
     "next-pwa": "5.6.0",
     "react": "^18.2.0",
