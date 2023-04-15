@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "2.4.0",
-    "@headlessui/react": "^1.7.13",
+    "@headlessui/react": "^1.7.14",
     "@heroicons/react": "2.0.17",
     "@tailwindcss/typography": "0.5.9",
     "airtable": "0.11.6",
@@ -23,9 +23,9 @@
   },
   "devDependencies": {
     "@types/node": "18.15.11",
-    "@types/react": "18.0.33",
+    "@types/react": "18.0.35",
     "autoprefixer": "10.4.14",
-    "eslint": "8.37.0",
+    "eslint": "8.38.0",
     "eslint-config-next": "^13.3.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-tailwindcss": "3.11.0",
