@@ -17,8 +17,8 @@ dependencies:
     specifier: 0.11.6
     version: 0.11.6
   mailersend:
-    specifier: 2.0.5
-    version: 2.0.5
+    specifier: 2.1.1
+    version: 2.1.1
   next:
     specifier: ^13.3.4
     version: 13.3.4(@babel/core@7.21.0)(react-dom@18.2.0)(react@18.2.0)
@@ -3701,8 +3701,8 @@ packages:
       sourcemap-codec: 1.4.8
     dev: false
 
-  /mailersend@2.0.5:
-    resolution: {integrity: sha512-oQ80hbiOn4KMaFEX2XIc0espdVZxq2tX8fGRhJHt5DasbXubQyPceV2Cn+Jh4Ofi8QNaaKejqwU5Ob4LYrBnEQ==}
+  /mailersend@2.1.1:
+    resolution: {integrity: sha512-HSsWY6XJgTBzhZTFfio4B/PqNWU4xHpAIhflwQC3ol+8vbNCFB9i0Pl3CTtRDGv8AXs62cCTFAJACmyL+lnnNw==}
     dependencies:
       gaxios: 5.0.2
       isomorphic-unfetch: 3.1.0
