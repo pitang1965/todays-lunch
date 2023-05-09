@@ -10,7 +10,7 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "2.5.0",
     "@headlessui/react": "^1.7.14",
-    "@heroicons/react": "2.0.17",
+    "@heroicons/react": "2.0.18",
     "@tailwindcss/typography": "0.5.9",
     "airtable": "0.11.6",
     "mailersend": "2.1.1",
