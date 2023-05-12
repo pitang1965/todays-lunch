@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@auth0/nextjs-auth0':
-    specifier: 2.5.0
-    version: 2.5.0(next@13.4.1)
+    specifier: 2.6.0
+    version: 2.6.0(next@13.4.1)
   '@headlessui/react':
     specifier: ^1.7.14
     version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
@@ -96,8 +96,8 @@ packages:
       leven: 3.1.0
     dev: false
 
-  /@auth0/nextjs-auth0@2.5.0(next@13.4.1):
-    resolution: {integrity: sha512-gPrNMH436ILgTeYwquybjieRt6I0YMnDlmlC7Z3Hw73pWWEv/tQMz7qiz2dyRErrOUQB7cWl2nxz0R7liiWc0g==}
+  /@auth0/nextjs-auth0@2.6.0(next@13.4.1):
+    resolution: {integrity: sha512-35AGe4vCdSxjBu5MLJkBTQa83QwjAA2Ovg2IaWN9CJ1gFbydQmtOyT1b7XqSel63sZN6x9W+BDCS/xak0JPC+Q==}
     engines: {node: '>=12.19.0'}
     peerDependencies:
       next: '>=10'
