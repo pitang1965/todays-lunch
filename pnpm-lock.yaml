@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@auth0/nextjs-auth0':
-    specifier: 3.0.0
-    version: 3.0.0(next@13.4.12)
+    specifier: 3.0.1
+    version: 3.0.1(next@13.4.12)
   '@headlessui/react':
     specifier: ^1.7.16
     version: 1.7.16(react-dom@18.2.0)(react@18.2.0)
@@ -47,8 +47,8 @@ devDependencies:
     specifier: 20.4.5
     version: 20.4.5
   '@types/react':
-    specifier: 18.2.17
-    version: 18.2.17
+    specifier: 18.2.18
+    version: 18.2.18
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.27)
@@ -105,8 +105,8 @@ packages:
       leven: 3.1.0
     dev: false
 
-  /@auth0/nextjs-auth0@3.0.0(next@13.4.12):
-    resolution: {integrity: sha512-4N3t7FenHM09ZdySetMLuvADjjinEkAzL+X+HX/bZT8pdxWsFrgMCKKkOIWBJj/mRJmw2AEOBJhW912JNnKfUw==}
+  /@auth0/nextjs-auth0@3.0.1(next@13.4.12):
+    resolution: {integrity: sha512-ng6kiYJVkOgASg9HBxoivYHEnFyErnAhqp/pXMlFty+XTZFwza0kykDDlQ/q3qDcoh6mIzZopLkQ8y00UItkrw==}
     engines: {node: '>=16'}
     peerDependencies:
       next: '>=10'
@@ -1673,8 +1673,8 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react@18.2.17:
-    resolution: {integrity: sha512-u+e7OlgPPh+aryjOm5UJMX32OvB2E3QASOAqVMY6Ahs90djagxwv2ya0IctglNbNTexC12qCSMZG47KPfy1hAA==}
+  /@types/react@18.2.18:
+    resolution: {integrity: sha512-da4NTSeBv/P34xoZPhtcLkmZuJ+oYaCxHmyHzwaDQo9RQPBeXV+06gEk2FpqEcsX9XrnNLvRpVh6bdavDSjtiQ==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
