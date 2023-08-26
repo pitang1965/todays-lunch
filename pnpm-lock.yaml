@@ -18,8 +18,8 @@ dependencies:
     specifier: 0.5.9
     version: 0.5.9(tailwindcss@3.3.3)
   airtable:
-    specifier: 0.12.1
-    version: 0.12.1
+    specifier: 0.12.2
+    version: 0.12.2
   mailersend:
     specifier: 2.2.0
     version: 2.2.0
@@ -1912,8 +1912,8 @@ packages:
       - supports-color
     dev: false
 
-  /airtable@0.12.1:
-    resolution: {integrity: sha512-wS49QIO46YjSUbRIslX6pJaAGsdzOFPtYfaARYsBifsev10TDsyXc5IBYX6b3JQs4SZ8A5+g/vbQ5IfPvbnc+w==}
+  /airtable@0.12.2:
+    resolution: {integrity: sha512-HS3VytUBTKj8A0vPl7DDr5p/w3IOGv6RXL0fv7eczOWAtj9Xe8ri4TAiZRXoOyo+Z/COADCj+oARFenbxhmkIg==}
     engines: {node: '>=8.0.0'}
     dependencies:
       '@types/node': 14.18.37
