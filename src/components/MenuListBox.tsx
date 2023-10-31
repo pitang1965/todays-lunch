@@ -27,7 +27,7 @@ export const MenuListBox: FC<MenuListBoxProps> = ({
           <Listbox.Label className='basis-1/3 font-bold'>{label}</Listbox.Label>
           <MenuDetails menus={menus} day={day} />
         </div>
-        <Listbox.Button className='relative z-0 mt-2 w-full cursor-default rounded-full bg-gradient-to-r from-red-100 to-yellow-100 py-2  pr-10 pl-3 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm'>
+        <Listbox.Button className='relative z-0 mt-2 w-full cursor-default rounded-full bg-gradient-to-r from-red-100 to-yellow-100 py-2  pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm'>
           <span className='block truncate'>
             {(selected?.fields as any)?.Name}
           </span>
