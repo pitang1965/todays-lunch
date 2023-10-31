@@ -10,7 +10,7 @@ export function Instructions() {
         <Disclosure>
           {({ open }) => (
             <>
-              <Disclosure.Button className='flex w-full justify-between rounded-full bg-purple-100 py-2 px-4 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
+              <Disclosure.Button className='flex w-full justify-between rounded-full bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
                 <span>注意その１：端末間の連携無し</span>
                 <ChevronUpIcon
                   className={`${
@@ -18,7 +18,7 @@ export function Instructions() {
                   } h-5 w-5 text-purple-500`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
+              <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-500'>
                 現在は注文情報を各端末で管理しています。
                 <br />
                 複数の端末から重複して注文しないようにご注意ください。
@@ -29,7 +29,7 @@ export function Instructions() {
         <Disclosure as='div' className='mt-2'>
           {({ open }) => (
             <>
-              <Disclosure.Button className='mt-4 flex w-full justify-between rounded-full bg-purple-100 py-2 px-4 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
+              <Disclosure.Button className='mt-4 flex w-full justify-between rounded-full bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
                 <span>注意その２：メールによる確認</span>
                 <ChevronUpIcon
                   className={`${
@@ -37,7 +37,7 @@ export function Instructions() {
                   } h-5 w-5 text-purple-500`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
+              <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-500'>
                 [注文する]ボタンをクリックしたら、○○食堂のほうで確認できる注文データベースに書き込むとともにメールを○○食堂に送信します。
                 このとき、Ccで注文者にメールが送られます。
                 <br />
@@ -49,7 +49,7 @@ export function Instructions() {
         <Disclosure as='div' className='mt-2'>
           {({ open }) => (
             <>
-              <Disclosure.Button className='mt-4 flex w-full justify-between rounded-full bg-purple-100 py-2 px-4 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
+              <Disclosure.Button className='mt-4 flex w-full justify-between rounded-full bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
                 <span>注文内容を変更したい場合は？</span>
                 <ChevronUpIcon
                   className={`${
@@ -57,7 +57,7 @@ export function Instructions() {
                   } h-5 w-5 text-purple-500`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
+              <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-500'>
                 ○○食堂にメールするなりして対応してください。
               </Disclosure.Panel>
             </>
@@ -66,7 +66,7 @@ export function Instructions() {
         <Disclosure as='div' className='mt-2'>
           {({ open }) => (
             <>
-              <Disclosure.Button className='my-4 flex w-full justify-between rounded-full bg-purple-100 py-2 px-4 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
+              <Disclosure.Button className='my-4 flex w-full justify-between rounded-full bg-purple-100 px-4 py-2 text-left text-sm font-medium text-purple-900 hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'>
                 <span>どのようなメールが送られますか?</span>
                 <ChevronUpIcon
                   className={`${
@@ -74,7 +74,7 @@ export function Instructions() {
                   } h-5 w-5 text-purple-500`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-500'>
+              <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-500'>
                 自分にメールはCcされますが、次のイメージです。
                 <br />
                 <br />
