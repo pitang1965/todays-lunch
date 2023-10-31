@@ -2,7 +2,7 @@ import React from 'react';
 import { withPageAuthRequired as withPageAuthRequiredCSR } from '@auth0/nextjs-auth0/client';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Layout from 'src/components/Layout';
-import { useLocalStorage } from 'src/lib/hooks/useLocalStorage';
+import { useLocalStorage } from 'src/lib/useLocalStorage';
 import { NotifyContainer, notifySuccess, notifyError } from 'src/lib/notify';
 
 type Inputs = {
@@ -50,7 +50,7 @@ const contact = withPageAuthRequiredCSR(({ user }: { user: any }) => {
         <p className='mt-8'>
           <strong>まきの</strong>のプライペートメールアドレスに送られます。
         </p>
-        <form onSubmit={handleSubmit(onSubmit)} className='my-4 mx-2'>
+        <form onSubmit={handleSubmit(onSubmit)} className='mx-2 my-4'>
           <fieldset className='flex gap-2'>
             <label className='w-16 p-1'>名前</label>
             <input
@@ -90,7 +90,7 @@ const contact = withPageAuthRequiredCSR(({ user }: { user: any }) => {
           {errors.inquiry && (
             <p className='ml-20 text-[#ff0000]'>問い合わせ内容は必須です。</p>
           )}
-          <button className='m-auto mt-4 flex rounded-full bg-red-600 py-2 px-4 text-white hover:bg-red-700'>
+          <button className='m-auto mt-4 flex rounded-full bg-red-600 px-4 py-2 text-white hover:bg-red-700'>
             注文以外の問い合わせを送信
           </button>
           <NotifyContainer />

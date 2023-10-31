@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import type { FC } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useLocalStorage } from 'src/lib/hooks/useLocalStorage';
+import { useLocalStorage } from 'src/lib/useLocalStorage';
 import { notifySuccess } from 'src/lib/notify';
 
 type PersonalDataProps = {
@@ -102,7 +102,7 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
             handleSubmit(onSaveAndSubmit)();
           }
         }}
-        className='m-auto mt-4 flex rounded-full bg-red-600 py-2 px-4 text-white hover:bg-red-700 disabled:bg-red-300'
+        className='m-auto mt-4 flex rounded-full bg-red-600 px-4 py-2 text-white hover:bg-red-700 disabled:bg-red-300'
         disabled={alreadyOrdered || !isLogin}
       >
         注文する
@@ -183,7 +183,7 @@ export const PersonalDataForm: FC<PersonalDataProps> = ({
       <button
         type='button'
         onClick={() => handleSubmit(onSavePersonalData)()}
-        className='m-auto mt-4 flex rounded-full bg-blue-600 py-2 px-4 text-white hover:bg-blue-700'
+        className='m-auto mt-4 flex rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-700'
       >
         個人データの保存のみ
       </button>

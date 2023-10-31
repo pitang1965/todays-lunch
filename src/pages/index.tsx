@@ -8,8 +8,8 @@ import Head from 'next/head';
 import { Thanks } from 'src/components/Thanks';
 import { MenuListBox } from 'src/components/MenuListBox';
 import { RiceListBox } from 'src/components/RiceListBox';
-import { useLoginState } from 'src/lib/hooks/useLoginState';
-import { useLocalStorage } from 'src/lib/hooks/useLocalStorage';
+import { useLoginState } from 'src/lib/useLoginState';
+import { useLocalStorage } from 'src/lib/useLocalStorage';
 import { Instructions } from 'src/components/Instructions';
 import { StaggeredShift } from 'src/components/StaggeredShift';
 import { getNextLunchDateString, canOrderNow } from 'src/logic/nextLunch';
@@ -136,7 +136,7 @@ const Home: NextPage<{
         body: JSON.stringify(data),
       });
       console.log('res: ', res);
-      
+
       if (res.ok && res.status === 200) {
         setAlreadyOrdered(true);
 
@@ -146,7 +146,9 @@ const Home: NextPage<{
 
         notifySuccess('注文が送信されました。');
       } else {
-        notifyError(`申し訳ございません。何らかの理由で注文が送れませんでした。${res.statusText}`);
+        notifyError(
+          `申し訳ございません。何らかの理由で注文が送れませんでした。${res.statusText}`
+        );
       }
     } catch (error) {
       console.error('Fetch error : ', error);
@@ -196,10 +198,7 @@ const Home: NextPage<{
       <Layout>
         <Head>
           <title>今日のお弁当</title>
-          <meta
-            name='今日のお弁当'
-            content='○○食堂のお弁当を注文するアプリ'
-          />
+          <meta name='今日のお弁当' content='○○食堂のお弁当を注文するアプリ' />
           <link rel='icon' href='/obento.svg' />
         </Head>
         <main className='min-h-screen flex-col p-2'>
