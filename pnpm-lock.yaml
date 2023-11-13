@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@auth0/nextjs-auth0':
-    specifier: 3.2.0
-    version: 3.2.0(next@14.0.1)
+    specifier: 3.3.0
+    version: 3.3.0(next@14.0.1)
   '@headlessui/react':
     specifier: ^1.7.17
     version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
@@ -114,14 +114,14 @@ packages:
       leven: 3.1.0
     dev: false
 
-  /@auth0/nextjs-auth0@3.2.0(next@14.0.1):
-    resolution: {integrity: sha512-8vdoqEF+RfAAdG9O2r8QbRs95LraDYhDGlfTzQdGg5CYTBGUWO34EZOB9bZr0SgqnqaO9Qa4lgcrffsYPcvywg==}
+  /@auth0/nextjs-auth0@3.3.0(next@14.0.1):
+    resolution: {integrity: sha512-zIBeb2OuLIv0SyNEJaqfBbmwsaPLi1CAlnwOIRloABPI2nX0k0Sp959FiI7uUfJkUzqW8xtCyE56MDl4bs9WLQ==}
     engines: {node: '>=16'}
     peerDependencies:
       next: '>=10'
     dependencies:
       '@panva/hkdf': 1.0.4
-      cookie: 0.5.0
+      cookie: 0.6.0
       debug: 4.3.4
       joi: 17.8.3
       jose: 4.13.1
@@ -2445,8 +2445,8 @@ packages:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
     dev: false
 
-  /cookie@0.5.0:
-    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+  /cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
     dev: false
 
