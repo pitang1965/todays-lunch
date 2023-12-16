@@ -4,8 +4,11 @@ import type { OrderInfo } from './orderInfo';
 export const createAirtableRecord = async (orderInfo: OrderInfo) => {
   console.table(orderInfo);
 
-  Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY });
-  const base = Airtable.base(process.env.AIRTABLE_BASE_ID);
+  Airtable.configure({
+    endpointUrl: 'https://api.airtable.com',
+    apiKey: process.env.AIRTABLE_API_TOKEN,
+  });
+  var base = Airtable.base(process.env.AIRTABLE_BASE_ID as string);
 
   const tableName =
     process.env.NEXT_PUBLIC_TEST_MODE === 'true'
