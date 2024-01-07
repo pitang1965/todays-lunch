@@ -44,8 +44,8 @@ dependencies:
 
 devDependencies:
   '@types/node':
-    specifier: 20.10.6
-    version: 20.10.6
+    specifier: 20.10.7
+    version: 20.10.7
   '@types/react':
     specifier: 18.2.46
     version: 18.2.46
@@ -1656,7 +1656,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.10.6
+      '@types/node': 20.10.7
     dev: false
 
   /@types/json-schema@7.0.11:
@@ -1678,8 +1678,8 @@ packages:
     resolution: {integrity: sha512-7GgtHCs/QZrBrDzgIJnQtuSvhFSwhyYSI2uafSwZoNt1iOGhEN5fwNrQMjtONyHm9+/LoA4453jH0CMYcr06Pg==}
     dev: false
 
-  /@types/node@20.10.6:
-    resolution: {integrity: sha512-Vac8H+NlRNNlAmDfGUP7b5h/KA+AtWIzuXy0E6OyP8f1tCLYAtPvKRRDJjAPqhpCb0t6U2j7/xqAuLEebW2kiw==}
+  /@types/node@20.10.7:
+    resolution: {integrity: sha512-fRbIKb8C/Y2lXxB5eVMj4IU7xpdox0Lh8bUPEdtLysaylsml1hOOx1+STloRs/B9nf7C6kPRmmg/V7aQW7usNg==}
     dependencies:
       undici-types: 5.26.5
 
@@ -1704,7 +1704,7 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 20.10.6
+      '@types/node': 20.10.7
     dev: false
 
   /@types/scheduler@0.16.2:
@@ -3676,7 +3676,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.10.6
+      '@types/node': 20.10.7
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: false
@@ -3685,7 +3685,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.10.6
+      '@types/node': 20.10.7
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
