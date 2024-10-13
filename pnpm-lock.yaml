@@ -39,8 +39,8 @@ dependencies:
     specifier: 7.51.0
     version: 7.51.0(react@18.2.0)
   react-toastify:
-    specifier: 10.0.4
-    version: 10.0.4(react-dom@18.2.0)(react@18.2.0)
+    specifier: 10.0.6
+    version: 10.0.6(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -4895,11 +4895,11 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: true
 
-  /react-toastify@10.0.4(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-etR3RgueY8pe88SA67wLm8rJmL1h+CLqUGHuAoNsseW35oTGJEri6eBTyaXnFKNQ80v/eO10hBYLgz036XRGgA==}
+  /react-toastify@10.0.6(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-yYjp+omCDf9lhZcrZHKbSq7YMuK0zcYkDFTzfRFgTXkTFHZ1ToxwAonzA4JI5CxA91JpjFLmwEsZEgfYfOqI1A==}
     peerDependencies:
-      react: '>=16'
-      react-dom: '>=16'
+      react: '>=18'
+      react-dom: '>=18'
     dependencies:
       clsx: 2.1.0
       react: 18.2.0
